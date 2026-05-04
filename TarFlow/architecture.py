@@ -399,8 +399,7 @@ class TarFlowModule(L.LightningModule):
         lr=1e-4,
         accum_steps=4,
         sigma_max=7,
-        rescale_factor=0.09,
-        enable_amp=True,
+        rescale_factor=0.09
     ):
         super().__init__()
         self.save_hyperparameters(ignore=["model"])
@@ -410,17 +409,14 @@ class TarFlowModule(L.LightningModule):
         self.accum_steps = accum_steps
         self.sigma_max = sigma_max
         self.rescale_factor = rescale_factor
-        self.enable_amp = enable_amp
+        
 
     def forward(self, x, y=None):
         return self.model(x, y)
 
     def compute_loss(self, x, y=None):
-        with torch.autocast(
-            device_type="cuda", dtype=torch.bfloat16, enabled=self.enable_amp
-        ):
-            z, outputs, logdets = self.model(x, y)
-            loss = self.model.get_loss(z, logdets)
+        z, outputs, logdets = self.model(x, y)
+        loss = self.model.get_loss(z, logdets)
         return loss
 
     def training_step(self, batch, batch_idx):
@@ -432,12 +428,9 @@ class TarFlowModule(L.LightningModule):
 
         # x = x + self.sigma_max * torch.randn_like(x)
         x = x * self.rescale_factor
-        with torch.autocast(
-            device_type="cuda", dtype=torch.bfloat16, enabled=self.enable_amp
-        ):
-            z, outputs, logdets = self.model(x, y)
+        z, outputs, logdets = self.model(x, y)
 
-            loss = self.model.get_loss(z, logdets)
+        loss = self.model.get_loss(z, logdets)
         if self.training:
             self.model.update_prior(z)
         self.log("train/loss", loss, on_step=True, on_epoch=True, prog_bar=True)
