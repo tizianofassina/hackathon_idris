@@ -25,7 +25,6 @@ BATCH_SIZE = 500  # Batch size for training
 EPOCHS = 700 #Total number of epochs to train
 LEARNING_RATE = 3e-4
 ACCUMULATION_STEPS = 1  # Gradient accumulation steps
-ENABLE_AMP = True  # Automatic Mixed Precision (AMP)
 
 # Data/Scaling Parameters
 FACTOR = 14  # 13  # 12, 11, 10 - Scaling factor for normalization
@@ -80,7 +79,6 @@ tarflow_module = TarFlowModule(
     lr=LEARNING_RATE,
     accum_steps=ACCUMULATION_STEPS,
     rescale_factor=RESCALE_FACTOR,
-    enable_amp=ENABLE_AMP,
     sigma_max=SIGMA_MAX,
 )
 
