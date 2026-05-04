@@ -425,8 +425,6 @@ class TarFlowModule(L.LightningModule):
         except ValueError:
             (x,) = batch
             y = None
-
-        # x = x + self.sigma_max * torch.randn_like(x)
         x = x * self.rescale_factor
         z, outputs, logdets = self.model(x, y)
 
