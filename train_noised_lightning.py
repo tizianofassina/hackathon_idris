@@ -22,7 +22,7 @@ set_random_seed(RANDOM_SEED)
 # ============================================================
 # Core Training Parameters
 BATCH_SIZE = 500  # Batch size for training
-EPOCHS = 700  # 400  # 600 - Total number of epochs to train
+EPOCHS = 700 #Total number of epochs to train
 LEARNING_RATE = 3e-4
 ACCUMULATION_STEPS = 1  # Gradient accumulation steps
 ENABLE_AMP = True  # Automatic Mixed Precision (AMP)
@@ -73,6 +73,7 @@ model = Model(
 )
 
 # 3️⃣ Initialize the Lightning Module (Training Wrapper)
+# The TarFlowModule defines all aspects within an epoch
 tarflow_module = TarFlowModule(
     model=model,
     batch_size=BATCH_SIZE,
@@ -89,14 +90,20 @@ print("✅ Data, Model, and Lightning Module initialized.")
 ## 📝 Logging and Checkpointing
 # ============================================================
 # Dynamic run name for logging
+
+
+# Run name
 RUN_NAME = f"FFHQ_noised_factor_{FACTOR}_SOTA_update_prior_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
 LOG_DIR = os.path.join("runs", RUN_NAME)
 
 # TensorBoard logger setup
+# TensorBoardLogger is specific to Lightning . See https://lightning.ai/docs/pytorch/stable/extensions/logging.html for loggers
 logger = TensorBoardLogger(save_dir="runs", name=RUN_NAME)
 
 # Checkpoint file name
-SAVE_PATH = f"TarFlow_FFHQ_noised_with_factor_{FACTOR}_SOTA_update_prior"  # small_128
+SAVE_PATH = f"TarFlow_FFHQ_noised_with_factor_{FACTOR}_SOTA_update_prior"
+
+# For saving models during training. See https://lightning.ai/docs/pytorch/stable/api/lightning.pytorch.callbacks.ModelCheckpoint.html for more informations
 checkpoint_callback = ModelCheckpoint(
     dirpath="flow_models",
     filename=SAVE_PATH,
@@ -112,6 +119,7 @@ print(f"💾 Checkpoint will be saved as: {SAVE_PATH}.ckpt")
 # ============================================================
 
 # Initialize the Lightning Trainer
+# See https://lightning.ai/docs/pytorch/stable/api/lightning.pytorch.trainer.trainer.Trainer.html for more informations
 trainer = L.Trainer(
     accelerator="gpu",
     devices=torch.cuda.device_count(),
