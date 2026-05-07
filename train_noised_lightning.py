@@ -27,10 +27,10 @@ LEARNING_RATE = 3e-4
 ACCUMULATION_STEPS = 1  # Gradient accumulation steps
 
 # Data/Scaling Parameters
-FACTOR = 14  # 13  # 12, 11, 10 - Scaling factor for normalization
+FACTOR = 1.  # 14 - Scaling factor for normalization
 RESCALE_FACTOR = 1 / FACTOR  # Rescaling factor for the final output
-SIGMA_MAX = 7  # 5.4710636138916015625 - Sigma parameter for noising
-DATA_PATH = "datasets/train_set_tensor.pt"
+SIGMA_MAX = 0.  # 5.4710636138916015625 - Sigma parameter for noising
+DATA_PATH = "data/train_set_tensor.pt"
 
 print(f"⚙️ Using FACTOR: {FACTOR}")
 
@@ -40,9 +40,9 @@ print(f"⚙️ Using FACTOR: {FACTOR}")
 IMG_SIZE = 64
 IN_CHANNELS = 3
 PATCH_SIZE = 2
-# Modello grande dinamico (come da nome del checkpoint)
-CHANNELS = 128  # 512,  # 128,  # 256,  # 128,  # 64,  # 128,  # 256  # 512, 768
-NUM_BLOCKS = 1  # 1,  # 2,  # 2,  # 1,  # 2,  # 3  # 4, 8
+# Model parameters
+CHANNELS = 128   
+NUM_BLOCKS = 1  
 LAYERS_PER_BLOCK = 8
 NVP = True  # Non-Volume Preserving Flow
 NUM_CLASSES = 0  # UNCONDITIONAL Training (e.g., FFHQ)
