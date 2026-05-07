@@ -1,6 +1,6 @@
 import torch
-from TarFlowFFHQ.architecture import TarFlowModule, Model, TarFlowFFHQDataModule
-from TarFlowFFHQ.utils import set_random_seed
+from TarFlow.architecture import TarFlowModule, Model, TarFlowFFHQDataModule
+from TarFlow.utils import set_random_seed
 from datetime import datetime
 import lightning as L
 from lightning.pytorch.callbacks import ModelCheckpoint
