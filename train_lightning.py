@@ -91,7 +91,7 @@ print("✅ Data, Model, and Lightning Module initialized.")
 
 
 # Run name
-RUN_NAME = f"FFHQ_noised_factor_{FACTOR}_SOTA_update_prior_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+RUN_NAME = f"model_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
 LOG_DIR = os.path.join("runs", RUN_NAME)
 
 # TensorBoard logger setup
@@ -99,16 +99,16 @@ LOG_DIR = os.path.join("runs", RUN_NAME)
 logger = TensorBoardLogger(save_dir="runs", name=RUN_NAME)
 
 # Checkpoint file name
-SAVE_PATH = f"TarFlow_FFHQ_noised_with_factor_{FACTOR}_SOTA_update_prior"
+SAVE_PATH = RUN_NAME
 
 # For saving models during training. See https://lightning.ai/docs/pytorch/stable/api/lightning.pytorch.callbacks.ModelCheckpoint.html for more informations
-checkpoint_callback = ModelCheckpoint(
-    dirpath="flow_models",
-    filename=SAVE_PATH,
-    save_top_k=1,
-    save_last=False,
-    monitor=None,
-)
+# checkpoint_callback = ModelCheckpoint(
+#     dirpath="flow_models",
+#     filename=SAVE_PATH,
+#     save_top_k=1,
+#     save_last=False,
+#     monitor=None,
+# )
 print(f"💾 Checkpoint will be saved as: {SAVE_PATH}.ckpt")
 # print(save_path)
 
@@ -121,13 +121,13 @@ print(f"💾 Checkpoint will be saved as: {SAVE_PATH}.ckpt")
 trainer = L.Trainer(
     accelerator="gpu",
     devices=torch.cuda.device_count(),
-    precision="bf16-mixed",  # Precision setting for AMP
+    precision="bf16-mixed",
     max_epochs=EPOCHS,
     accumulate_grad_batches=ACCUMULATION_STEPS,
     default_root_dir=LOG_DIR,
     log_every_n_steps=10,
     logger=logger,
-    callbacks=[checkpoint_callback],
+    #callbacks=[checkpoint_callback],
     # resume_from_checkpoint=ckpt_path
 )
 

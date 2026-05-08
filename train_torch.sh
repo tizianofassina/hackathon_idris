@@ -17,4 +17,4 @@ module load pytorch-gpu/py3/2.3.0
 export PYTHONPATH=$PYTHONPATH:$(pwd)
 export PYTHONUNBUFFERED=1
 
-python -u train_noised_lightning.py $CURRENT_DIM
+python -u train_torch.py $CURRENT_DIM
