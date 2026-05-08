@@ -148,11 +148,11 @@ LOG_EVERY_N_STEPS = 10
 ## Profiling parameters and functions
 # ============================================================
 
-LOG_DIR_PROFILING = os.path.join("profiling_torch", RUN_NAME)
-os.makedirs(LOG_DIR_PROFILING, exist_ok=True)
+# LOG_DIR_PROFILING = os.path.join("profiling_torch", RUN_NAME)
+# os.makedirs(LOG_DIR_PROFILING, exist_ok=True)
 
-PROFILE_DIR = os.path.join(LOG_DIR_PROFILING, "profiler")
-os.makedirs(PROFILE_DIR, exist_ok=True)
+# PROFILE_DIR = os.path.join(LOG_DIR_PROFILING, "profiler")
+# os.makedirs(PROFILE_DIR, exist_ok=True)
 
 
 # activities = [ProfilerActivity.CPU]
