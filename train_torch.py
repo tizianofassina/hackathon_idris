@@ -5,7 +5,7 @@ from torch.utils.data import DataLoader, TensorDataset
 from torch.utils.tensorboard import SummaryWriter
 from TarFlow.architecture import Model
 from TarFlow.utils import set_random_seed
-from torch.profiler import profile, ProfilerActivity, tensorboard_trace_handler
+#from torch.profiler import profile, ProfilerActivity, tensorboard_trace_handler
 
 
 
@@ -24,7 +24,7 @@ DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 ## 🛠️ Training Parameters and Hyperparameters
 # ============================================================
 BATCH_SIZE = 500
-EPOCHS = 10
+EPOCHS = 5
 LEARNING_RATE = 3e-4
 ACCUMULATION_STEPS = 1
 
@@ -178,8 +178,8 @@ global_step = 0
 
 for epoch in range(EPOCHS):
     
-    if epoch==2:
-        prof.start()
+    # if epoch==2:
+    #     prof.start()
     model.train()
 
     epoch_loss_sum = 0.0
@@ -270,9 +270,9 @@ for epoch in range(EPOCHS):
         },
         CKPT_FILE,
     )
-    if epoch==2:
-        prof.step()
-        prof.stop()
+    # if epoch==2:
+    #     prof.step()
+    #     prof.stop()
     
 
 
