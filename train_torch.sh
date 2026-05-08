@@ -20,6 +20,8 @@ export PYTHONUNBUFFERED=1
 
 ln -sfn $JOBSCRATCH /tmp/nvidia
 
+which nsys
+nsys --version
 
 srun nsys profile \
     -t cuda,nvtx,osrt,cudnn,cublas,nccl \
