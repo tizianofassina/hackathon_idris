@@ -19,5 +19,9 @@ export PYTHONPATH=$PYTHONPATH:$(pwd)
 export PYTHONUNBUFFERED=1
 
 ln -sfn $JOBSCRATCH /tmp/nvidia
-srun nsys profile -t openacc -o "report_rank%q{SLURM_PROCID}" python -u train_torch.py $CURRENT_DIM
 
+
+srun nsys profile \
+    -t cuda,nvtx,osrt \
+    -o "report_rank%q{SLURM_PROCID}" \
+    python -u train_torch.py 
