@@ -155,17 +155,17 @@ PROFILE_DIR = os.path.join(LOG_DIR_PROFILING, "profiler")
 os.makedirs(PROFILE_DIR, exist_ok=True)
 
 
-activities = [ProfilerActivity.CPU]
-if DEVICE.type == "cuda":
-    activities.append(ProfilerActivity.CUDA)
+# activities = [ProfilerActivity.CPU]
+# if DEVICE.type == "cuda":
+#     activities.append(ProfilerActivity.CUDA)
 
-prof = profile(
-    activities=activities, # I don't know what this is
-    record_shapes=True, # I don't know what this is
-    profile_memory=True, # I don't know what this is
-    with_stack=False, # I don't know what this is
-    on_trace_ready=tensorboard_trace_handler(PROFILE_DIR),
-)
+# prof = profile(
+#     activities=activities, # I don't know what this is
+#     record_shapes=True, # I don't know what this is
+#     profile_memory=True, # I don't know what this is
+#     with_stack=False, # I don't know what this is
+#     on_trace_ready=tensorboard_trace_handler(PROFILE_DIR),
+# )
 
 
 
