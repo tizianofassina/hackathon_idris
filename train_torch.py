@@ -1,12 +1,13 @@
 import os
 from datetime import datetime
-
 import torch
 from torch.utils.data import DataLoader, TensorDataset
 from torch.utils.tensorboard import SummaryWriter
-
 from TarFlow.architecture import Model
 from TarFlow.utils import set_random_seed
+from torch.profiler import profile, ProfilerActivity, tensorboard_trace_handler
+
+
 
 
 # ============================================================
@@ -37,6 +38,8 @@ NUM_WORKERS = 6
 print(f"⚙️ Using FACTOR: {FACTOR}")
 print(f"⚙️ Device: {DEVICE}")
 
+
+
 # ============================================================
 ## 🏗️ Model Architecture Parameters
 # ============================================================
@@ -48,6 +51,7 @@ NUM_BLOCKS = 1
 LAYERS_PER_BLOCK = 8
 NVP = True
 NUM_CLASSES = 0
+
 
 # ============================================================
 ## 💾 Data Setup
@@ -66,10 +70,12 @@ def build_dataloader(data_path: str, batch_size: int, sigma_max: float,
     if size_data is not None:
         data_train_x = data_train_x[:size_data]
 
-    # Add gaussian noise like in the Lightning DataModule
     data_train_x = data_train_x + sigma_max * torch.randn_like(data_train_x)
 
     dataset = TensorDataset(data_train_x)
+    
+    # Here what does pin_memory do ?  
+    # num_workers how does it work ?
     loader = DataLoader(
         dataset,
         batch_size=batch_size,
@@ -81,13 +87,15 @@ def build_dataloader(data_path: str, batch_size: int, sigma_max: float,
     )
     return loader
 
-
 train_loader = build_dataloader(
     data_path=DATA_PATH,
     batch_size=BATCH_SIZE,
     sigma_max=SIGMA_MAX,
     num_workers=NUM_WORKERS,
 )
+
+total_batches = len(train_loader)
+print(f"✅ Data loaded: {len(train_loader.dataset)} samples, {total_batches} batches.")
 
 os.makedirs("flow_models", exist_ok=True)
 
@@ -112,7 +120,7 @@ optimizer = torch.optim.AdamW(
     weight_decay=1e-4,
 )
 
-# Mixed precision (bf16) – equivalent to Lightning's precision="bf16-mixed"
+# Mixed precision (bf16) 
 USE_AMP = DEVICE.type == "cuda"
 amp_dtype = torch.bfloat16
 
@@ -133,13 +141,45 @@ print(f"💾 Checkpoint will be saved as: {CKPT_FILE}")
 
 LOG_EVERY_N_STEPS = 10
 
+
+
+
+# ============================================================
+## Profiling parameters and functions
+# ============================================================
+
+LOG_DIR_PROFILING = os.path.join("profiling_torch", RUN_NAME)
+os.makedirs(LOG_DIR_PROFILING, exist_ok=True)
+
+PROFILE_DIR = os.path.join(LOG_DIR_PROFILING, "profiler")
+os.makedirs(PROFILE_DIR, exist_ok=True)
+
+
+activities = [ProfilerActivity.CPU]
+if DEVICE.type == "cuda":
+    activities.append(ProfilerActivity.CUDA)
+
+prof = profile(
+    activities=activities, # I don't know what this is
+    record_shapes=True, # I don't know what this is
+    profile_memory=True, # I don't know what this is
+    with_stack=False, # I don't know what this is
+    on_trace_ready=tensorboard_trace_handler(PROFILE_DIR),
+)
+
+
+
 # ============================================================
 ## 🚀 Training Loop
 # ============================================================
 print(f"🔥 Starting Training for {EPOCHS} epochs...")
 
 global_step = 0
+
 for epoch in range(EPOCHS):
+    
+    if epoch==2:
+        prof.start()
     model.train()
 
     epoch_loss_sum = 0.0
@@ -148,9 +188,12 @@ for epoch in range(EPOCHS):
     optimizer.zero_grad(set_to_none=True)
 
     for batch_idx, batch in enumerate(train_loader):
+        
+        
         # Unpack: dataset is TensorDataset(x) so batch is a tuple (x,)
         if len(batch) == 2:
             x, y = batch
+            # Why non_blocking=True ?
             y = y.to(DEVICE, non_blocking=True)
         else:
             (x,) = batch
@@ -163,18 +206,19 @@ for epoch in range(EPOCHS):
             z, outputs, logdets = model(x, y)
             loss = model.get_loss(z, logdets)
 
-        # Gradient accumulation: scale loss so that .backward() accumulates the average
         (loss / ACCUMULATION_STEPS).backward()
 
         # Update prior (running variance) – done in fp32, no grad
         with torch.no_grad():
             model.update_prior(z)
 
+        # Gradient step if we've accumulated enough
         if (batch_idx + 1) % ACCUMULATION_STEPS == 0:
             optimizer.step()
             optimizer.zero_grad(set_to_none=True)
 
         # Logging
+        # What does detach here do exactly ? 
         loss_val = loss.detach().item()
         epoch_loss_sum += loss_val
         epoch_batches += 1
@@ -198,7 +242,7 @@ for epoch in range(EPOCHS):
     writer.add_scalar("train/loss_epoch", avg_loss, epoch)
     writer.add_scalar("train/prior_var_mean", prior_var_mean, epoch)
     print(
-        f"📊 Epoch {epoch+1} done | avg loss: {avg_loss:.4f} | "
+        f"Epoch {epoch+1} done | avg loss: {avg_loss:.4f} | "
         f"prior_var_mean: {prior_var_mean:.4f}"
     )
 
@@ -226,6 +270,11 @@ for epoch in range(EPOCHS):
         },
         CKPT_FILE,
     )
+    if epoch==2:
+        prof.step()
+        prof.stop()
+    
+
 
 writer.close()
 print("\n✅ Training complete!")
