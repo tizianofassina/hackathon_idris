@@ -36,5 +36,5 @@ for NUM_WORKERS in "${WORKERS_LIST[@]}"; do
     echo "NUM_WORKERS=$NUM_WORKERS"
     echo "======================================"
 
-    NUM_WORKERS="$NUM_WORKERS" srun python -u train_torch.py 
+    NUM_WORKERS="$NUM_WORKERS" srun python -u train_baseline.py 
 done
