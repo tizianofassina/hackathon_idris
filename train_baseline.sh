@@ -1,12 +1,13 @@
 #!/bin/bash
-#SBATCH -A xxx
-#SBATCH --job-name=xxx
-#SBATCH --partition=xxxx
-#SBATCH --constraint=xxx
+#SBATCH -A ltc@a100
+#SBATCH --job-name=TRAIN_FLOW_TORCH
+#SBATCH --partition=gpu_p5
+#SBATCH --constraint=a100
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=16
+#SBATCH --time=20:00:00
 #SBATCH --output=%x_%A.out
 
 module purge
