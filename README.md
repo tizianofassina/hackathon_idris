@@ -3,4 +3,4 @@
 
 Lancer le programme pour tester le bon nombre de workers et constituer la baseline pour le profiling.
 
-`sbatch train\_baseline.sh` 
+`sbatch train_baseline.sh` 
