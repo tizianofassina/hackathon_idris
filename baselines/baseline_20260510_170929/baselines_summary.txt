@@ -1,0 +1,18 @@
+================================================================================
+BASELINE SUMMARY, warmup excluded
+================================================================================
+step_wall_ms                 mean=1464.8996 median=1794.4619 p90=1814.9412 min=501.4812 max=1848.8361
+data_wait_ms                 mean=3.6966 median=3.1321 p90=3.4601 min=2.1237 max=104.3505
+h2d_ms                       mean=1.6473 median=1.6420 p90=1.6941 min=1.5900 max=1.7769
+forward_loss_ms              mean=364.4352 median=440.6062 p90=446.8941 min=141.1676 max=454.0170
+backward_ms                  mean=1092.7541 median=1345.2749 p90=1360.3677 min=354.1289 max=1369.4014
+update_prior_ms              mean=0.2755 median=0.3328 p90=0.3359 min=0.1137 max=0.3564
+optimizer_ms                 mean=1.3759 median=1.6876 p90=1.7080 min=0.5018 max=1.7951
+item_sync_ms                 mean=0.0000 median=0.0000 p90=0.0000 min=0.0000 max=0.0000
+samples_per_sec_gpu          mean=235.5871 median=143.0032 p90=502.5695 min=140.4866 max=514.3711
+samples_per_sec_wall         mean=234.3018 median=142.6612 p90=498.8032 min=138.4655 max=510.4878
+max_memory_allocated_gb      mean=10.3145 median=10.3145 p90=10.3145 min=10.3145 max=10.3145
+max_memory_reserved_gb       mean=10.4350 median=10.4375 p90=10.4375 min=10.4249 max=10.4375
+loss_first_measured=-0.497410
+loss_last_measured=-0.882128
+csv_path=baselines/baseline_20260510_170929/baselines_step_times.csv

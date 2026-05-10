@@ -40,7 +40,7 @@ if DEVICE.type != "cuda":
 
 
 ## CONFIG HYPERPARAMS
-BATCH_SIZE = 512 # better to be a power of 2 to leverage GPU architecture
+BATCH_SIZE = 256 # better to be a power of 2 to leverage GPU architecture
 LEARNING_RATE = 3e-4
 ACCUMULATION_STEPS = 1
 
@@ -49,7 +49,7 @@ RESCALE_FACTOR = 1 / FACTOR
 SIGMA_MAX = 0.0
 DATA_PATH = "data/train_set_tensor.pt"
 
-NUM_WORKERS = 0
+NUM_WORKERS = int(os.environ.get('NUM_WORKERS', '0'))
 
 IMG_SIZE = 64
 IN_CHANNELS = 3
@@ -113,7 +113,7 @@ def build_dataloader(
         shuffle=True,
         num_workers=num_workers,
         pin_memory=True,
-        drop_last=False,
+        drop_last=True,
         prefetch_factor=2 if num_workers > 0 else None,
     )
     return loader
@@ -365,7 +365,7 @@ def main():
                                                  + timings["backward_ms"]
                                                  + timings["update_prior_ms"]
                                                  + timings["optimizer_ms"]) * 1000.0,
-                "samples_per_sec_wall": BATCH_SIZE / (step_wall_t1 - step_wall_t0) * 1000.0,
+                "samples_per_sec_wall": BATCH_SIZE / (step_wall_t1 - step_wall_t0),
                 # conversion to gb
                 "max_memory_allocated_gb": torch.cuda.max_memory_allocated() / 1e9,
                 "max_memory_reserved_gb": torch.cuda.max_memory_reserved() / 1e9,
@@ -408,7 +408,7 @@ def main():
         "update_prior_ms",
         "optimizer_ms",
         "item_sync_ms",
-        "samples_per_sec",
+        "samples_per_sec_gpu",
         "samples_per_sec_wall",
         "max_memory_allocated_gb",
         "max_memory_reserved_gb",
