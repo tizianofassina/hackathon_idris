@@ -1,139 +1,0 @@
-Loading pytorch-gpu/py3/2.3.0
-  Loading requirement: cuda/12.2.0 nccl/2.19.3-1-cuda cudnn/8.9.5.30-cuda
-    gcc/10.1.0 openmpi/4.1.5-cuda intel-mkl/2020.4 magma/2.7.2-cuda sox/14.4.2
-    hdf5/1.12.0-mpi-cuda libjpeg-turbo/2.1.3 ffmpeg/6.1.1
-/gpfslocalsys/nvhpc/24.3/Linux_x86_64/24.3/profilers/Nsight_Systems/bin/nsys
-NVIDIA Nsight Systems version 2024.1.1.59-241133802077v0
-
-A module that was compiled using NumPy 1.x cannot be run in
-NumPy 2.4.4 as it may crash. To support both 1.x and 2.x
-versions of NumPy, modules must be compiled with NumPy 2.0.
-Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
-
-If you are a user of the module, the easiest solution will be to
-downgrade to 'numpy<2' or try to upgrade the affected module.
-We expect that some modules will need time to support NumPy 2.
-
-Traceback (most recent call last):  File "/lustre/fswork/projects/rech/ltc/ufk94qf/hackathon_project/train_torch.py", line 6, in <module>
-    from TarFlow.architecture import Model
-  File "/lustre/fswork/projects/rech/ltc/ufk94qf/hackathon_project/TarFlow/architecture.py", line 2, in <module>
-    import lightning as L
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/__init__.py", line 21, in <module>
-    from lightning.pytorch.callbacks import Callback  # noqa: E402
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/pytorch/__init__.py", line 27, in <module>
-    from lightning.pytorch.callbacks import Callback  # noqa: E402
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/pytorch/callbacks/__init__.py", line 14, in <module>
-    from lightning.pytorch.callbacks.batch_size_finder import BatchSizeFinder
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/pytorch/callbacks/batch_size_finder.py", line 26, in <module>
-    from lightning.pytorch.callbacks.callback import Callback
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/pytorch/callbacks/callback.py", line 22, in <module>
-    from lightning.pytorch.utilities.types import STEP_OUTPUT
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/pytorch/utilities/types.py", line 41, in <module>
-    from torchmetrics import Metric
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/torchmetrics/__init__.py", line 26, in <module>
-    from torchmetrics import functional  # noqa: E402
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/torchmetrics/functional/__init__.py", line 122, in <module>
-    from torchmetrics.functional.text._deprecated import _bleu_score as bleu_score
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/torchmetrics/functional/text/__init__.py", line 17, in <module>
-    from torchmetrics.functional.text.chrf import chrf_score
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/torchmetrics/functional/text/chrf.py", line 44, in <module>
-    _EPS_SMOOTHING = tensor(1e-16)
-/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/torchmetrics/functional/text/chrf.py:44: UserWarning: Failed to initialize NumPy: 
-A module that was compiled using NumPy 1.x cannot be run in
-NumPy 2.4.4 as it may crash. To support both 1.x and 2.x
-versions of NumPy, modules must be compiled with NumPy 2.0.
-Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
-
-If you are a user of the module, the easiest solution will be to
-downgrade to 'numpy<2' or try to upgrade the affected module.
-We expect that some modules will need time to support NumPy 2.
-
- (Triggered internally at /gpfs7kro/gpfslocalsup/src/pub/anaconda-py3/2023.09/pytorch-gpu-2.3.0+py3.11.5+cuda-12.2/pytorch-2.3.0/torch/csrc/utils/tensor_numpy.cpp:84.)
-  _EPS_SMOOTHING = tensor(1e-16)
-⚙️ Using FACTOR: 1.0
-⚙️ Device: cuda
-✅ Data loaded: 70000 samples, 140 batches.
-✅ Data, Model, and Optimizer initialized.
-💾 Checkpoint will be saved as: flow_models/model_20260508_204923.ckpt
-🔥 Starting Training for 5 epochs...
-Epoch 1/5 | step 10 | batch 10/140 | loss -0.5080
-Epoch 1/5 | step 20 | batch 20/140 | loss -0.6909
-Epoch 1/5 | step 30 | batch 30/140 | loss -0.8043
-Epoch 1/5 | step 40 | batch 40/140 | loss -0.8661
-Epoch 1/5 | step 50 | batch 50/140 | loss -0.9147
-Epoch 1/5 | step 60 | batch 60/140 | loss -0.9342
-Epoch 1/5 | step 70 | batch 70/140 | loss -0.9449
-Epoch 1/5 | step 80 | batch 80/140 | loss -0.9642
-Epoch 1/5 | step 90 | batch 90/140 | loss -0.9844
-Epoch 1/5 | step 100 | batch 100/140 | loss -1.0018
-Epoch 1/5 | step 110 | batch 110/140 | loss -1.0392
-Epoch 1/5 | step 120 | batch 120/140 | loss -1.0578
-Epoch 1/5 | step 130 | batch 130/140 | loss -1.0801
-Epoch 1/5 | step 140 | batch 140/140 | loss -1.0877
-Epoch 1 done | avg loss: -0.8786 | prior_var_mean: 0.9906
-Epoch 2/5 | step 150 | batch 10/140 | loss -1.1056
-Epoch 2/5 | step 160 | batch 20/140 | loss -1.1460
-Epoch 2/5 | step 170 | batch 30/140 | loss -1.1645
-Epoch 2/5 | step 180 | batch 40/140 | loss -1.1915
-Epoch 2/5 | step 190 | batch 50/140 | loss -1.2016
-Epoch 2/5 | step 200 | batch 60/140 | loss -1.1480
-Epoch 2/5 | step 210 | batch 70/140 | loss -1.2264
-Epoch 2/5 | step 220 | batch 80/140 | loss -1.2331
-Epoch 2/5 | step 230 | batch 90/140 | loss -1.2343
-Epoch 2/5 | step 240 | batch 100/140 | loss -1.2495
-Epoch 2/5 | step 250 | batch 110/140 | loss -1.2341
-Epoch 2/5 | step 260 | batch 120/140 | loss -1.2634
-Epoch 2/5 | step 270 | batch 130/140 | loss -1.2748
-Epoch 2/5 | step 280 | batch 140/140 | loss -1.2545
-Epoch 2 done | avg loss: -1.2038 | prior_var_mean: 0.9962
-Epoch 3/5 | step 290 | batch 10/140 | loss -1.2627
-Epoch 3/5 | step 300 | batch 20/140 | loss -1.2169
-Epoch 3/5 | step 310 | batch 30/140 | loss -1.2679
-Epoch 3/5 | step 320 | batch 40/140 | loss -1.2899
-Epoch 3/5 | step 330 | batch 50/140 | loss -1.2550
-Epoch 3/5 | step 340 | batch 60/140 | loss -1.2808
-Epoch 3/5 | step 350 | batch 70/140 | loss -1.2842
-Epoch 3/5 | step 360 | batch 80/140 | loss -1.2924
-Epoch 3/5 | step 370 | batch 90/140 | loss -1.2799
-Epoch 3/5 | step 380 | batch 100/140 | loss -1.3063
-Epoch 3/5 | step 390 | batch 110/140 | loss -1.2687
-Epoch 3/5 | step 400 | batch 120/140 | loss -1.2744
-Epoch 3/5 | step 410 | batch 130/140 | loss -1.3039
-Epoch 3/5 | step 420 | batch 140/140 | loss -1.3221
-Epoch 3 done | avg loss: -1.2770 | prior_var_mean: 1.0069
-Epoch 4/5 | step 430 | batch 10/140 | loss -1.3088
-Epoch 4/5 | step 440 | batch 20/140 | loss -1.3242
-Epoch 4/5 | step 450 | batch 30/140 | loss -1.3341
-Epoch 4/5 | step 460 | batch 40/140 | loss -1.3305
-Epoch 4/5 | step 470 | batch 50/140 | loss -1.3424
-Epoch 4/5 | step 480 | batch 60/140 | loss -1.3370
-Epoch 4/5 | step 490 | batch 70/140 | loss -1.3195
-Epoch 4/5 | step 500 | batch 80/140 | loss -1.3060
-Epoch 4/5 | step 510 | batch 90/140 | loss -1.3069
-Epoch 4/5 | step 520 | batch 100/140 | loss -1.3553
-Epoch 4/5 | step 530 | batch 110/140 | loss -1.3454
-Epoch 4/5 | step 540 | batch 120/140 | loss -1.3048
-Epoch 4/5 | step 550 | batch 130/140 | loss -1.3586
-Epoch 4/5 | step 560 | batch 140/140 | loss -1.3495
-Epoch 4 done | avg loss: -1.3278 | prior_var_mean: 0.9926
-Epoch 5/5 | step 570 | batch 10/140 | loss -1.3352
-Epoch 5/5 | step 580 | batch 20/140 | loss -1.3682
-Epoch 5/5 | step 590 | batch 30/140 | loss -1.2741
-Epoch 5/5 | step 600 | batch 40/140 | loss -1.3480
-Epoch 5/5 | step 610 | batch 50/140 | loss -1.3516
-Epoch 5/5 | step 620 | batch 60/140 | loss -1.3672
-Epoch 5/5 | step 630 | batch 70/140 | loss -1.3539
-Epoch 5/5 | step 640 | batch 80/140 | loss -1.3324
-Epoch 5/5 | step 650 | batch 90/140 | loss -1.3897
-Epoch 5/5 | step 660 | batch 100/140 | loss -1.3717
-Epoch 5/5 | step 670 | batch 110/140 | loss -1.3693
-Epoch 5/5 | step 680 | batch 120/140 | loss -1.3821
-Epoch 5/5 | step 690 | batch 130/140 | loss -1.3926
-Epoch 5/5 | step 700 | batch 140/140 | loss -1.4108
-Epoch 5 done | avg loss: -1.3617 | prior_var_mean: 0.9955
-
-✅ Training complete!
-Generating '/tmp/nsys-report-814b.qdstrm'
-[1/1] [0%                          ] report_rank0.nsys-rep[1/1] [0%                          ] report_rank0.nsys-rep[1/1] [0%                          ] report_rank0.nsys-rep[1/1] [9%                          ] report_rank0.nsys-rep[1/1] [8%                          ] report_rank0.nsys-rep[1/1] [7%                          ] report_rank0.nsys-rep[1/1] [13%                         ] report_rank0.nsys-rep[1/1] [12%                         ] report_rank0.nsys-rep[1/1] [11%                         ] report_rank0.nsys-rep[1/1] [13%                         ] report_rank0.nsys-rep[1/1] [12%                         ] report_rank0.nsys-rep[1/1] [11%                         ] report_rank0.nsys-rep[1/1] [13%                         ] report_rank0.nsys-rep[1/1] [12%                         ] report_rank0.nsys-rep[1/1] [11%                         ] report_rank0.nsys-rep[1/1] [12%                         ] report_rank0.nsys-rep[1/1] [11%                         ] report_rank0.nsys-rep[1/1] [12%                         ] report_rank0.nsys-rep[1/1] [11%                         ] report_rank0.nsys-rep[1/1] [12%                         ] report_rank0.nsys-rep[1/1] [11%                         ] report_rank0.nsys-rep[1/1] [10%                         ] report_rank0.nsys-rep[1/1] [11%                         ] report_rank0.nsys-rep[1/1] [10%                         ] report_rank0.nsys-rep[1/1] [11%                         ] report_rank0.nsys-rep[1/1] [12%                         ] report_rank0.nsys-rep[1/1] [13%                         ] report_rank0.nsys-rep[1/1] [14%                         ] report_rank0.nsys-rep[1/1] [=15%                        ] report_rank0.nsys-rep[1/1] [=16%                        ] report_rank0.nsys-rep[1/1] [=17%                        ] report_rank0.nsys-rep[1/1] [==18%                       ] report_rank0.nsys-rep[1/1] [==19%                       ] report_rank0.nsys-rep[1/1] [==20%                       ] report_rank0.nsys-rep[1/1] [==21%                       ] report_rank0.nsys-rep[1/1] [===22%                      ] report_rank0.nsys-rep[1/1] [===23%                      ] report_rank0.nsys-rep[1/1] [===24%                      ] report_rank0.nsys-rep[1/1] [====25%                     ] report_rank0.nsys-rep[1/1] [====26%                     ] report_rank0.nsys-rep[1/1] [====27%                     ] report_rank0.nsys-rep[1/1] [====28%                     ] report_rank0.nsys-rep[1/1] [=====29%                    ] report_rank0.nsys-rep[1/1] [=====30%                    ] report_rank0.nsys-rep[1/1] [=====31%                    ] report_rank0.nsys-rep[1/1] [=====32%                    ] report_rank0.nsys-rep[1/1] [======33%                   ] report_rank0.nsys-rep[1/1] [======34%                   ] report_rank0.nsys-rep[1/1] [======35%                   ] report_rank0.nsys-rep[1/1] [=======36%                  ] report_rank0.nsys-rep[1/1] [=======37%                  ] report_rank0.nsys-rep[1/1] [=======38%                  ] report_rank0.nsys-rep[1/1] [=======39%                  ] report_rank0.nsys-rep[1/1] [========40%                 ] report_rank0.nsys-rep[1/1] [========41%                 ] report_rank0.nsys-rep[1/1] [========42%                 ] report_rank0.nsys-rep[1/1] [=========43%                ] report_rank0.nsys-rep[1/1] [=========44%                ] report_rank0.nsys-rep[1/1] [=========45%                ] report_rank0.nsys-rep[1/1] [=========46%                ] report_rank0.nsys-rep[1/1] [==========47%               ] report_rank0.nsys-rep[1/1] [==========48%               ] report_rank0.nsys-rep[1/1] [==========49%               ] report_rank0.nsys-rep[1/1] [===========50%              ] report_rank0.nsys-rep[1/1] [===========51%              ] report_rank0.nsys-rep[1/1] [===========52%              ] report_rank0.nsys-rep[1/1] [===========53%              ] report_rank0.nsys-rep[1/1] [============54%             ] report_rank0.nsys-rep[1/1] [============55%             ] report_rank0.nsys-rep[1/1] [============56%             ] report_rank0.nsys-rep[1/1] [============57%             ] report_rank0.nsys-rep[1/1] [=============58%            ] report_rank0.nsys-rep[1/1] [=============59%            ] report_rank0.nsys-rep[1/1] [=============60%            ] report_rank0.nsys-rep[1/1] [==============61%           ] report_rank0.nsys-rep[1/1] [==============62%           ] report_rank0.nsys-rep[1/1] [==============63%           ] report_rank0.nsys-rep[1/1] [==============64%           ] report_rank0.nsys-rep[1/1] [===============65%          ] report_rank0.nsys-rep[1/1] [===============66%          ] report_rank0.nsys-rep[1/1] [===============67%          ] report_rank0.nsys-rep[1/1] [================68%         ] report_rank0.nsys-rep[1/1] [================69%         ] report_rank0.nsys-rep[1/1] [================70%         ] report_rank0.nsys-rep[1/1] [================71%         ] report_rank0.nsys-rep[1/1] [=================72%        ] report_rank0.nsys-rep[1/1] [=================73%        ] report_rank0.nsys-rep[1/1] [=================74%        ] report_rank0.nsys-rep[1/1] [==================75%       ] report_rank0.nsys-rep[1/1] [==================76%       ] report_rank0.nsys-rep[1/1] [==================77%       ] report_rank0.nsys-rep[1/1] [==================78%       ] report_rank0.nsys-rep[1/1] [===================79%      ] report_rank0.nsys-rep[1/1] [===================80%      ] report_rank0.nsys-rep[1/1] [===================81%      ] report_rank0.nsys-rep[1/1] [===================82%      ] report_rank0.nsys-rep[1/1] [====================83%     ] report_rank0.nsys-rep[1/1] [========================100%] report_rank0.nsys-rep[1/1] [========================100%] report_rank0.nsys-rep
-Generated:
-    /lustre/fswork/projects/rech/ltc/ufk94qf/hackathon_project/report_rank0.nsys-rep
