@@ -30,7 +30,6 @@ nsys --version
 srun nsys profile \
     -t cuda,nvtx,osrt,cudnn,cublas,nccl \
     --force-overwrite=true \
-    --nccl-trace=all \
     --gpu-metrics-devices=all \
     --gpu-metrics-frequency=20000 \
     --stats=true \
