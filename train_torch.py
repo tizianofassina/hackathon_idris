@@ -188,6 +188,8 @@ for epoch in range(EPOCHS):
     optimizer.zero_grad(set_to_none=True)
 
     for batch_idx, batch in enumerate(train_loader):
+        if batch_idx >= 50:
+            break
         
         
         # Unpack: dataset is TensorDataset(x) so batch is a tuple (x,)
