@@ -21,7 +21,7 @@ set_random_seed(RANDOM_SEED)
 ## 🛠️ Training Parameters and Hyperparameters
 # ============================================================
 # Core Training Parameters
-BATCH_SIZE = 500  # Batch size for training
+BATCH_SIZE = 256  # Batch size for training
 EPOCHS = 10  #Total number of epochs to train
 LEARNING_RATE = 3e-4
 ACCUMULATION_STEPS = 1  # Gradient accumulation steps
