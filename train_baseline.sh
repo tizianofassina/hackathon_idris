@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH -A ltc@a100
-#SBATCH --job-name=TRAIN_FLOW_TORCH
+#SBATCH --job-name=TRAIN_FLOW_BASELINE
 #SBATCH --partition=gpu_p5
 #SBATCH --constraint=a100
 #SBATCH --nodes=1
