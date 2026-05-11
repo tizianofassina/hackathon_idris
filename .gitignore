@@ -4,3 +4,12 @@
 *.ckpt
 *.pyc
 
+
+# Training outputs and profiling results
+runs/
+flow_models/
+baselines/
+profiles/
+*.nsys-rep
+*.out
+*.bak
