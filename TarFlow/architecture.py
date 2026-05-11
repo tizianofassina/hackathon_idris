@@ -441,6 +441,24 @@ class TarFlowModule(L.LightningModule):
         )
         return optimizer
 
+    
+    ### NVTX MARKERS FOR NSYS
+    def on_train_batch_start(self, batch, batch_index):
+        torch.cuda.nvtx.range_push(f"train_batch_{batch_idx}")
+
+    def on_train_batch_end(self, outputs, batch, batch_idx):
+        torch.cuda.nvtx.range_pop()
+
+    def training_step(self, batch, batch_idx):
+        torch.cuda.nvtx.range_push("training_step")
+        try:
+            x, y = batch
+            y_hat = self(x)
+            loss = self.loss_fn(y_hat, y)
+            return loss
+        finally:
+            torch.cuda.nvtx.range_pop()
+
 
 class TarFlowFFHQDataModule(L.LightningDataModule):
     def __init__(
