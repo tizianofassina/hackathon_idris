@@ -25,6 +25,7 @@ nsys --version
 
 srun nsys profile \
     -t cuda,nvtx,osrt,cudnn,cublas,nccl \
+    --force-overwrite=true \
     --ncll-trace=all \
     --gpu-metrics-devices=all \
     --gpu-ùetrics-frequency=20000 \
