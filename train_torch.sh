@@ -30,8 +30,6 @@ nsys --version
 srun nsys profile \
     -t cuda,nvtx,osrt,cudnn,cublas,nccl \
     --force-overwrite=true \
-    --gpu-metrics-devices=all \
-    --gpu-metrics-frequency=20000 \
     --stats=true \
     -o "report_rank%q{SLURM_PROCID}" \
     python -u train_torch.py
