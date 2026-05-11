@@ -23,7 +23,7 @@ DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # ============================================================
 ## 🛠️ Training Parameters and Hyperparameters
 # ============================================================
-BATCH_SIZE = 500
+BATCH_SIZE = 256
 EPOCHS = 5
 LEARNING_RATE = 3e-4
 ACCUMULATION_STEPS = 1
@@ -33,7 +33,7 @@ RESCALE_FACTOR = 1 / FACTOR
 SIGMA_MAX = 0.0
 DATA_PATH = "data/train_set_tensor.pt"
 
-NUM_WORKERS = 6
+NUM_WORKERS = 0
 
 print(f"⚙️ Using FACTOR: {FACTOR}")
 print(f"⚙️ Device: {DEVICE}")

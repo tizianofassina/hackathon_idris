@@ -18,6 +18,10 @@ module load nvidia-nsight-systems/2024.1.1.59
 export PYTHONPATH=$PYTHONPATH:$(pwd)
 export PYTHONUNBUFFERED=1
 
+export OMP_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+export NUMEXPR_NUM_THREADS=1
+
 ln -sfn $JOBSCRATCH /tmp/nvidia
 
 which nsys

@@ -17,4 +17,8 @@ module load pytorch-gpu/py3/2.3.0
 export PYTHONPATH=$PYTHONPATH:$(pwd)
 export PYTHONUNBUFFERED=1
 
-python -u train_lightning.py $CURRENT_DIM
+export OMP_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+export NUMEXPR_NUM_THREADS=1
+
+python -u train_lightning.py
