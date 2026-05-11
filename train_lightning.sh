@@ -7,7 +7,7 @@
 #SBATCH --ntasks=1
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=16
-#SBATCH --time=01:00:00                 
+#SBATCH --time=02:00:00                 
 #SBATCH --output=%x_%A.out       
 
 module purge
@@ -21,4 +21,4 @@ export OMP_NUM_THREADS=1
 export MKL_NUM_THREADS=1
 export NUMEXPR_NUM_THREADS=1
 
-python -u train_lightning.py
+srun python -u train_lightning.py
