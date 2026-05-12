@@ -33,7 +33,6 @@ RESCALE_FACTOR = 1 / FACTOR
 SIGMA_MAX = 0.0
 DATA_PATH = "data/train_set_tensor.pt"
 
-NUM_WORKERS = 6
 
 print(f"⚙️ Using FACTOR: {FACTOR}")
 print(f"⚙️ Device: {DEVICE}")
