@@ -31,5 +31,7 @@ srun nsys profile \
     -t cuda,nvtx,osrt,cudnn,cublas \
     --force-overwrite=true \
     --stats=true \
-    -o "report_rank%q{SLURM_PROCID}" \
+    --capture-range=cudaProfilerApi \
+    --capture-range-end=stop \
+    -o "report_rank_with_nvtx%q{SLURM_PROCID}" \
     python -u train_torch.py

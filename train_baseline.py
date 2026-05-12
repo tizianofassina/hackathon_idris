@@ -69,7 +69,7 @@ MEASURE_STEPS = 50
 REPEATS = 5
 
 # False = to get a clean baseline (because item synchronize but for the cuda events we need to 
-#         synchronize. I'm not sure how we'll play this right now. TOBEDISCUSSED.
+#         synchronize. I'm not sure how we'll play this right now. TO BE DISCUSSED.
 MEASURE_ITEM_SYNC = False
 
 RUN_NAME = f"baseline_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
@@ -111,8 +111,8 @@ def build_dataloader(
         dataset,
         batch_size=batch_size,
         shuffle=True,
-        num_workers=num_workers,
-        pin_memory=True,
+        num_workers=num_workers, # This i still don't understand. 
+        pin_memory=True, # This argument puts the batch in  CUDA-pinned memory, which is a zone of the RAM that can speed up the transfer to GPU.
         drop_last=True,
         prefetch_factor=2 if num_workers > 0 else None,
     )
@@ -266,6 +266,7 @@ def run_one_step(model, optimizer, batch):
         item_t0 = time.perf_counter()
         # if we have item here, since it's already synchronizing
         # GPU-CPU, is the torch cuda synchronize necessary?
+        # Tiz : I think it is not because to calcule the value you have to wait the GPU to finish the computation of the loss. 
         loss_value = loss.detach().item()
         torch.cuda.synchronize()
         item_t1 = time.perf_counter()
@@ -320,6 +321,7 @@ def main():
         # IMPORTANT to reset mem! 
         # (if I'm correct, there must be no active tensors bc of the 2 previous lines.
         #  Can someone check to see whether he agrees or not? )
+        # Tiz : Don't understand the question. 
         torch.cuda.empty_cache()
         torch.cuda.reset_peak_memory_stats()
         torch.cuda.synchronize()

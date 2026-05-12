@@ -1,11 +1,11 @@
 import os
 from datetime import datetime
 import torch
+from torch.cuda import nvtx
 from torch.utils.data import DataLoader, TensorDataset
 from torch.utils.tensorboard import SummaryWriter
 from TarFlow.architecture import Model
 from TarFlow.utils import set_random_seed
-#from torch.profiler import profile, ProfilerActivity, tensorboard_trace_handler
 
 
 
@@ -81,11 +81,13 @@ def build_dataloader(data_path: str, batch_size: int, sigma_max: float,
         batch_size=batch_size,
         shuffle=True,
         num_workers=num_workers,
-        pin_memory=True,
+        pin_memory=False, #True,
         drop_last=False,
         prefetch_factor=2 if num_workers > 0 else None,
     )
     return loader
+
+
 
 train_loader = build_dataloader(
     data_path=DATA_PATH,
@@ -177,9 +179,10 @@ print(f"🔥 Starting Training for {EPOCHS} epochs...")
 global_step = 0
 
 for epoch in range(EPOCHS):
+    if epoch == 2:
+        torch.cuda.cudart().cudaProfilerStart()
     
-    # if epoch==2:
-    #     prof.start()
+    
     model.train()
 
     epoch_loss_sum = 0.0
@@ -188,10 +191,9 @@ for epoch in range(EPOCHS):
     optimizer.zero_grad(set_to_none=True)
 
     for batch_idx, batch in enumerate(train_loader):
-        if batch_idx >= 50:
-            break
         
         
+        nvtx.range_push(f"Epoch {epoch+1} Loading Batch {batch_idx+1}")
         # Unpack: dataset is TensorDataset(x) so batch is a tuple (x,)
         if len(batch) == 2:
             x, y = batch
@@ -203,11 +205,16 @@ for epoch in range(EPOCHS):
 
         x = x.to(DEVICE, non_blocking=True)
         x = x * RESCALE_FACTOR
+        nvtx.range_pop()
 
+        nvtx.range_push("Forward pass")
         with torch.autocast(device_type=DEVICE.type, dtype=amp_dtype, enabled=USE_AMP):
             z, outputs, logdets = model(x, y)
             loss = model.get_loss(z, logdets)
-
+        nvtx.range_pop()    
+            
+        
+        nvtx.range_push("Backward pass")
         (loss / ACCUMULATION_STEPS).backward()
 
         # Update prior (running variance) – done in fp32, no grad
@@ -218,9 +225,11 @@ for epoch in range(EPOCHS):
         if (batch_idx + 1) % ACCUMULATION_STEPS == 0:
             optimizer.step()
             optimizer.zero_grad(set_to_none=True)
-
+        nvtx.range_pop()
         # Logging
         # What does detach here do exactly ? 
+        # This might be the problem, but i am not sure. 
+        nvtx.range_push("Logging loss")
         loss_val = loss.detach().item()
         epoch_loss_sum += loss_val
         epoch_batches += 1
@@ -232,7 +241,7 @@ for epoch in range(EPOCHS):
                 f"Epoch {epoch+1}/{EPOCHS} | step {global_step} | "
                 f"batch {batch_idx+1}/{len(train_loader)} | loss {loss_val:.4f}"
             )
-
+        nvtx.range_pop()
     # Flush remaining gradients if the last accumulation window wasn't complete
     if (batch_idx + 1) % ACCUMULATION_STEPS != 0:
         optimizer.step()
@@ -272,9 +281,8 @@ for epoch in range(EPOCHS):
         },
         CKPT_FILE,
     )
-    # if epoch==2:
-    #     prof.step()
-    #     prof.stop()
+    if epoch == 2:
+        torch.cuda.cudart().cudaProfilerStop() 
     
 
 
