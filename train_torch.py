@@ -33,7 +33,7 @@ RESCALE_FACTOR = 1 / FACTOR
 SIGMA_MAX = 0.0
 DATA_PATH = "data/train_set_tensor.pt"
 
-NUM_WORKERS = 0
+NUM_WORKERS = 6
 
 print(f"⚙️ Using FACTOR: {FACTOR}")
 print(f"⚙️ Device: {DEVICE}")
@@ -81,19 +81,19 @@ def build_dataloader(data_path: str, batch_size: int, sigma_max: float,
         batch_size=batch_size,
         shuffle=True,
         num_workers=num_workers,
-        pin_memory=False, #True,
+        pin_memory=True, 
         drop_last=False,
         prefetch_factor=2 if num_workers > 0 else None,
     )
     return loader
 
-
-
+num_workers = min(os.cpu_count(), 8)
 train_loader = build_dataloader(
     data_path=DATA_PATH,
     batch_size=BATCH_SIZE,
     sigma_max=SIGMA_MAX,
-    num_workers=NUM_WORKERS,
+    num_workers=num_workers,
+    size_data=None
 )
 
 total_batches = len(train_loader)
@@ -170,15 +170,18 @@ LOG_EVERY_N_STEPS = 10
 # )
 
 
+fp16_scaler = torch.amp.GradScaler("cuda", enabled=torch.cuda.is_available())
+
 
 # ============================================================
 ## 🚀 Training Loop
 # ============================================================
 print(f"🔥 Starting Training for {EPOCHS} epochs...")
 
-global_step = 0
 
 def main():
+    global_step = 0
+
     for epoch in range(EPOCHS):
         if epoch == 2:
             torch.cuda.cudart().cudaProfilerStart()
@@ -196,7 +199,7 @@ def main():
             nvtx.range_pop()
             
             
-            
+            nvtx.range_push(f"Copying to Device")
             # Unpack: dataset is TensorDataset(x) so batch is a tuple (x,)
             if len(batch) == 2:
                 x, y = batch
@@ -210,25 +213,28 @@ def main():
             x = x * RESCALE_FACTOR
             nvtx.range_pop()
 
-            nvtx.range_push("Forward pass")
-            with torch.autocast(device_type=DEVICE.type, dtype=amp_dtype, enabled=USE_AMP):
+            
+            with torch.amp.autocast(device_type='cuda', dtype=torch.float16, enabled=True):
+                nvtx.range_push("Forward pass")
                 z, outputs, logdets = model(x, y)
                 loss = model.get_loss(z, logdets)
-            nvtx.range_pop()    
-                
+                nvtx.range_pop()    
             
-            nvtx.range_push("Backward pass")
-            (loss / ACCUMULATION_STEPS).backward()
+            
 
+            nvtx.range_push("Backward pass")
+            fp16_scaler.scale(loss / ACCUMULATION_STEPS).backward()
+            # Gradient step if we've accumulated enough
+            
+            fp16_scaler.step(optimizer)
+            fp16_scaler.update()
+            nvtx.range_pop()
+            optimizer.zero_grad(set_to_none=True)
+        
             # Update prior (running variance) – done in fp32, no grad
             with torch.no_grad():
                 model.update_prior(z)
-
-            # Gradient step if we've accumulated enough
-            if (batch_idx + 1) % ACCUMULATION_STEPS == 0:
-                optimizer.step()
-                optimizer.zero_grad(set_to_none=True)
-            nvtx.range_pop()
+            
             # Logging
             # What does detach here do exactly ? 
             # This might be the problem, but i am not sure. 
@@ -249,14 +255,7 @@ def main():
             
             nvtx.range_push(f"Dataloader")
             
-            
-            
-            
-        # Flush remaining gradients if the last accumulation window wasn't complete
-        if (batch_idx + 1) % ACCUMULATION_STEPS != 0:
-            optimizer.step()
-            optimizer.zero_grad(set_to_none=True)
-
+                    
         # Epoch-level metrics
         avg_loss = epoch_loss_sum / max(epoch_batches, 1)
         prior_var_mean = model.var.mean().item()
