@@ -81,7 +81,7 @@ def build_dataloader(data_path: str, batch_size: int, sigma_max: float,
         shuffle=True,
         num_workers=num_workers,
         pin_memory=True, 
-        drop_last=False,
+        drop_last=True,
         prefetch_factor=2 if num_workers > 0 else None,
     )
     return loader
