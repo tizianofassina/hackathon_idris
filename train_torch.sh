@@ -28,7 +28,7 @@ which nsys
 nsys --version
 
 srun nsys profile \
-    -t cuda,nvtx,osrt,cudnn,cublas,nccl \
+    -t cuda,nvtx,osrt,cudnn,cublas \
     --force-overwrite=true \
     --stats=true \
     -o "report_rank%q{SLURM_PROCID}" \
