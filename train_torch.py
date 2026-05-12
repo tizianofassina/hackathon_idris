@@ -7,7 +7,7 @@ from torch.utils.tensorboard import SummaryWriter
 from TarFlow.architecture import Model
 from TarFlow.utils import set_random_seed
 
-
+import time
 
 
 # ============================================================
@@ -178,122 +178,130 @@ print(f"🔥 Starting Training for {EPOCHS} epochs...")
 
 global_step = 0
 
-for epoch in range(EPOCHS):
-    if epoch == 2:
-        torch.cuda.cudart().cudaProfilerStart()
-    
-    
-    model.train()
-
-    epoch_loss_sum = 0.0
-    epoch_batches = 0
-
-    optimizer.zero_grad(set_to_none=True)
-    
-    nvtx.range_push(f"Dataloader")
-    for batch_idx, batch in enumerate(train_loader):
-        nvtx.range_pop()
+def main():
+    for epoch in range(EPOCHS):
+        if epoch == 2:
+            torch.cuda.cudart().cudaProfilerStart()
         
         
-        
-        # Unpack: dataset is TensorDataset(x) so batch is a tuple (x,)
-        if len(batch) == 2:
-            x, y = batch
-            # Why non_blocking=True ?
-            y = y.to(DEVICE, non_blocking=True)
-        else:
-            (x,) = batch
-            y = None
+        model.train()
 
-        x = x.to(DEVICE, non_blocking=True)
-        x = x * RESCALE_FACTOR
-        nvtx.range_pop()
+        epoch_loss_sum = 0.0
+        epoch_batches = 0
 
-        nvtx.range_push("Forward pass")
-        with torch.autocast(device_type=DEVICE.type, dtype=amp_dtype, enabled=USE_AMP):
-            z, outputs, logdets = model(x, y)
-            loss = model.get_loss(z, logdets)
-        nvtx.range_pop()    
-            
-        
-        nvtx.range_push("Backward pass")
-        (loss / ACCUMULATION_STEPS).backward()
-
-        # Update prior (running variance) – done in fp32, no grad
-        with torch.no_grad():
-            model.update_prior(z)
-
-        # Gradient step if we've accumulated enough
-        if (batch_idx + 1) % ACCUMULATION_STEPS == 0:
-            optimizer.step()
-            optimizer.zero_grad(set_to_none=True)
-        nvtx.range_pop()
-        # Logging
-        # What does detach here do exactly ? 
-        # This might be the problem, but i am not sure. 
-        nvtx.range_push("Logging loss")
-        loss_val = loss.detach().item()
-        epoch_loss_sum += loss_val
-        epoch_batches += 1
-        global_step += 1
-
-        if global_step % LOG_EVERY_N_STEPS == 0:
-            writer.add_scalar("train/loss_step", loss_val, global_step)
-            print(
-                f"Epoch {epoch+1}/{EPOCHS} | step {global_step} | "
-                f"batch {batch_idx+1}/{len(train_loader)} | loss {loss_val:.4f}"
-            )
-        nvtx.range_pop()
-        
+        optimizer.zero_grad(set_to_none=True)
         
         nvtx.range_push(f"Dataloader")
-        
-        
-        
-        
-    # Flush remaining gradients if the last accumulation window wasn't complete
-    if (batch_idx + 1) % ACCUMULATION_STEPS != 0:
-        optimizer.step()
-        optimizer.zero_grad(set_to_none=True)
+        for batch_idx, batch in enumerate(train_loader):
+            nvtx.range_pop()
+            
+            
+            
+            # Unpack: dataset is TensorDataset(x) so batch is a tuple (x,)
+            if len(batch) == 2:
+                x, y = batch
+                # Why non_blocking=True ?
+                y = y.to(DEVICE, non_blocking=True)
+            else:
+                (x,) = batch
+                y = None
 
-    # Epoch-level metrics
-    avg_loss = epoch_loss_sum / max(epoch_batches, 1)
-    prior_var_mean = model.var.mean().item()
-    writer.add_scalar("train/loss_epoch", avg_loss, epoch)
-    writer.add_scalar("train/prior_var_mean", prior_var_mean, epoch)
-    print(
-        f"Epoch {epoch+1} done | avg loss: {avg_loss:.4f} | "
-        f"prior_var_mean: {prior_var_mean:.4f}"
-    )
+            x = x.to(DEVICE, non_blocking=True)
+            x = x * RESCALE_FACTOR
+            nvtx.range_pop()
 
-    # Checkpoint at the end of every epoch (overwrites previous one,
-    torch.save(
-        {
-            "epoch": epoch + 1,
-            "global_step": global_step,
-            "model_state_dict": model.state_dict(),
-            "optimizer_state_dict": optimizer.state_dict(),
-            "hparams": {
-                "in_channels": IN_CHANNELS,
-                "img_size": IMG_SIZE,
-                "patch_size": PATCH_SIZE,
-                "channels": CHANNELS,
-                "num_blocks": NUM_BLOCKS,
-                "layers_per_block": LAYERS_PER_BLOCK,
-                "nvp": NVP,
-                "num_classes": NUM_CLASSES,
-                "lr": LEARNING_RATE,
-                "batch_size": BATCH_SIZE,
-                "rescale_factor": RESCALE_FACTOR,
-                "sigma_max": SIGMA_MAX,
+            nvtx.range_push("Forward pass")
+            with torch.autocast(device_type=DEVICE.type, dtype=amp_dtype, enabled=USE_AMP):
+                z, outputs, logdets = model(x, y)
+                loss = model.get_loss(z, logdets)
+            nvtx.range_pop()    
+                
+            
+            nvtx.range_push("Backward pass")
+            (loss / ACCUMULATION_STEPS).backward()
+
+            # Update prior (running variance) – done in fp32, no grad
+            with torch.no_grad():
+                model.update_prior(z)
+
+            # Gradient step if we've accumulated enough
+            if (batch_idx + 1) % ACCUMULATION_STEPS == 0:
+                optimizer.step()
+                optimizer.zero_grad(set_to_none=True)
+            nvtx.range_pop()
+            # Logging
+            # What does detach here do exactly ? 
+            # This might be the problem, but i am not sure. 
+            nvtx.range_push("Logging loss")
+            loss_val = loss.detach().item()
+            epoch_loss_sum += loss_val
+            epoch_batches += 1
+            global_step += 1
+
+            if global_step % LOG_EVERY_N_STEPS == 0:
+                writer.add_scalar("train/loss_step", loss_val, global_step)
+                print(
+                    f"Epoch {epoch+1}/{EPOCHS} | step {global_step} | "
+                    f"batch {batch_idx+1}/{len(train_loader)} | loss {loss_val:.4f}"
+                )
+            nvtx.range_pop()
+            
+            
+            nvtx.range_push(f"Dataloader")
+            
+            
+            
+            
+        # Flush remaining gradients if the last accumulation window wasn't complete
+        if (batch_idx + 1) % ACCUMULATION_STEPS != 0:
+            optimizer.step()
+            optimizer.zero_grad(set_to_none=True)
+
+        # Epoch-level metrics
+        avg_loss = epoch_loss_sum / max(epoch_batches, 1)
+        prior_var_mean = model.var.mean().item()
+        writer.add_scalar("train/loss_epoch", avg_loss, epoch)
+        writer.add_scalar("train/prior_var_mean", prior_var_mean, epoch)
+        print(
+            f"Epoch {epoch+1} done | avg loss: {avg_loss:.4f} | "
+            f"prior_var_mean: {prior_var_mean:.4f}"
+        )
+
+        # Checkpoint at the end of every epoch (overwrites previous one,
+        torch.save(
+            {
+                "epoch": epoch + 1,
+                "global_step": global_step,
+                "model_state_dict": model.state_dict(),
+                "optimizer_state_dict": optimizer.state_dict(),
+                "hparams": {
+                    "in_channels": IN_CHANNELS,
+                    "img_size": IMG_SIZE,
+                    "patch_size": PATCH_SIZE,
+                    "channels": CHANNELS,
+                    "num_blocks": NUM_BLOCKS,
+                    "layers_per_block": LAYERS_PER_BLOCK,
+                    "nvp": NVP,
+                    "num_classes": NUM_CLASSES,
+                    "lr": LEARNING_RATE,
+                    "batch_size": BATCH_SIZE,
+                    "rescale_factor": RESCALE_FACTOR,
+                    "sigma_max": SIGMA_MAX,
+                },
             },
-        },
-        CKPT_FILE,
-    )
-    if epoch == 2:
-        torch.cuda.cudart().cudaProfilerStop() 
+            CKPT_FILE,
+        )
+        if epoch == 2:
+            torch.cuda.cudart().cudaProfilerStop() 
+        
+
+
+    writer.close()
+    print("\n✅ Training complete!")
     
-
-
-writer.close()
-print("\n✅ Training complete!")
+if __name__ == "__main__":
+    start_time = time.time()
+    main()
+    end_time = time.time()
+    elapsed_time = end_time - start_time
+    print(f"Total training time: {elapsed_time:.2f} seconds")
