@@ -1,0 +1,12 @@
+Loading pytorch-gpu/py3/2.3.0
+  Loading requirement: cuda/12.2.0 nccl/2.19.3-1-cuda cudnn/8.9.5.30-cuda
+    gcc/10.1.0 openmpi/4.1.5-cuda intel-mkl/2020.4 magma/2.7.2-cuda sox/14.4.2
+    hdf5/1.12.0-mpi-cuda libjpeg-turbo/2.1.3 ffmpeg/6.1.1
+/lustre/fshomisc/sys/common/nvidia/nvhpc/25.1/Linux_x86_64/25.1/profilers/Nsight_Systems/bin/nsys
+NVIDIA Nsight Systems version 2024.7.1.84-247135125610v0
+option '--force-overwrite' cannot be specified more than once
+
+usage: nsys profile [<args>] [application] [<application args>]
+Try 'nsys profile --help' for more information.
+srun: error: jean-zay-iam35: task 0: Exited with exit code 1
+srun: Terminating StepId=762312.0
