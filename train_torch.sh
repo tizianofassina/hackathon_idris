@@ -28,10 +28,7 @@ which nsys
 nsys --version
 
 srun nsys profile \
-    -t cuda,nvtx,osrt,cudnn,cublas \
-    --force-overwrite=true \
-    --gpu-metrics-devices=all \
-    --gpu-metrics-frequency=20000 \
+    -t cuda,nvtx,osrt,cudnn,cublas,nccl \
     --force-overwrite=true \
     --stats=true \
     -o "report_rank%q{SLURM_PROCID}" \
