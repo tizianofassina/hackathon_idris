@@ -189,11 +189,13 @@ for epoch in range(EPOCHS):
     epoch_batches = 0
 
     optimizer.zero_grad(set_to_none=True)
-
+    
+    nvtx.range_push(f"Dataloader")
     for batch_idx, batch in enumerate(train_loader):
+        nvtx.range_pop()
         
         
-        nvtx.range_push(f"Epoch {epoch+1} Loading Batch {batch_idx+1}")
+        
         # Unpack: dataset is TensorDataset(x) so batch is a tuple (x,)
         if len(batch) == 2:
             x, y = batch
@@ -242,6 +244,13 @@ for epoch in range(EPOCHS):
                 f"batch {batch_idx+1}/{len(train_loader)} | loss {loss_val:.4f}"
             )
         nvtx.range_pop()
+        
+        
+        nvtx.range_push(f"Dataloader")
+        
+        
+        
+        
     # Flush remaining gradients if the last accumulation window wasn't complete
     if (batch_idx + 1) % ACCUMULATION_STEPS != 0:
         optimizer.step()
