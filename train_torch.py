@@ -191,7 +191,7 @@ def main():
         epoch_loss_sum = 0.0
         epoch_batches = 0
 
-        optimizer.zero_grad(set_to_none=True)
+        
         
         nvtx.range_push(f"Dataloader")
         for batch_idx, batch in enumerate(train_loader):
@@ -266,9 +266,11 @@ def main():
         )
 
         # Checkpoint at the end of every epoch (overwrites previous one,
-        torch.save(
+        
+        if epoch == 2:
+            torch.cuda.cudart().cudaProfilerStop() 
+    torch.save(
             {
-                "epoch": epoch + 1,
                 "global_step": global_step,
                 "model_state_dict": model.state_dict(),
                 "optimizer_state_dict": optimizer.state_dict(),
@@ -289,8 +291,6 @@ def main():
             },
             CKPT_FILE,
         )
-        if epoch == 2:
-            torch.cuda.cudart().cudaProfilerStop() 
         
 
 
