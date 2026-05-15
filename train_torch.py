@@ -9,15 +9,12 @@ from TarFlow.utils import set_random_seed
 
 import time
 
-
 # ============================================================
 ## ⚙️ Initial Configuration and Hardware
 # ============================================================
 torch.set_float32_matmul_precision("high")
-
 RANDOM_SEED = 200
 set_random_seed(RANDOM_SEED)
-
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # ============================================================
@@ -123,7 +120,7 @@ optimizer = torch.optim.AdamW(
 
 # Mixed precision (bf16) 
 USE_AMP = DEVICE.type == "cuda"
-amp_dtype = torch.bfloat16
+amp_dtype = torch.bfloat16 # Difference with float16 is 
 
 print("✅ Data, Model, and Optimizer initialized.")
 
@@ -213,7 +210,7 @@ def main():
             nvtx.range_pop()
 
             
-            with torch.amp.autocast(device_type='cuda', dtype=torch.float16, enabled=True):
+            with torch.amp.autocast(device_type='cuda', dtype=amp_dtype, enabled=True):
                 nvtx.range_push("Forward pass")
                 z, outputs, logdets = model(x, y)
                 loss = model.get_loss(z, logdets)
