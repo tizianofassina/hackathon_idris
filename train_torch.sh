@@ -13,7 +13,7 @@
 module purge
 module load arch/a100
 module load pytorch-gpu/py3/2.3.0 
-module load nvidia-nsight-systems/2024.1.1.59
+module load nvidia-nsight-systems/2024.7.1.84  
 
 export PYTHONPATH=$PYTHONPATH:$(pwd)
 export PYTHONUNBUFFERED=1
@@ -28,11 +28,8 @@ which nsys
 nsys --version
 
 srun nsys profile \
-    -t cuda,nvtx,osrt,cudnn,cublas,nccl \
+    -t cuda,nvtx,osrt,cudnn,cublas \
     --force-overwrite=true \
-    --nccl-trace=all \
-    --gpu-metrics-devices=all \
-    --gpu-metrics-frequency=20000 \
     --stats=true \
     -o "report_rank%q{SLURM_PROCID}" \
     python -u train_torch.py
