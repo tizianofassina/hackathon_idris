@@ -1,613 +1,0 @@
-Loading pytorch-gpu/py3/2.3.0
-  Loading requirement: cuda/12.2.0 nccl/2.19.3-1-cuda cudnn/8.9.5.30-cuda
-    gcc/10.1.0 openmpi/4.1.5-cuda intel-mkl/2020.4 magma/2.7.2-cuda sox/14.4.2
-    hdf5/1.12.0-mpi-cuda libjpeg-turbo/2.1.3 ffmpeg/6.1.1
-/gpfslocalsys/nvhpc/24.3/Linux_x86_64/24.3/profilers/Nsight_Systems/bin/nsys
-NVIDIA Nsight Systems version 2024.1.1.59-241133802077v0
-
-A module that was compiled using NumPy 1.x cannot be run in
-NumPy 2.4.4 as it may crash. To support both 1.x and 2.x
-versions of NumPy, modules must be compiled with NumPy 2.0.
-Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
-
-If you are a user of the module, the easiest solution will be to
-downgrade to 'numpy<2' or try to upgrade the affected module.
-We expect that some modules will need time to support NumPy 2.
-
-Traceback (most recent call last):  File "/lustre/fswork/projects/rech/ltc/ufk94qf/hackathon_project/train_torch.py", line 7, in <module>
-    from TarFlow.architecture import Model
-  File "/lustre/fswork/projects/rech/ltc/ufk94qf/hackathon_project/TarFlow/architecture.py", line 2, in <module>
-    import lightning as L
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/__init__.py", line 21, in <module>
-    from lightning.pytorch.callbacks import Callback  # noqa: E402
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/pytorch/__init__.py", line 27, in <module>
-    from lightning.pytorch.callbacks import Callback  # noqa: E402
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/pytorch/callbacks/__init__.py", line 14, in <module>
-    from lightning.pytorch.callbacks.batch_size_finder import BatchSizeFinder
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/pytorch/callbacks/batch_size_finder.py", line 26, in <module>
-    from lightning.pytorch.callbacks.callback import Callback
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/pytorch/callbacks/callback.py", line 22, in <module>
-    from lightning.pytorch.utilities.types import STEP_OUTPUT
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/pytorch/utilities/types.py", line 41, in <module>
-    from torchmetrics import Metric
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/torchmetrics/__init__.py", line 26, in <module>
-    from torchmetrics import functional  # noqa: E402
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/torchmetrics/functional/__init__.py", line 122, in <module>
-    from torchmetrics.functional.text._deprecated import _bleu_score as bleu_score
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/torchmetrics/functional/text/__init__.py", line 17, in <module>
-    from torchmetrics.functional.text.chrf import chrf_score
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/torchmetrics/functional/text/chrf.py", line 44, in <module>
-    _EPS_SMOOTHING = tensor(1e-16)
-/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/torchmetrics/functional/text/chrf.py:44: UserWarning: Failed to initialize NumPy: 
-A module that was compiled using NumPy 1.x cannot be run in
-NumPy 2.4.4 as it may crash. To support both 1.x and 2.x
-versions of NumPy, modules must be compiled with NumPy 2.0.
-Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
-
-If you are a user of the module, the easiest solution will be to
-downgrade to 'numpy<2' or try to upgrade the affected module.
-We expect that some modules will need time to support NumPy 2.
-
- (Triggered internally at /gpfs7kro/gpfslocalsup/src/pub/anaconda-py3/2023.09/pytorch-gpu-2.3.0+py3.11.5+cuda-12.2/pytorch-2.3.0/torch/csrc/utils/tensor_numpy.cpp:84.)
-  _EPS_SMOOTHING = tensor(1e-16)
-⚙️ Using FACTOR: 1.0
-⚙️ Device: cuda
-✅ Data loaded: 70000 samples, 274 batches.
-✅ Data, Model, and Optimizer initialized.
-💾 Checkpoint will be saved as: flow_models/model_20260512_121546.ckpt
-🔥 Starting Training for 5 epochs...
-Epoch 1/5 | step 10 | batch 10/274 | loss -0.5250
-Epoch 1/5 | step 20 | batch 20/274 | loss -0.6821
-Epoch 1/5 | step 30 | batch 30/274 | loss -0.7899
-Epoch 1/5 | step 40 | batch 40/274 | loss -0.8573
-Epoch 1/5 | step 50 | batch 50/274 | loss -0.8909
-Epoch 1/5 | step 60 | batch 60/274 | loss -0.9425
-Epoch 1/5 | step 70 | batch 70/274 | loss -0.9397
-Epoch 1/5 | step 80 | batch 80/274 | loss -0.9656
-Epoch 1/5 | step 90 | batch 90/274 | loss -0.9733
-Epoch 1/5 | step 100 | batch 100/274 | loss -0.9905
-Epoch 1/5 | step 110 | batch 110/274 | loss -1.0124
-Epoch 1/5 | step 120 | batch 120/274 | loss -1.0678
-Epoch 1/5 | step 130 | batch 130/274 | loss -1.0663
-Epoch 1/5 | step 140 | batch 140/274 | loss -1.1015
-Epoch 1/5 | step 150 | batch 150/274 | loss -1.1325
-Epoch 1/5 | step 160 | batch 160/274 | loss -1.0825
-Epoch 1/5 | step 170 | batch 170/274 | loss -1.1367
-Epoch 1/5 | step 180 | batch 180/274 | loss -1.1810
-Epoch 1/5 | step 190 | batch 190/274 | loss -1.1640
-Epoch 1/5 | step 200 | batch 200/274 | loss -1.2040
-Epoch 1/5 | step 210 | batch 210/274 | loss -1.2258
-Epoch 1/5 | step 220 | batch 220/274 | loss -1.2519
-Epoch 1/5 | step 230 | batch 230/274 | loss -1.2251
-Epoch 1/5 | step 240 | batch 240/274 | loss -1.2294
-Epoch 1/5 | step 250 | batch 250/274 | loss -1.2510
-Epoch 1/5 | step 260 | batch 260/274 | loss -1.2684
-Epoch 1/5 | step 270 | batch 270/274 | loss -1.2370
-Epoch 1 done | avg loss: -1.0307 | prior_var_mean: 1.0019
-Epoch 2/5 | step 280 | batch 6/274 | loss -1.2561
-Epoch 2/5 | step 290 | batch 16/274 | loss -1.2533
-Epoch 2/5 | step 300 | batch 26/274 | loss -1.2565
-Epoch 2/5 | step 310 | batch 36/274 | loss -1.2585
-Epoch 2/5 | step 320 | batch 46/274 | loss -1.2439
-Epoch 2/5 | step 330 | batch 56/274 | loss -1.2894
-Epoch 2/5 | step 340 | batch 66/274 | loss -1.2831
-Epoch 2/5 | step 350 | batch 76/274 | loss -1.2237
-Epoch 2/5 | step 360 | batch 86/274 | loss -1.2871
-Epoch 2/5 | step 370 | batch 96/274 | loss -1.2891
-Epoch 2/5 | step 380 | batch 106/274 | loss -1.2967
-Epoch 2/5 | step 390 | batch 116/274 | loss -1.2593
-Epoch 2/5 | step 400 | batch 126/274 | loss -1.2700
-Epoch 2/5 | step 410 | batch 136/274 | loss -1.3219
-Epoch 2/5 | step 420 | batch 146/274 | loss -1.3165
-Epoch 2/5 | step 430 | batch 156/274 | loss -1.3245
-Epoch 2/5 | step 440 | batch 166/274 | loss -1.3166
-Epoch 2/5 | step 450 | batch 176/274 | loss -1.3189
-Epoch 2/5 | step 460 | batch 186/274 | loss -1.3216
-Epoch 2/5 | step 470 | batch 196/274 | loss -1.3334
-Epoch 2/5 | step 480 | batch 206/274 | loss -1.2829
-Epoch 2/5 | step 490 | batch 216/274 | loss -1.2951
-Epoch 2/5 | step 500 | batch 226/274 | loss -1.3541
-Epoch 2/5 | step 510 | batch 236/274 | loss -1.3337
-Epoch 2/5 | step 520 | batch 246/274 | loss -1.3436
-Epoch 2/5 | step 530 | batch 256/274 | loss -1.3562
-Epoch 2/5 | step 540 | batch 266/274 | loss -1.3496
-Epoch 2 done | avg loss: -1.3006 | prior_var_mean: 1.0016
-Epoch 3/5 | step 550 | batch 2/274 | loss -1.3622
-Epoch 3/5 | step 560 | batch 12/274 | loss -1.3160
-Epoch 3/5 | step 570 | batch 22/274 | loss -1.3229
-Epoch 3/5 | step 580 | batch 32/274 | loss -1.3256
-Epoch 3/5 | step 590 | batch 42/274 | loss -1.3724
-Epoch 3/5 | step 600 | batch 52/274 | loss -1.3741
-Epoch 3/5 | step 610 | batch 62/274 | loss -1.3533
-Epoch 3/5 | step 620 | batch 72/274 | loss -1.3444
-Epoch 3/5 | step 630 | batch 82/274 | loss -1.3504
-Epoch 3/5 | step 640 | batch 92/274 | loss -1.3598
-Epoch 3/5 | step 650 | batch 102/274 | loss -1.3387
-Epoch 3/5 | step 660 | batch 112/274 | loss -1.3762
-Epoch 3/5 | step 670 | batch 122/274 | loss -1.3809
-Epoch 3/5 | step 680 | batch 132/274 | loss -1.3726
-Epoch 3/5 | step 690 | batch 142/274 | loss -1.3857
-Epoch 3/5 | step 700 | batch 152/274 | loss -1.3037
-Epoch 3/5 | step 710 | batch 162/274 | loss -1.3797
-Epoch 3/5 | step 720 | batch 172/274 | loss -1.3903
-Epoch 3/5 | step 730 | batch 182/274 | loss -1.3889
-Epoch 3/5 | step 740 | batch 192/274 | loss -1.3630
-Epoch 3/5 | step 750 | batch 202/274 | loss -1.4118
-Epoch 3/5 | step 760 | batch 212/274 | loss -1.3407
-Epoch 3/5 | step 770 | batch 222/274 | loss -1.4024
-Epoch 3/5 | step 780 | batch 232/274 | loss -1.4102
-Epoch 3/5 | step 790 | batch 242/274 | loss -1.4211
-Epoch 3/5 | step 800 | batch 252/274 | loss -1.3908
-Epoch 3/5 | step 810 | batch 262/274 | loss -1.4047
-Epoch 3/5 | step 820 | batch 272/274 | loss -1.3980
-Epoch 3 done | avg loss: -1.3690 | prior_var_mean: 0.9933
-Capture range started in the application.
-Capture range ended in the application.
-Generating '/tmp/nsys-report-64a3.qdstrm'
-[1/8] [0%                          ] report_rank_with_nvtx0.nsys-rep[1/8] [0%                          ] report_rank_with_nvtx0.nsys-rep[1/8] [7%                          ] report_rank_with_nvtx0.nsys-rep[1/8] [6%                          ] report_rank_with_nvtx0.nsys-rep[1/8] [5%                          ] report_rank_with_nvtx0.nsys-rep[1/8] [8%                          ] report_rank_with_nvtx0.nsys-rep[1/8] [7%                          ] report_rank_with_nvtx0.nsys-rep[1/8] [8%                          ] report_rank_with_nvtx0.nsys-rep[1/8] [9%                          ] report_rank_with_nvtx0.nsys-rep[1/8] [11%                         ] report_rank_with_nvtx0.nsys-rep[1/8] [12%                         ] report_rank_with_nvtx0.nsys-rep[1/8] [13%                         ] report_rank_with_nvtx0.nsys-rep[1/8] [=16%                        ] report_rank_with_nvtx0.nsys-rep[1/8] [==19%                       ] report_rank_with_nvtx0.nsys-rep[1/8] [===22%                      ] report_rank_with_nvtx0.nsys-rep[1/8] [====25%                     ] report_rank_with_nvtx0.nsys-rep[1/8] [====27%                     ] report_rank_with_nvtx0.nsys-rep[1/8] [====28%                     ] report_rank_with_nvtx0.nsys-rep[1/8] [=====30%                    ] report_rank_with_nvtx0.nsys-rep[1/8] [======33%                   ] report_rank_with_nvtx0.nsys-rep[1/8] [=======36%                  ] report_rank_with_nvtx0.nsys-rep[1/8] [=======38%                  ] report_rank_with_nvtx0.nsys-rep[1/8] [=======39%                  ] report_rank_with_nvtx0.nsys-rep[1/8] [========41%                 ] report_rank_with_nvtx0.nsys-rep[1/8] [========42%                 ] report_rank_with_nvtx0.nsys-rep[1/8] [=========44%                ] report_rank_with_nvtx0.nsys-rep[1/8] [=========45%                ] report_rank_with_nvtx0.nsys-rep[1/8] [==========47%               ] report_rank_with_nvtx0.nsys-rep[1/8] [===========50%              ] report_rank_with_nvtx0.nsys-rep[1/8] [===========53%              ] report_rank_with_nvtx0.nsys-rep[1/8] [============56%             ] report_rank_with_nvtx0.nsys-rep[1/8] [=============59%            ] report_rank_with_nvtx0.nsys-rep[1/8] [==============62%           ] report_rank_with_nvtx0.nsys-rep[1/8] [==============64%           ] report_rank_with_nvtx0.nsys-rep[1/8] [===============65%          ] report_rank_with_nvtx0.nsys-rep[1/8] [===============67%          ] report_rank_with_nvtx0.nsys-rep[1/8] [================70%         ] report_rank_with_nvtx0.nsys-rep[1/8] [=================73%        ] report_rank_with_nvtx0.nsys-rep[1/8] [==================75%       ] report_rank_with_nvtx0.nsys-rep[1/8] [==================78%       ] report_rank_with_nvtx0.nsys-rep[1/8] [===================79%      ] report_rank_with_nvtx0.nsys-rep[1/8] [========================100%] report_rank_with_nvtx0.nsys-rep[1/8] [========================100%] report_rank_with_nvtx0.nsys-rep
-[2/8] [0%                          ] report_rank_with_nvtx0.sqlite[2/8] [1%                          ] report_rank_with_nvtx0.sqlite[2/8] [2%                          ] report_rank_with_nvtx0.sqlite[2/8] [3%                          ] report_rank_with_nvtx0.sqlite[2/8] [4%                          ] report_rank_with_nvtx0.sqlite[2/8] [5%                          ] report_rank_with_nvtx0.sqlite[2/8] [6%                          ] report_rank_with_nvtx0.sqlite[2/8] [7%                          ] report_rank_with_nvtx0.sqlite[2/8] [8%                          ] report_rank_with_nvtx0.sqlite[2/8] [9%                          ] report_rank_with_nvtx0.sqlite[2/8] [10%                         ] report_rank_with_nvtx0.sqlite[2/8] [11%                         ] report_rank_with_nvtx0.sqlite[2/8] [12%                         ] report_rank_with_nvtx0.sqlite[2/8] [13%                         ] report_rank_with_nvtx0.sqlite[2/8] [14%                         ] report_rank_with_nvtx0.sqlite[2/8] [=15%                        ] report_rank_with_nvtx0.sqlite[2/8] [=16%                        ] report_rank_with_nvtx0.sqlite[2/8] [=17%                        ] report_rank_with_nvtx0.sqlite[2/8] [==18%                       ] report_rank_with_nvtx0.sqlite[2/8] [==19%                       ] report_rank_with_nvtx0.sqlite[2/8] [==20%                       ] report_rank_with_nvtx0.sqlite[2/8] [==21%                       ] report_rank_with_nvtx0.sqlite[2/8] [===22%                      ] report_rank_with_nvtx0.sqlite[2/8] [===23%                      ] report_rank_with_nvtx0.sqlite[2/8] [===24%                      ] report_rank_with_nvtx0.sqlite[2/8] [====25%                     ] report_rank_with_nvtx0.sqlite[2/8] [====26%                     ] report_rank_with_nvtx0.sqlite[2/8] [====27%                     ] report_rank_with_nvtx0.sqlite[2/8] [====28%                     ] report_rank_with_nvtx0.sqlite[2/8] [=====29%                    ] report_rank_with_nvtx0.sqlite[2/8] [=====30%                    ] report_rank_with_nvtx0.sqlite[2/8] [=====31%                    ] report_rank_with_nvtx0.sqlite[2/8] [=====32%                    ] report_rank_with_nvtx0.sqlite[2/8] [======33%                   ] report_rank_with_nvtx0.sqlite[2/8] [======34%                   ] report_rank_with_nvtx0.sqlite[2/8] [======35%                   ] report_rank_with_nvtx0.sqlite[2/8] [=======36%                  ] report_rank_with_nvtx0.sqlite[2/8] [=======37%                  ] report_rank_with_nvtx0.sqlite[2/8] [=======38%                  ] report_rank_with_nvtx0.sqlite[2/8] [=======39%                  ] report_rank_with_nvtx0.sqlite[2/8] [========40%                 ] report_rank_with_nvtx0.sqlite[2/8] [========41%                 ] report_rank_with_nvtx0.sqlite[2/8] [========42%                 ] report_rank_with_nvtx0.sqlite[2/8] [=========43%                ] report_rank_with_nvtx0.sqlite[2/8] [=========44%                ] report_rank_with_nvtx0.sqlite[2/8] [=========45%                ] report_rank_with_nvtx0.sqlite[2/8] [=========46%                ] report_rank_with_nvtx0.sqlite[2/8] [==========47%               ] report_rank_with_nvtx0.sqlite[2/8] [==========48%               ] report_rank_with_nvtx0.sqlite[2/8] [==========49%               ] report_rank_with_nvtx0.sqlite[2/8] [===========50%              ] report_rank_with_nvtx0.sqlite[2/8] [===========51%              ] report_rank_with_nvtx0.sqlite[2/8] [===========52%              ] report_rank_with_nvtx0.sqlite[2/8] [===========53%              ] report_rank_with_nvtx0.sqlite[2/8] [============54%             ] report_rank_with_nvtx0.sqlite[2/8] [============55%             ] report_rank_with_nvtx0.sqlite[2/8] [============56%             ] report_rank_with_nvtx0.sqlite[2/8] [============57%             ] report_rank_with_nvtx0.sqlite[2/8] [=============58%            ] report_rank_with_nvtx0.sqlite[2/8] [=============59%            ] report_rank_with_nvtx0.sqlite[2/8] [=============60%            ] report_rank_with_nvtx0.sqlite[2/8] [==============61%           ] report_rank_with_nvtx0.sqlite[2/8] [==============62%           ] report_rank_with_nvtx0.sqlite[2/8] [==============63%           ] report_rank_with_nvtx0.sqlite[2/8] [==============64%           ] report_rank_with_nvtx0.sqlite[2/8] [===============65%          ] report_rank_with_nvtx0.sqlite[2/8] [===============66%          ] report_rank_with_nvtx0.sqlite[2/8] [===============67%          ] report_rank_with_nvtx0.sqlite[2/8] [================68%         ] report_rank_with_nvtx0.sqlite[2/8] [================69%         ] report_rank_with_nvtx0.sqlite[2/8] [================70%         ] report_rank_with_nvtx0.sqlite[2/8] [================71%         ] report_rank_with_nvtx0.sqlite[2/8] [=================72%        ] report_rank_with_nvtx0.sqlite[2/8] [=================73%        ] report_rank_with_nvtx0.sqlite[2/8] [=================74%        ] report_rank_with_nvtx0.sqlite[2/8] [==================75%       ] report_rank_with_nvtx0.sqlite[2/8] [==================76%       ] report_rank_with_nvtx0.sqlite[2/8] [==================77%       ] report_rank_with_nvtx0.sqlite[2/8] [==================78%       ] report_rank_with_nvtx0.sqlite[2/8] [===================79%      ] report_rank_with_nvtx0.sqlite[2/8] [===================80%      ] report_rank_with_nvtx0.sqlite[2/8] [===================81%      ] report_rank_with_nvtx0.sqlite[2/8] [===================82%      ] report_rank_with_nvtx0.sqlite[2/8] [====================83%     ] report_rank_with_nvtx0.sqlite[2/8] [====================84%     ] report_rank_with_nvtx0.sqlite[2/8] [====================85%     ] report_rank_with_nvtx0.sqlite[2/8] [=====================86%    ] report_rank_with_nvtx0.sqlite[2/8] [=====================87%    ] report_rank_with_nvtx0.sqlite[2/8] [=====================88%    ] report_rank_with_nvtx0.sqlite[2/8] [=====================89%    ] report_rank_with_nvtx0.sqlite[2/8] [======================90%   ] report_rank_with_nvtx0.sqlite[2/8] [======================91%   ] report_rank_with_nvtx0.sqlite[2/8] [======================92%   ] report_rank_with_nvtx0.sqlite[2/8] [=======================93%  ] report_rank_with_nvtx0.sqlite[2/8] [=======================94%  ] report_rank_with_nvtx0.sqlite[2/8] [=======================95%  ] report_rank_with_nvtx0.sqlite[2/8] [=======================96%  ] report_rank_with_nvtx0.sqlite[2/8] [========================97% ] report_rank_with_nvtx0.sqlite[2/8] [========================98% ] report_rank_with_nvtx0.sqlite[2/8] [========================99% ] report_rank_with_nvtx0.sqlite[2/8] [========================100%] report_rank_with_nvtx0.sqlite[2/8] [========================100%] report_rank_with_nvtx0.sqlite
-[3/8] Executing 'nvtx_sum' stats report
-
- Time (%)  Total Time (ns)  Instances    Avg (ns)       Med (ns)      Min (ns)    Max (ns)    StdDev (ns)   Style             Range          
- --------  ---------------  ---------  -------------  -------------  ----------  -----------  -----------  -------  -------------------------
-     87.2   40,698,405,451        274  148,534,326.5  148,924,367.5  58,684,254  149,694,446  5,475,836.3  PushPop  Logging loss             
-      7.5    3,513,824,699        274   12,824,177.7   12,769,771.5  12,143,080   19,870,797    544,014.6  PushPop  Backward pass            
-      4.7    2,211,452,728        274    8,070,995.4    8,059,693.5   7,350,505    8,309,128     80,982.4  PushPop  Forward pass             
-      0.0          986,906          1      986,906.0      986,906.0     986,906      986,906          0.0  PushPop  Epoch 3 Loading Batch 3  
-      0.0          983,259          1      983,259.0      983,259.0     983,259      983,259          0.0  PushPop  Epoch 3 Loading Batch 149
-      0.0          982,989          1      982,989.0      982,989.0     982,989      982,989          0.0  PushPop  Epoch 3 Loading Batch 150
-      0.0          978,630          1      978,630.0      978,630.0     978,630      978,630          0.0  PushPop  Epoch 3 Loading Batch 273
-      0.0          976,316          1      976,316.0      976,316.0     976,316      976,316          0.0  PushPop  Epoch 3 Loading Batch 90 
-      0.0          973,621          1      973,621.0      973,621.0     973,621      973,621          0.0  PushPop  Epoch 3 Loading Batch 105
-      0.0          970,736          1      970,736.0      970,736.0     970,736      970,736          0.0  PushPop  Epoch 3 Loading Batch 223
-      0.0          967,220          1      967,220.0      967,220.0     967,220      967,220          0.0  PushPop  Epoch 3 Loading Batch 164
-      0.0          964,765          1      964,765.0      964,765.0     964,765      964,765          0.0  PushPop  Epoch 3 Loading Batch 75 
-      0.0          962,721          1      962,721.0      962,721.0     962,721      962,721          0.0  PushPop  Epoch 3 Loading Batch 31 
-      0.0          962,571          1      962,571.0      962,571.0     962,571      962,571          0.0  PushPop  Epoch 3 Loading Batch 54 
-      0.0          962,461          1      962,461.0      962,461.0     962,461      962,461          0.0  PushPop  Epoch 3 Loading Batch 120
-      0.0          962,069          1      962,069.0      962,069.0     962,069      962,069          0.0  PushPop  Epoch 3 Loading Batch 268
-      0.0          960,337          1      960,337.0      960,337.0     960,337      960,337          0.0  PushPop  Epoch 3 Loading Batch 61 
-      0.0          958,633          1      958,633.0      958,633.0     958,633      958,633          0.0  PushPop  Epoch 3 Loading Batch 238
-      0.0          957,772          1      957,772.0      957,772.0     957,772      957,772          0.0  PushPop  Epoch 3 Loading Batch 179
-      0.0          953,794          1      953,794.0      953,794.0     953,794      953,794          0.0  PushPop  Epoch 3 Loading Batch 152
-      0.0          953,715          1      953,715.0      953,715.0     953,715      953,715          0.0  PushPop  Epoch 3 Loading Batch 135
-      0.0          948,444          1      948,444.0      948,444.0     948,444      948,444          0.0  PushPop  Epoch 3 Loading Batch 254
-      0.0          947,583          1      947,583.0      947,583.0     947,583      947,583          0.0  PushPop  Epoch 3 Loading Batch 46 
-      0.0          943,886          1      943,886.0      943,886.0     943,886      943,886          0.0  PushPop  Epoch 3 Loading Batch 103
-      0.0          943,475          1      943,475.0      943,475.0     943,475      943,475          0.0  PushPop  Epoch 3 Loading Batch 10 
-      0.0          942,333          1      942,333.0      942,333.0     942,333      942,333          0.0  PushPop  Epoch 3 Loading Batch 28 
-      0.0          942,062          1      942,062.0      942,062.0     942,062      942,062          0.0  PushPop  Epoch 3 Loading Batch 210
-      0.0          940,670          1      940,670.0      940,670.0     940,670      940,670          0.0  PushPop  Epoch 3 Loading Batch 194
-      0.0          938,626          1      938,626.0      938,626.0     938,626      938,626          0.0  PushPop  Epoch 3 Loading Batch 91 
-      0.0          936,872          1      936,872.0      936,872.0     936,872      936,872          0.0  PushPop  Epoch 3 Loading Batch 209
-      0.0          935,861          1      935,861.0      935,861.0     935,861      935,861          0.0  PushPop  Epoch 3 Loading Batch 62 
-      0.0          931,594          1      931,594.0      931,594.0     931,594      931,594          0.0  PushPop  Epoch 3 Loading Batch 63 
-      0.0          930,611          1      930,611.0      930,611.0     930,611      930,611          0.0  PushPop  Epoch 3 Loading Batch 181
-      0.0          930,601          1      930,601.0      930,601.0     930,601      930,601          0.0  PushPop  Epoch 3 Loading Batch 232
-      0.0          930,070          1      930,070.0      930,070.0     930,070      930,070          0.0  PushPop  Epoch 3 Loading Batch 96 
-      0.0          929,970          1      929,970.0      929,970.0     929,970      929,970          0.0  PushPop  Epoch 3 Loading Batch 20 
-      0.0          929,840          1      929,840.0      929,840.0     929,840      929,840          0.0  PushPop  Epoch 3 Loading Batch 207
-      0.0          929,089          1      929,089.0      929,089.0     929,089      929,089          0.0  PushPop  Epoch 3 Loading Batch 73 
-      0.0          928,347          1      928,347.0      928,347.0     928,347      928,347          0.0  PushPop  Epoch 3 Loading Batch 214
-      0.0          928,206          1      928,206.0      928,206.0     928,206      928,206          0.0  PushPop  Epoch 3 Loading Batch 269
-      0.0          928,007          1      928,007.0      928,007.0     928,007      928,007          0.0  PushPop  Epoch 3 Loading Batch 13 
-      0.0          927,966          1      927,966.0      927,966.0     927,966      927,966          0.0  PushPop  Epoch 3 Loading Batch 33 
-      0.0          926,794          1      926,794.0      926,794.0     926,794      926,794          0.0  PushPop  Epoch 3 Loading Batch 19 
-      0.0          926,153          1      926,153.0      926,153.0     926,153      926,153          0.0  PushPop  Epoch 3 Loading Batch 68 
-      0.0          925,993          1      925,993.0      925,993.0     925,993      925,993          0.0  PushPop  Epoch 3 Loading Batch 72 
-      0.0          925,552          1      925,552.0      925,552.0     925,552      925,552          0.0  PushPop  Epoch 3 Loading Batch 36 
-      0.0          924,550          1      924,550.0      924,550.0     924,550      924,550          0.0  PushPop  Epoch 3 Loading Batch 173
-      0.0          924,129          1      924,129.0      924,129.0     924,129      924,129          0.0  PushPop  Epoch 3 Loading Batch 136
-      0.0          924,029          1      924,029.0      924,029.0     924,029      924,029          0.0  PushPop  Epoch 3 Loading Batch 195
-      0.0          923,127          1      923,127.0      923,127.0     923,127      923,127          0.0  PushPop  Epoch 3 Loading Batch 47 
-      0.0          923,088          1      923,088.0      923,088.0     923,088      923,088          0.0  PushPop  Epoch 3 Loading Batch 121
-      0.0          922,827          1      922,827.0      922,827.0     922,827      922,827          0.0  PushPop  Epoch 3 Loading Batch 263
-      0.0          922,797          1      922,797.0      922,797.0     922,797      922,797          0.0  PushPop  Epoch 3 Loading Batch 106
-      0.0          921,945          1      921,945.0      921,945.0     921,945      921,945          0.0  PushPop  Epoch 3 Loading Batch 76 
-      0.0          921,695          1      921,695.0      921,695.0     921,695      921,695          0.0  PushPop  Epoch 3 Loading Batch 123
-      0.0          921,665          1      921,665.0      921,665.0     921,665      921,665          0.0  PushPop  Epoch 3 Loading Batch 93 
-      0.0          920,913          1      920,913.0      920,913.0     920,913      920,913          0.0  PushPop  Epoch 3 Loading Batch 7  
-      0.0          920,673          1      920,673.0      920,673.0     920,673      920,673          0.0  PushPop  Epoch 3 Loading Batch 16 
-      0.0          920,222          1      920,222.0      920,222.0     920,222      920,222          0.0  PushPop  Epoch 3 Loading Batch 239
-      0.0          919,881          1      919,881.0      919,881.0     919,881      919,881          0.0  PushPop  Epoch 3 Loading Batch 243
-      0.0          919,310          1      919,310.0      919,310.0     919,310      919,310          0.0  PushPop  Epoch 3 Loading Batch 130
-      0.0          918,840          1      918,840.0      918,840.0     918,840      918,840          0.0  PushPop  Epoch 3 Loading Batch 183
-      0.0          918,158          1      918,158.0      918,158.0     918,158      918,158          0.0  PushPop  Epoch 3 Loading Batch 228
-      0.0          918,108          1      918,108.0      918,108.0     918,108      918,108          0.0  PushPop  Epoch 3 Loading Batch 158
-      0.0          917,427          1      917,427.0      917,427.0     917,427      917,427          0.0  PushPop  Epoch 3 Loading Batch 56 
-      0.0          916,746          1      916,746.0      916,746.0     916,746      916,746          0.0  PushPop  Epoch 3 Loading Batch 32 
-      0.0          916,575          1      916,575.0      916,575.0     916,575      916,575          0.0  PushPop  Epoch 3 Loading Batch 156
-      0.0          916,364          1      916,364.0      916,364.0     916,364      916,364          0.0  PushPop  Epoch 3 Loading Batch 116
-      0.0          916,184          1      916,184.0      916,184.0     916,184      916,184          0.0  PushPop  Epoch 3 Loading Batch 133
-      0.0          916,085          1      916,085.0      916,085.0     916,085      916,085          0.0  PushPop  Epoch 3 Loading Batch 154
-      0.0          915,694          1      915,694.0      915,694.0     915,694      915,694          0.0  PushPop  Epoch 3 Loading Batch 43 
-      0.0          915,583          1      915,583.0      915,583.0     915,583      915,583          0.0  PushPop  Epoch 3 Loading Batch 253
-      0.0          914,772          1      914,772.0      914,772.0     914,772      914,772          0.0  PushPop  Epoch 3 Loading Batch 233
-      0.0          914,121          1      914,121.0      914,121.0     914,121      914,121          0.0  PushPop  Epoch 3 Loading Batch 66 
-      0.0          913,820          1      913,820.0      913,820.0     913,820      913,820          0.0  PushPop  Epoch 3 Loading Batch 34 
-      0.0          913,429          1      913,429.0      913,429.0     913,429      913,429          0.0  PushPop  Epoch 3 Loading Batch 24 
-      0.0          913,239          1      913,239.0      913,239.0     913,239      913,239          0.0  PushPop  Epoch 3 Loading Batch 234
-      0.0          913,228          1      913,228.0      913,228.0     913,228      913,228          0.0  PushPop  Epoch 3 Loading Batch 219
-      0.0          913,129          1      913,129.0      913,129.0     913,129      913,129          0.0  PushPop  Epoch 3 Loading Batch 9  
-      0.0          912,648          1      912,648.0      912,648.0     912,648      912,648          0.0  PushPop  Epoch 3 Loading Batch 224
-      0.0          912,587          1      912,587.0      912,587.0     912,587      912,587          0.0  PushPop  Epoch 3 Loading Batch 260
-      0.0          912,578          1      912,578.0      912,578.0     912,578      912,578          0.0  PushPop  Epoch 3 Loading Batch 227
-      0.0          912,508          1      912,508.0      912,508.0     912,508      912,508          0.0  PushPop  Epoch 3 Loading Batch 22 
-      0.0          912,027          1      912,027.0      912,027.0     912,027      912,027          0.0  PushPop  Epoch 3 Loading Batch 189
-      0.0          911,786          1      911,786.0      911,786.0     911,786      911,786          0.0  PushPop  Epoch 3 Loading Batch 23 
-      0.0          911,536          1      911,536.0      911,536.0     911,536      911,536          0.0  PushPop  Epoch 3 Loading Batch 132
-      0.0          911,536          1      911,536.0      911,536.0     911,536      911,536          0.0  PushPop  Epoch 3 Loading Batch 98 
-      0.0          911,165          1      911,165.0      911,165.0     911,165      911,165          0.0  PushPop  Epoch 3 Loading Batch 84 
-      0.0          911,015          1      911,015.0      911,015.0     911,015      911,015          0.0  PushPop  Epoch 3 Loading Batch 193
-      0.0          910,945          1      910,945.0      910,945.0     910,945      910,945          0.0  PushPop  Epoch 3 Loading Batch 185
-      0.0          910,934          1      910,934.0      910,934.0     910,934      910,934          0.0  PushPop  Epoch 3 Loading Batch 134
-      0.0          910,854          1      910,854.0      910,854.0     910,854      910,854          0.0  PushPop  Epoch 3 Loading Batch 58 
-      0.0          910,513          1      910,513.0      910,513.0     910,513      910,513          0.0  PushPop  Epoch 3 Loading Batch 5  
-      0.0          910,393          1      910,393.0      910,393.0     910,393      910,393          0.0  PushPop  Epoch 3 Loading Batch 213
-      0.0          910,124          1      910,124.0      910,124.0     910,124      910,124          0.0  PushPop  Epoch 3 Loading Batch 67 
-      0.0          909,572          1      909,572.0      909,572.0     909,572      909,572          0.0  PushPop  Epoch 3 Loading Batch 138
-      0.0          909,161          1      909,161.0      909,161.0     909,161      909,161          0.0  PushPop  Epoch 3 Loading Batch 11 
-      0.0          909,101          1      909,101.0      909,101.0     909,101      909,101          0.0  PushPop  Epoch 3 Loading Batch 64 
-      0.0          909,021          1      909,021.0      909,021.0     909,021      909,021          0.0  PushPop  Epoch 3 Loading Batch 118
-      0.0          908,750          1      908,750.0      908,750.0     908,750      908,750          0.0  PushPop  Epoch 3 Loading Batch 248
-      0.0          908,630          1      908,630.0      908,630.0     908,630      908,630          0.0  PushPop  Epoch 3 Loading Batch 100
-      0.0          908,560          1      908,560.0      908,560.0     908,560      908,560          0.0  PushPop  Epoch 3 Loading Batch 256
-      0.0          908,530          1      908,530.0      908,530.0     908,530      908,530          0.0  PushPop  Epoch 3 Loading Batch 108
-      0.0          907,738          1      907,738.0      907,738.0     907,738      907,738          0.0  PushPop  Epoch 3 Loading Batch 42 
-      0.0          906,907          1      906,907.0      906,907.0     906,907      906,907          0.0  PushPop  Epoch 3 Loading Batch 37 
-      0.0          906,807          1      906,807.0      906,807.0     906,807      906,807          0.0  PushPop  Epoch 3 Loading Batch 203
-      0.0          906,677          1      906,677.0      906,677.0     906,677      906,677          0.0  PushPop  Epoch 3 Loading Batch 94 
-      0.0          906,476          1      906,476.0      906,476.0     906,476      906,476          0.0  PushPop  Epoch 3 Loading Batch 60 
-      0.0          906,236          1      906,236.0      906,236.0     906,236      906,236          0.0  PushPop  Epoch 3 Loading Batch 212
-      0.0          906,066          1      906,066.0      906,066.0     906,066      906,066          0.0  PushPop  Epoch 3 Loading Batch 266
-      0.0          906,056          1      906,056.0      906,056.0     906,056      906,056          0.0  PushPop  Epoch 3 Loading Batch 79 
-      0.0          906,035          1      906,035.0      906,035.0     906,035      906,035          0.0  PushPop  Epoch 3 Loading Batch 89 
-      0.0          906,025          1      906,025.0      906,025.0     906,025      906,025          0.0  PushPop  Epoch 3 Loading Batch 167
-      0.0          905,976          1      905,976.0      905,976.0     905,976      905,976          0.0  PushPop  Epoch 3 Loading Batch 235
-      0.0          905,725          1      905,725.0      905,725.0     905,725      905,725          0.0  PushPop  Epoch 3 Loading Batch 126
-      0.0          905,324          1      905,324.0      905,324.0     905,324      905,324          0.0  PushPop  Epoch 3 Loading Batch 217
-      0.0          905,284          1      905,284.0      905,284.0     905,284      905,284          0.0  PushPop  Epoch 3 Loading Batch 125
-      0.0          905,224          1      905,224.0      905,224.0     905,224      905,224          0.0  PushPop  Epoch 3 Loading Batch 44 
-      0.0          905,164          1      905,164.0      905,164.0     905,164      905,164          0.0  PushPop  Epoch 3 Loading Batch 251
-      0.0          904,864          1      904,864.0      904,864.0     904,864      904,864          0.0  PushPop  Epoch 3 Loading Batch 70 
-      0.0          904,803          1      904,803.0      904,803.0     904,803      904,803          0.0  PushPop  Epoch 3 Loading Batch 119
-      0.0          904,513          1      904,513.0      904,513.0     904,513      904,513          0.0  PushPop  Epoch 3 Loading Batch 6  
-      0.0          904,482          1      904,482.0      904,482.0     904,482      904,482          0.0  PushPop  Epoch 3 Loading Batch 74 
-      0.0          904,312          1      904,312.0      904,312.0     904,312      904,312          0.0  PushPop  Epoch 3 Loading Batch 188
-      0.0          903,991          1      903,991.0      903,991.0     903,991      903,991          0.0  PushPop  Epoch 3 Loading Batch 191
-      0.0          903,561          1      903,561.0      903,561.0     903,561      903,561          0.0  PushPop  Epoch 3 Loading Batch 249
-      0.0          903,491          1      903,491.0      903,491.0     903,491      903,491          0.0  PushPop  Epoch 3 Loading Batch 162
-      0.0          903,431          1      903,431.0      903,431.0     903,431      903,431          0.0  PushPop  Epoch 3 Loading Batch 101
-      0.0          903,190          1      903,190.0      903,190.0     903,190      903,190          0.0  PushPop  Epoch 3 Loading Batch 221
-      0.0          903,160          1      903,160.0      903,160.0     903,160      903,160          0.0  PushPop  Epoch 3 Loading Batch 45 
-      0.0          902,829          1      902,829.0      902,829.0     902,829      902,829          0.0  PushPop  Epoch 3 Loading Batch 48 
-      0.0          902,609          1      902,609.0      902,609.0     902,609      902,609          0.0  PushPop  Epoch 3 Loading Batch 51 
-      0.0          902,489          1      902,489.0      902,489.0     902,489      902,489          0.0  PushPop  Epoch 3 Loading Batch 124
-      0.0          902,398          1      902,398.0      902,398.0     902,398      902,398          0.0  PushPop  Epoch 3 Loading Batch 165
-      0.0          902,369          1      902,369.0      902,369.0     902,369      902,369          0.0  PushPop  Epoch 3 Loading Batch 215
-      0.0          902,249          1      902,249.0      902,249.0     902,249      902,249          0.0  PushPop  Epoch 3 Loading Batch 205
-      0.0          901,798          1      901,798.0      901,798.0     901,798      901,798          0.0  PushPop  Epoch 3 Loading Batch 14 
-      0.0          901,166          1      901,166.0      901,166.0     901,166      901,166          0.0  PushPop  Epoch 3 Loading Batch 197
-      0.0          900,926          1      900,926.0      900,926.0     900,926      900,926          0.0  PushPop  Epoch 3 Loading Batch 128
-      0.0          900,756          1      900,756.0      900,756.0     900,756      900,756          0.0  PushPop  Epoch 3 Loading Batch 25 
-      0.0          900,685          1      900,685.0      900,685.0     900,685      900,685          0.0  PushPop  Epoch 3 Loading Batch 166
-      0.0          900,485          1      900,485.0      900,485.0     900,485      900,485          0.0  PushPop  Epoch 3 Loading Batch 201
-      0.0          900,375          1      900,375.0      900,375.0     900,375      900,375          0.0  PushPop  Epoch 3 Loading Batch 110
-      0.0          900,235          1      900,235.0      900,235.0     900,235      900,235          0.0  PushPop  Epoch 3 Loading Batch 12 
-      0.0          900,064          1      900,064.0      900,064.0     900,064      900,064          0.0  PushPop  Epoch 3 Loading Batch 190
-      0.0          899,804          1      899,804.0      899,804.0     899,804      899,804          0.0  PushPop  Epoch 3 Loading Batch 265
-      0.0          899,794          1      899,794.0      899,794.0     899,794      899,794          0.0  PushPop  Epoch 3 Loading Batch 199
-      0.0          899,443          1      899,443.0      899,443.0     899,443      899,443          0.0  PushPop  Epoch 3 Loading Batch 169
-      0.0          899,434          1      899,434.0      899,434.0     899,434      899,434          0.0  PushPop  Epoch 3 Loading Batch 113
-      0.0          899,323          1      899,323.0      899,323.0     899,323      899,323          0.0  PushPop  Epoch 3 Loading Batch 109
-      0.0          898,662          1      898,662.0      898,662.0     898,662      898,662          0.0  PushPop  Epoch 3 Loading Batch 177
-      0.0          898,582          1      898,582.0      898,582.0     898,582      898,582          0.0  PushPop  Epoch 3 Loading Batch 267
-      0.0          898,382          1      898,382.0      898,382.0     898,382      898,382          0.0  PushPop  Epoch 3 Loading Batch 244
-      0.0          898,381          1      898,381.0      898,381.0     898,381      898,381          0.0  PushPop  Epoch 3 Loading Batch 112
-      0.0          898,311          1      898,311.0      898,311.0     898,311      898,311          0.0  PushPop  Epoch 3 Loading Batch 198
-      0.0          898,261          1      898,261.0      898,261.0     898,261      898,261          0.0  PushPop  Epoch 3 Loading Batch 88 
-      0.0          898,221          1      898,221.0      898,221.0     898,221      898,221          0.0  PushPop  Epoch 3 Loading Batch 226
-      0.0          897,490          1      897,490.0      897,490.0     897,490      897,490          0.0  PushPop  Epoch 3 Loading Batch 86 
-      0.0          897,310          1      897,310.0      897,310.0     897,310      897,310          0.0  PushPop  Epoch 3 Loading Batch 252
-      0.0          896,939          1      896,939.0      896,939.0     896,939      896,939          0.0  PushPop  Epoch 3 Loading Batch 271
-      0.0          896,648          1      896,648.0      896,648.0     896,648      896,648          0.0  PushPop  Epoch 3 Loading Batch 137
-      0.0          896,508          1      896,508.0      896,508.0     896,508      896,508          0.0  PushPop  Epoch 3 Loading Batch 163
-      0.0          896,227          1      896,227.0      896,227.0     896,227      896,227          0.0  PushPop  Epoch 3 Loading Batch 187
-      0.0          896,147          1      896,147.0      896,147.0     896,147      896,147          0.0  PushPop  Epoch 3 Loading Batch 175
-      0.0          896,137          1      896,137.0      896,137.0     896,137      896,137          0.0  PushPop  Epoch 3 Loading Batch 71 
-      0.0          895,666          1      895,666.0      895,666.0     895,666      895,666          0.0  PushPop  Epoch 3 Loading Batch 176
-      0.0          895,266          1      895,266.0      895,266.0     895,266      895,266          0.0  PushPop  Epoch 3 Loading Batch 77 
-      0.0          894,814          1      894,814.0      894,814.0     894,814      894,814          0.0  PushPop  Epoch 3 Loading Batch 247
-      0.0          894,694          1      894,694.0      894,694.0     894,694      894,694          0.0  PushPop  Epoch 3 Loading Batch 83 
-      0.0          893,472          1      893,472.0      893,472.0     893,472      893,472          0.0  PushPop  Epoch 3 Loading Batch 92 
-      0.0          893,402          1      893,402.0      893,402.0     893,402      893,402          0.0  PushPop  Epoch 3 Loading Batch 222
-      0.0          893,222          1      893,222.0      893,222.0     893,222      893,222          0.0  PushPop  Epoch 3 Loading Batch 82 
-      0.0          893,011          1      893,011.0      893,011.0     893,011      893,011          0.0  PushPop  Epoch 3 Loading Batch 241
-      0.0          892,720          1      892,720.0      892,720.0     892,720      892,720          0.0  PushPop  Epoch 3 Loading Batch 59 
-      0.0          892,521          1      892,521.0      892,521.0     892,521      892,521          0.0  PushPop  Epoch 3 Loading Batch 117
-      0.0          892,179          1      892,179.0      892,179.0     892,179      892,179          0.0  PushPop  Epoch 3 Loading Batch 246
-      0.0          891,869          1      891,869.0      891,869.0     891,869      891,869          0.0  PushPop  Epoch 3 Loading Batch 65 
-      0.0          891,428          1      891,428.0      891,428.0     891,428      891,428          0.0  PushPop  Epoch 3 Loading Batch 236
-      0.0          891,368          1      891,368.0      891,368.0     891,368      891,368          0.0  PushPop  Epoch 3 Loading Batch 196
-      0.0          891,318          1      891,318.0      891,318.0     891,318      891,318          0.0  PushPop  Epoch 3 Loading Batch 159
-      0.0          891,208          1      891,208.0      891,208.0     891,208      891,208          0.0  PushPop  Epoch 3 Loading Batch 8  
-      0.0          890,987          1      890,987.0      890,987.0     890,987      890,987          0.0  PushPop  Epoch 3 Loading Batch 230
-      0.0          890,888          1      890,888.0      890,888.0     890,888      890,888          0.0  PushPop  Epoch 3 Loading Batch 21 
-      0.0          890,867          1      890,867.0      890,867.0     890,867      890,867          0.0  PushPop  Epoch 3 Loading Batch 114
-      0.0          890,517          1      890,517.0      890,517.0     890,517      890,517          0.0  PushPop  Epoch 3 Loading Batch 186
-      0.0          890,166          1      890,166.0      890,166.0     890,166      890,166          0.0  PushPop  Epoch 3 Loading Batch 127
-      0.0          889,895          1      889,895.0      889,895.0     889,895      889,895          0.0  PushPop  Epoch 3 Loading Batch 26 
-      0.0          889,855          1      889,855.0      889,855.0     889,855      889,855          0.0  PushPop  Epoch 3 Loading Batch 160
-      0.0          889,776          1      889,776.0      889,776.0     889,776      889,776          0.0  PushPop  Epoch 3 Loading Batch 102
-      0.0          889,404          1      889,404.0      889,404.0     889,404      889,404          0.0  PushPop  Epoch 3 Loading Batch 38 
-      0.0          889,224          1      889,224.0      889,224.0     889,224      889,224          0.0  PushPop  Epoch 3 Loading Batch 4  
-      0.0          888,884          1      888,884.0      888,884.0     888,884      888,884          0.0  PushPop  Epoch 3 Loading Batch 69 
-      0.0          888,523          1      888,523.0      888,523.0     888,523      888,523          0.0  PushPop  Epoch 3 Loading Batch 17 
-      0.0          888,503          1      888,503.0      888,503.0     888,503      888,503          0.0  PushPop  Epoch 3 Loading Batch 192
-      0.0          888,392          1      888,392.0      888,392.0     888,392      888,392          0.0  PushPop  Epoch 3 Loading Batch 171
-      0.0          888,202          1      888,202.0      888,202.0     888,202      888,202          0.0  PushPop  Epoch 3 Loading Batch 52 
-      0.0          888,062          1      888,062.0      888,062.0     888,062      888,062          0.0  PushPop  Epoch 3 Loading Batch 242
-      0.0          888,062          1      888,062.0      888,062.0     888,062      888,062          0.0  PushPop  Epoch 3 Loading Batch 245
-      0.0          887,581          1      887,581.0      887,581.0     887,581      887,581          0.0  PushPop  Epoch 3 Loading Batch 57 
-      0.0          887,401          1      887,401.0      887,401.0     887,401      887,401          0.0  PushPop  Epoch 3 Loading Batch 174
-      0.0          887,010          1      887,010.0      887,010.0     887,010      887,010          0.0  PushPop  Epoch 3 Loading Batch 39 
-      0.0          886,800          1      886,800.0      886,800.0     886,800      886,800          0.0  PushPop  Epoch 3 Loading Batch 49 
-      0.0          886,359          1      886,359.0      886,359.0     886,359      886,359          0.0  PushPop  Epoch 3 Loading Batch 172
-      0.0          886,359          1      886,359.0      886,359.0     886,359      886,359          0.0  PushPop  Epoch 3 Loading Batch 50 
-      0.0          886,299          1      886,299.0      886,299.0     886,299      886,299          0.0  PushPop  Epoch 3 Loading Batch 153
-      0.0          886,058          1      886,058.0      886,058.0     886,058      886,058          0.0  PushPop  Epoch 3 Loading Batch 182
-      0.0          886,019          1      886,019.0      886,019.0     886,019      886,019          0.0  PushPop  Epoch 3 Loading Batch 202
-      0.0          885,998          1      885,998.0      885,998.0     885,998      885,998          0.0  PushPop  Epoch 3 Loading Batch 218
-      0.0          884,936          1      884,936.0      884,936.0     884,936      884,936          0.0  PushPop  Epoch 3 Loading Batch 15 
-      0.0          884,916          1      884,916.0      884,916.0     884,916      884,916          0.0  PushPop  Epoch 3 Loading Batch 178
-      0.0          884,796          1      884,796.0      884,796.0     884,796      884,796          0.0  PushPop  Epoch 3 Loading Batch 95 
-      0.0          884,725          1      884,725.0      884,725.0     884,725      884,725          0.0  PushPop  Epoch 3 Loading Batch 250
-      0.0          884,275          1      884,275.0      884,275.0     884,275      884,275          0.0  PushPop  Epoch 3 Loading Batch 111
-      0.0          883,794          1      883,794.0      883,794.0     883,794      883,794          0.0  PushPop  Epoch 3 Loading Batch 262
-      0.0          883,263          1      883,263.0      883,263.0     883,263      883,263          0.0  PushPop  Epoch 3 Loading Batch 229
-      0.0          883,163          1      883,163.0      883,163.0     883,163      883,163          0.0  PushPop  Epoch 3 Loading Batch 237
-      0.0          882,892          1      882,892.0      882,892.0     882,892      882,892          0.0  PushPop  Epoch 3 Loading Batch 264
-      0.0          882,873          1      882,873.0      882,873.0     882,873      882,873          0.0  PushPop  Epoch 3 Loading Batch 81 
-      0.0          882,833          1      882,833.0      882,833.0     882,833      882,833          0.0  PushPop  Epoch 3 Loading Batch 270
-      0.0          882,723          1      882,723.0      882,723.0     882,723      882,723          0.0  PushPop  Epoch 3 Loading Batch 99 
-      0.0          882,552          1      882,552.0      882,552.0     882,552      882,552          0.0  PushPop  Epoch 3 Loading Batch 161
-      0.0          882,502          1      882,502.0      882,502.0     882,502      882,502          0.0  PushPop  Epoch 3 Loading Batch 261
-      0.0          881,661          1      881,661.0      881,661.0     881,661      881,661          0.0  PushPop  Epoch 3 Loading Batch 122
-      0.0          881,320          1      881,320.0      881,320.0     881,320      881,320          0.0  PushPop  Epoch 3 Loading Batch 170
-      0.0          881,139          1      881,139.0      881,139.0     881,139      881,139          0.0  PushPop  Epoch 3 Loading Batch 168
-      0.0          881,069          1      881,069.0      881,069.0     881,069      881,069          0.0  PushPop  Epoch 3 Loading Batch 87 
-      0.0          879,957          1      879,957.0      879,957.0     879,957      879,957          0.0  PushPop  Epoch 3 Loading Batch 255
-      0.0          879,697          1      879,697.0      879,697.0     879,697      879,697          0.0  PushPop  Epoch 3 Loading Batch 216
-      0.0          879,496          1      879,496.0      879,496.0     879,496      879,496          0.0  PushPop  Epoch 3 Loading Batch 35 
-      0.0          879,266          1      879,266.0      879,266.0     879,266      879,266          0.0  PushPop  Epoch 3 Loading Batch 211
-      0.0          878,885          1      878,885.0      878,885.0     878,885      878,885          0.0  PushPop  Epoch 3 Loading Batch 78 
-      0.0          878,785          1      878,785.0      878,785.0     878,785      878,785          0.0  PushPop  Epoch 3 Loading Batch 200
-      0.0          878,524          1      878,524.0      878,524.0     878,524      878,524          0.0  PushPop  Epoch 3 Loading Batch 240
-      0.0          877,763          1      877,763.0      877,763.0     877,763      877,763          0.0  PushPop  Epoch 3 Loading Batch 220
-      0.0          877,412          1      877,412.0      877,412.0     877,412      877,412          0.0  PushPop  Epoch 3 Loading Batch 204
-      0.0          877,292          1      877,292.0      877,292.0     877,292      877,292          0.0  PushPop  Epoch 3 Loading Batch 53 
-      0.0          877,212          1      877,212.0      877,212.0     877,212      877,212          0.0  PushPop  Epoch 3 Loading Batch 225
-      0.0          875,849          1      875,849.0      875,849.0     875,849      875,849          0.0  PushPop  Epoch 3 Loading Batch 231
-      0.0          874,537          1      874,537.0      874,537.0     874,537      874,537          0.0  PushPop  Epoch 3 Loading Batch 97 
-      0.0          874,406          1      874,406.0      874,406.0     874,406      874,406          0.0  PushPop  Epoch 3 Loading Batch 40 
-      0.0          873,455          1      873,455.0      873,455.0     873,455      873,455          0.0  PushPop  Epoch 3 Loading Batch 131
-      0.0          873,405          1      873,405.0      873,405.0     873,405      873,405          0.0  PushPop  Epoch 3 Loading Batch 85 
-      0.0          872,924          1      872,924.0      872,924.0     872,924      872,924          0.0  PushPop  Epoch 3 Loading Batch 80 
-      0.0          871,772          1      871,772.0      871,772.0     871,772      871,772          0.0  PushPop  Epoch 3 Loading Batch 104
-      0.0          870,780          1      870,780.0      870,780.0     870,780      870,780          0.0  PushPop  Epoch 3 Loading Batch 184
-      0.0          870,379          1      870,379.0      870,379.0     870,379      870,379          0.0  PushPop  Epoch 3 Loading Batch 107
-      0.0          869,989          1      869,989.0      869,989.0     869,989      869,989          0.0  PushPop  Epoch 3 Loading Batch 55 
-      0.0          869,297          1      869,297.0      869,297.0     869,297      869,297          0.0  PushPop  Epoch 3 Loading Batch 180
-      0.0          868,876          1      868,876.0      868,876.0     868,876      868,876          0.0  PushPop  Epoch 3 Loading Batch 208
-      0.0          867,704          1      867,704.0      867,704.0     867,704      867,704          0.0  PushPop  Epoch 3 Loading Batch 41 
-      0.0          867,483          1      867,483.0      867,483.0     867,483      867,483          0.0  PushPop  Epoch 3 Loading Batch 129
-      0.0          864,829          1      864,829.0      864,829.0     864,829      864,829          0.0  PushPop  Epoch 3 Loading Batch 29 
-      0.0          864,208          1      864,208.0      864,208.0     864,208      864,208          0.0  PushPop  Epoch 3 Loading Batch 259
-      0.0          862,485          1      862,485.0      862,485.0     862,485      862,485          0.0  PushPop  Epoch 3 Loading Batch 155
-      0.0          861,863          1      861,863.0      861,863.0     861,863      861,863          0.0  PushPop  Epoch 3 Loading Batch 206
-      0.0          861,613          1      861,613.0      861,613.0     861,613      861,613          0.0  PushPop  Epoch 3 Loading Batch 258
-      0.0          858,317          1      858,317.0      858,317.0     858,317      858,317          0.0  PushPop  Epoch 3 Loading Batch 115
-      0.0          855,812          1      855,812.0      855,812.0     855,812      855,812          0.0  PushPop  Epoch 3 Loading Batch 1  
-      0.0          852,466          1      852,466.0      852,466.0     852,466      852,466          0.0  PushPop  Epoch 3 Loading Batch 157
-      0.0          849,050          1      849,050.0      849,050.0     849,050      849,050          0.0  PushPop  Epoch 3 Loading Batch 27 
-      0.0          848,699          1      848,699.0      848,699.0     848,699      848,699          0.0  PushPop  Epoch 3 Loading Batch 18 
-      0.0          839,382          1      839,382.0      839,382.0     839,382      839,382          0.0  PushPop  Epoch 3 Loading Batch 257
-      0.0          790,821          1      790,821.0      790,821.0     790,821      790,821          0.0  PushPop  Epoch 3 Loading Batch 2  
-      0.0          771,675          1      771,675.0      771,675.0     771,675      771,675          0.0  PushPop  Epoch 3 Loading Batch 141
-      0.0          767,157          1      767,157.0      767,157.0     767,157      767,157          0.0  PushPop  Epoch 3 Loading Batch 143
-      0.0          766,326          1      766,326.0      766,326.0     766,326      766,326          0.0  PushPop  Epoch 3 Loading Batch 142
-      0.0          766,075          1      766,075.0      766,075.0     766,075      766,075          0.0  PushPop  Epoch 3 Loading Batch 148
-      0.0          764,562          1      764,562.0      764,562.0     764,562      764,562          0.0  PushPop  Epoch 3 Loading Batch 140
-      0.0          764,312          1      764,312.0      764,312.0     764,312      764,312          0.0  PushPop  Epoch 3 Loading Batch 146
-      0.0          763,450          1      763,450.0      763,450.0     763,450      763,450          0.0  PushPop  Epoch 3 Loading Batch 30 
-      0.0          759,834          1      759,834.0      759,834.0     759,834      759,834          0.0  PushPop  Epoch 3 Loading Batch 147
-      0.0          758,902          1      758,902.0      758,902.0     758,902      758,902          0.0  PushPop  Epoch 3 Loading Batch 145
-      0.0          753,141          1      753,141.0      753,141.0     753,141      753,141          0.0  PushPop  Epoch 3 Loading Batch 144
-      0.0          750,586          1      750,586.0      750,586.0     750,586      750,586          0.0  PushPop  Epoch 3 Loading Batch 272
-      0.0          747,741          1      747,741.0      747,741.0     747,741      747,741          0.0  PushPop  Epoch 3 Loading Batch 151
-      0.0          744,084          1      744,084.0      744,084.0     744,084      744,084          0.0  PushPop  Epoch 3 Loading Batch 139
-      0.0          363,716          1      363,716.0      363,716.0     363,716      363,716          0.0  PushPop  Epoch 3 Loading Batch 274
-
-[4/8] Executing 'osrt_sum' stats report
-
- Time (%)  Total Time (ns)  Num Calls     Avg (ns)         Med (ns)       Min (ns)      Max (ns)      StdDev (ns)            Name         
- --------  ---------------  ---------  ---------------  ---------------  -----------  -------------  -------------  ----------------------
-     33.5   47,256,205,314        472    100,119,079.1    100,119,654.0  100,046,533    100,391,805       16,714.3  poll                  
-     33.4   47,094,440,993        549     85,782,224.0     12,546,722.0       34,434    163,433,174   75,991,834.8  pthread_cond_wait     
-     33.1   46,763,678,557         29  1,612,540,639.9  1,722,078,922.0    5,706,977  1,732,322,048  412,104,630.2  sem_timedwait         
-      0.0       29,212,638         52        561,781.5        499,354.0       13,104      5,073,138    1,039,517.0  pthread_cond_timedwait
-      0.0       25,605,161        157        163,090.2         91,380.0        5,680      3,441,282      288,764.6  writev                
-      0.0       14,925,775         30        497,525.8        489,971.5      274,982        990,433      128,497.2  open64                
-      0.0        7,687,431          1      7,687,431.0      7,687,431.0    7,687,431      7,687,431            0.0  fopen64               
-      0.0        2,935,962        676          4,343.1          4,143.0        1,042         15,689        1,332.0  pthread_cond_signal   
-      0.0        1,595,782         89         17,930.1          9,267.0        1,533         62,476       18,917.7  write                 
-      0.0        1,595,117         21         75,958.0         85,489.0        1,713        133,659       34,211.5  pthread_rwlock_wrlock 
-      0.0          401,547          1        401,547.0        401,547.0      401,547        401,547            0.0  fclose                
-      0.0          319,294          1        319,294.0        319,294.0      319,294        319,294            0.0  stat64                
-      0.0           93,004         11          8,454.9          1,483.0        1,032         34,695       13,346.1  pthread_mutex_lock    
-      0.0           48,761          1         48,761.0         48,761.0       48,761         48,761            0.0  pthread_rwlock_rdlock 
-
-[5/8] Executing 'cuda_api_sum' stats report
-
- Time (%)  Total Time (ns)  Num Calls    Avg (ns)    Med (ns)  Min (ns)   Max (ns)    StdDev (ns)                       Name                     
- --------  ---------------  ---------  ------------  --------  --------  -----------  ------------  ---------------------------------------------
-     96.5   40,686,370,130        580  70,148,914.0   4,002.5     2,314  149,553,653  74,287,771.7  cudaStreamSynchronize                        
-      2.7    1,150,941,194    231,935       4,962.3   4,749.0     2,885      174,314       2,282.5  cudaLaunchKernel                             
-      0.6      243,006,970      1,402     173,328.8  15,970.0     8,005      900,705     317,938.4  cudaMemcpyAsync                              
-      0.1       51,241,649      9,590       5,343.2   5,089.0     4,539      101,799       1,719.5  cudaMemsetAsync                              
-      0.0        9,404,225      6,600       1,424.9   1,373.0       551       53,339         781.6  cudaOccupancyMaxActiveBlocksPerMultiprocessor
-      0.0        2,441,218      2,466         990.0     832.0       711       14,698         503.2  cudaStreamIsCapturing_v10000                 
-      0.0           15,589          1      15,589.0  15,589.0    15,589       15,589           0.0  cuProfilerStart                              
-
-[6/8] Executing 'cuda_gpu_kern_sum' stats report
-
- Time (%)  Total Time (ns)  Instances   Avg (ns)     Med (ns)    Min (ns)   Max (ns)   StdDev (ns)                                                  Name                                                
- --------  ---------------  ---------  -----------  -----------  ---------  ---------  -----------  ----------------------------------------------------------------------------------------------------
-     25.8   11,875,191,527      2,192  5,417,514.4  5,420,784.0  2,446,663  5,495,344    180,319.9  fmha_cutlassB_bf16_aligned_64x64_k64_seqaligned_sm80(PyTorchMemEffAttention::AttentionBackwardKerne…
-     14.6    6,715,934,447      4,384  1,531,919.4  1,534,820.0    679,682  1,547,556     51,519.0  void at::native::<unnamed>::GammaBetaBackwardCUDAKernel_32x32<float, float>(long, long, const T1 *,…
-     11.3    5,196,818,429      2,192  2,370,811.3  2,374,983.0  1,067,459  2,385,031     78,843.3  fmha_cutlassF_bf16_aligned_64x64_rf_sm80(PyTorchMemEffAttention::AttentionKernel<cutlass::bfloat16_…
-      6.1    2,798,082,872      4,384    638,248.8    639,554.0    281,761    640,354     21,557.9  void at::native::<unnamed>::vectorized_layer_norm_kernel<float, float>(int, T2, const T1 *, const T…
-      4.1    1,911,160,446      4,384    435,939.9    436,993.0    192,128    438,785     14,751.4  void at::native::<unnamed>::layer_norm_grad_input_kernel_vectorized<float, float>(const T1 *, const…
-      4.0    1,839,701,234      6,568    280,100.7    312,513.0     57,440    412,194    121,003.3  ampere_bf16_s1688gemm_bf16_128x128_ldg8_relu_f2f_stages_32x1_tn                                     
-      3.7    1,714,409,410      9,316    184,028.5    190,880.0     14,848    221,633     32,714.4  void at::native::reduce_kernel<(int)128, (int)4, at::native::ReduceOp<c10::BFloat16, at::native::fu…
-      3.7    1,700,220,817     29,592     57,455.4      5,728.0      2,272    175,104     76,865.1  void at::native::unrolled_elementwise_kernel<at::native::direct_copy_kernel_cuda(at::TensorIterator…
-      3.1    1,441,465,975      2,192    657,603.1    658,850.0    293,089    661,890     22,042.2  void at::native::<unnamed>::CatArrayBatchedCopy<at::native::<unnamed>::OpaqueType<(unsigned int)2>,…
-      2.5    1,129,049,196      2,192    515,077.2    516,257.0    219,041    527,714     18,326.3  void at::native::vectorized_elementwise_kernel<(int)4, at::native::GeluBackwardCUDAKernelImpl(at::T…
-      2.3    1,060,143,410      2,740    386,913.7    479,489.0      8,288    480,289    183,989.1  void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl_nocast<at::n…
-      2.2    1,019,139,473      4,658    218,793.4    108,992.0     27,841    355,649    124,845.7  ampere_bf16_s1688gemm_bf16_128x128_ldg8_f2f_stages_32x1_nn                                          
-      2.1      987,882,667      4,658    212,083.0    224,673.0      2,272    228,096     52,888.2  void at::native::unrolled_elementwise_kernel<at::native::CUDAFunctor_add<float>, at::detail::Array<…
-      2.1      946,902,806      4,384    215,990.6    216,449.0     88,128    218,560      7,735.3  void at::native::vectorized_elementwise_kernel<(int)4, at::native::CUDAFunctor_add<float>, at::deta…
-      1.9      874,456,318     23,564     37,109.8      5,504.0      1,696    171,297     65,664.4  void at::native::unrolled_elementwise_kernel<at::native::direct_copy_kernel_cuda(at::TensorIterator…
-      1.8      839,787,159      4,384    191,557.3    163,392.0     78,304    232,129     31,072.5  ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_nn                                         
-      1.8      807,847,225      2,192    368,543.4    369,281.0    164,320    370,369     12,356.6  void at::native::vectorized_elementwise_kernel<(int)4, at::native::GeluCUDAKernelImpl(at::TensorIte…
-      1.4      667,795,107      4,376    152,604.0    104,864.5     49,664    228,289     58,079.1  ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_64x3_nt                                         
-      1.0      458,695,017      2,184    210,025.2    209,121.0    199,968    228,449      4,444.7  ampere_bf16_s16816gemm_bf16_256x128_ldg8_f2f_stages_64x3_nt                                         
-      1.0      444,496,507      2,192    202,781.3    203,105.0     97,632    205,728      6,310.2  ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_32x5_tn                                    
-      0.9      427,690,703      2,192    195,114.4    195,520.0     86,112    195,649      6,595.5  void at::native::vectorized_elementwise_kernel<(int)4, at::native::FillFunctor<unsigned char>, at::…
-      0.8      349,205,088      2,192    159,308.9    159,584.0     75,424    166,273      5,307.7  void cutlass::Kernel<cutlass_80_tensorop_bf16_s16816gemm_bf16_128x128_64x3_nt_align8>(T1::Params)   
-      0.7      322,703,616     70,000      4,610.1      4,576.0      4,383      5,280         95.0  void at::native::im2col_kernel<float>(long, const T1 *, long, long, long, long, long, long, long, l…
-      0.2       82,058,796        548    149,742.3     77,888.0     16,672    265,889    115,048.0  void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl<at::native::…
-      0.1       49,632,099      9,042      5,489.1      5,152.0      4,383      8,992      1,194.5  void splitKreduce_kernel<(int)32, (int)16, int, __nv_bfloat16, __nv_bfloat16, float, __nv_bfloat16,…
-      0.1       44,603,759        274    162,787.4    163,104.0     71,009    164,513      5,580.7  void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl_nocast<at::n…
-      0.1       28,770,586        274    105,002.1    105,216.0     47,360    105,505      3,496.4  void cutlass::Kernel<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_32x32_32x1_tn_align2>(T1::Param…
-      0.1       23,742,495        822     28,883.8     29,440.0     26,208     30,593      1,159.8  void at::native::<unnamed>::multi_tensor_apply_kernel<at::native::<unnamed>::TensorListScalarListMe…
-      0.1       23,585,553      2,192     10,759.8     10,752.0     10,464     11,265        128.7  void at::native::unrolled_elementwise_kernel<at::native::direct_copy_kernel_cuda(at::TensorIterator…
-      0.0       23,002,137        274     83,949.4     84,288.0     43,296     87,552      2,840.5  void at::native::reduce_kernel<(int)128, (int)4, at::native::ReduceOp<float, at::native::func_wrapp…
-      0.0       17,676,681        274     64,513.4     64,608.0     32,832     65,376      1,932.5  void cutlass::Kernel<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_32x32_32x1_tn_align8>(T1::Param…
-      0.0       16,709,335        274     60,983.0     60,960.0     29,184     63,232      2,011.7  void cutlass::Kernel<cutlass_80_tensorop_bf16_s16816gemm_bf16_64x64_64x4_nt_align2>(T1::Params)     
-      0.0       16,620,996        273     60,882.8     60,896.0     59,136     63,137        710.4  ampere_s16816gemm_bf16_128x64_ldg8_stages_64x4_nt                                                   
-      0.0       15,044,873        548     27,454.1     27,520.0     25,120     28,832        489.7  void at::native::<unnamed>::multi_tensor_apply_kernel<at::native::<unnamed>::TensorListMetadata<(in…
-      0.0       14,564,794        548     26,578.1     25,552.0     10,176     28,768      1,974.2  void at::native::elementwise_kernel<(int)128, (int)2, void at::native::gpu_kernel_impl_nocast<at::n…
-      0.0       14,184,920      3,014      4,706.3      3,488.0      1,983     11,136      2,903.4  void at::native::vectorized_elementwise_kernel<(int)4, at::native::FillFunctor<c10::BFloat16>, at::…
-      0.0       13,598,217        274     49,628.5     49,696.0     19,807     51,424      1,854.9  void at::native::<unnamed>::CatArrayBatchedCopy<at::native::<unnamed>::OpaqueType<(unsigned int)2>,…
-      0.0       13,297,527        548     24,265.6     24,336.0     21,696     26,816      1,819.0  void at::native::<unnamed>::multi_tensor_apply_kernel<at::native::<unnamed>::TensorListMetadata<(in…
-      0.0       12,387,104        822     15,069.5     15,072.0     14,368     17,344        245.4  void at::native::<unnamed>::multi_tensor_apply_kernel<at::native::<unnamed>::TensorListMetadata<(in…
-      0.0       10,630,201        548     19,398.2     19,408.0     17,856     20,480        507.3  void at::native::<unnamed>::multi_tensor_apply_kernel<at::native::<unnamed>::TensorListScalarListMe…
-      0.0       10,623,147        548     19,385.3     19,360.0     18,080     20,640        365.2  void at::native::<unnamed>::multi_tensor_apply_kernel<at::native::<unnamed>::TensorListMetadata<(in…
-      0.0        9,069,601      1,096      8,275.2      9,072.5      1,535     14,112      4,222.2  void at::native::vectorized_elementwise_kernel<(int)4, at::native::neg_kernel_cuda(at::TensorIterat…
-      0.0        8,297,791      2,192      3,785.5      3,776.0      3,712      4,000         25.0  void at::native::vectorized_elementwise_kernel<(int)4, at::native::<unnamed>::masked_fill_kernel(at…
-      0.0        8,245,145        549     15,018.5     10,912.0      5,856     22,144      4,487.0  void at::native::reduce_kernel<(int)512, (int)1, at::native::ReduceOp<float, at::native::MeanOps<fl…
-      0.0        7,751,027        274     28,288.4     28,320.0     14,080     29,152        881.5  void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl<at::native::…
-      0.0        7,725,781      2,192      3,524.5      3,520.0      3,456      3,585         19.3  void at::native::vectorized_elementwise_kernel<(int)4, at::native::logical_not_kernel_cuda(at::Tens…
-      0.0        7,406,038        274     27,029.3     27,040.0     13,760     28,192        851.7  void at::native::<unnamed>::CatArrayBatchedCopy_contig<at::native::<unnamed>::OpaqueType<(unsigned …
-      0.0        7,221,260      1,096      6,588.7      3,680.0      1,375     15,200      5,300.0  void at::native::vectorized_elementwise_kernel<(int)4, at::native::AUnaryFunctor<float, float, floa…
-      0.0        6,913,972        274     25,233.5     25,280.0     12,800     25,792        779.0  void at::native::unrolled_elementwise_kernel<at::native::BinaryFunctor<float, float, float, at::nat…
-      0.0        6,018,905        548     10,983.4     10,880.0      5,152     12,288        583.9  void at::native::vectorized_elementwise_kernel<(int)4, void at::native::<unnamed>::pow_tensor_scala…
-      0.0        5,920,653        548     10,804.1      7,776.0      3,328     19,232      7,323.7  void at::native::reduce_kernel<(int)512, (int)1, at::native::ReduceOp<c10::BFloat16, at::native::Me…
-      0.0        5,253,231        274     19,172.4     19,200.0     10,240     19,936        580.8  void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl<at::native::…
-      0.0        4,609,550        274     16,823.2     16,863.5      6,720     17,761        774.8  void at::native::vectorized_elementwise_kernel<(int)4, at::native::BinaryFunctor<float, float, floa…
-      0.0        3,770,671        548      6,880.8      4,704.0      2,272     11,456      4,325.4  void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl_nocast<at::n…
-      0.0        3,442,859        274     12,565.2     12,576.0     12,064     12,928        120.8  void at::native::<unnamed>::multi_tensor_apply_kernel<at::native::<unnamed>::TensorListMetadata<(in…
-      0.0        3,222,476        274     11,760.9     11,776.0      6,752     11,841        304.9  void at::native::elementwise_kernel<(int)128, (int)2, void at::native::gpu_kernel_impl_nocast<at::n…
-      0.0        2,522,026        274      9,204.5      9,264.0      5,312     10,304        439.4  void at::native::vectorized_elementwise_kernel<(int)4, at::native::exp_kernel_cuda(at::TensorIterat…
-      0.0        2,413,383        274      8,808.0      8,800.0      5,120      9,184        243.3  void at::native::vectorized_elementwise_kernel<(int)4, at::native::CUDAFunctor_add<c10::BFloat16>, …
-      0.0        1,621,990         16    101,374.4     98,688.0     91,840    109,729      5,737.3  ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_nt                                         
-      0.0        1,424,708          8    178,088.5    178,064.5    177,504    178,881        445.1  ampere_bf16_s1688gemm_bf16_256x128_ldg8_relu_f2f_stages_32x1_tn                                     
-      0.0        1,392,714        274      5,082.9      5,057.0      3,424      5,536        139.3  void splitKreduce_kernel<(int)32, (int)16, int, float, __nv_bfloat16, float, __nv_bfloat16, (bool)1…
-      0.0        1,203,630        548      2,196.4      2,208.0      1,504      2,848        250.8  void at::native::vectorized_elementwise_kernel<(int)4, at::native::neg_kernel_cuda(at::TensorIterat…
-      0.0        1,174,306        274      4,285.8      4,288.0      3,552      4,640        130.5  void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl<at::native::…
-      0.0          846,687        548      1,545.0      1,568.0      1,375      1,792         84.3  void at::native::vectorized_elementwise_kernel<(int)4, at::native::BUnaryFunctor<float, float, floa…
-      0.0          710,772        548      1,297.0      1,280.0      1,215      1,377         50.8  void at::native::vectorized_elementwise_kernel<(int)4, at::native::FillFunctor<float>, at::detail::…
-      0.0          672,478        274      2,454.3      2,464.0      2,335      2,656         75.2  void at::native::vectorized_elementwise_kernel<(int)4, at::native::<unnamed>::lerp_scalar_kernel(at…
-      0.0           31,296          1     31,296.0     31,296.0     31,296     31,296          0.0  void cutlass::Kernel<cutlass_80_tensorop_s16816gemm_bf16_64x64_64x6_nt_align8>(T1::Params)          
-
-[7/8] Executing 'cuda_gpu_meEpoch 4/5 | step 830 | batch 8/274 | loss -1.4157
-Epoch 4/5 | step 840 | batch 18/274 | loss -1.4131
-Epoch 4/5 | step 850 | batch 28/274 | loss -1.3932
-Epoch 4/5 | step 860 | batch 38/274 | loss -1.4207
-Epoch 4/5 | step 870 | batch 48/274 | loss -1.4386
-Epoch 4/5 | step 880 | batch 58/274 | loss -1.4375
-Epoch 4/5 | step 890 | batch 68/274 | loss -1.3577
-Epoch 4/5 | step 900 | batch 78/274 | loss -1.4417
-Epoch 4/5 | step 910 | batch 88/274 | loss -1.4584
-Epoch 4/5 | step 920 | batch 98/274 | loss -1.4359
-Epoch 4/5 | step 930 | batch 108/274 | loss -1.3871
-Epoch 4/5 | step 940 | batch 118/274 | loss -1.4104
-Epoch 4/5 | step 950 | batch 128/274 | loss -1.4372
-Epoch 4/5 | step 960 | batch 138/274 | loss -1.3635
-Epoch 4/5 | step 970 | batch 148/274 | loss -1.4417
-Epoch 4/5 | step 980 | batch 158/274 | loss -1.4139
-Epoch 4/5 | step 990 | batch 168/274 | loss -1.4426
-Epoch 4/5 | step 1000 | batch 178/274 | loss -1.4375
-Epoch 4/5 | step 1010 | batch 188/274 | loss -1.4154
-Epoch 4/5 | step 1020 | batch 198/274 | loss -1.4515
-Epoch 4/5 | step 1030 | batch 208/274 | loss -1.5027
-Epoch 4/5 | step 1040 | batch 218/274 | loss -1.4814
-Epoch 4/5 | step 1050 | batch 228/274 | loss -1.4440
-Epoch 4/5 | step 1060 | batch 238/274 | loss -1.4800
-Epoch 4/5 | step 1070 | batch 248/274 | loss -1.4157
-Epoch 4/5 | step 1080 | batch 258/274 | loss -1.4954
-Epoch 4/5 | step 1090 | batch 268/274 | loss -1.4658
-Epoch 4 done | avg loss: -1.4332 | prior_var_mean: 1.0065
-Epoch 5/5 | step 1100 | batch 4/274 | loss -1.4582
-Epoch 5/5 | step 1110 | batch 14/274 | loss -1.5266
-Epoch 5/5 | step 1120 | batch 24/274 | loss -1.4620
-Epoch 5/5 | step 1130 | batch 34/274 | loss -1.4264
-Epoch 5/5 | step 1140 | batch 44/274 | loss -1.4799
-Epoch 5/5 | step 1150 | batch 54/274 | loss -1.4587
-Epoch 5/5 | step 1160 | batch 64/274 | loss -1.5173
-Epoch 5/5 | step 1170 | batch 74/274 | loss -1.4741
-Epoch 5/5 | step 1180 | batch 84/274 | loss -1.5094
-Epoch 5/5 | step 1190 | batch 94/274 | loss -1.5183
-Epoch 5/5 | step 1200 | batch 104/274 | loss -1.5094
-Epoch 5/5 | step 1210 | batch 114/274 | loss -1.5238
-Epoch 5/5 | step 1220 | batch 124/274 | loss -1.4910
-Epoch 5/5 | step 1230 | batch 134/274 | loss -1.5516
-Epoch 5/5 | step 1240 | batch 144/274 | loss -1.5244
-Epoch 5/5 | step 1250 | batch 154/274 | loss -1.5183
-Epoch 5/5 | step 1260 | batch 164/274 | loss -1.5108
-Epoch 5/5 | step 1270 | batch 174/274 | loss -1.5368
-Epoch 5/5 | step 1280 | batch 184/274 | loss -1.5421
-Epoch 5/5 | step 1290 | batch 194/274 | loss -1.5310
-Epoch 5/5 | step 1300 | batch 204/274 | loss -1.5137
-Epoch 5/5 | step 1310 | batch 214/274 | loss -1.5115
-Epoch 5/5 | step 1320 | batch 224/274 | loss -1.5718
-Epoch 5/5 | step 1330 | batch 234/274 | loss -1.5080
-Epoch 5/5 | step 1340 | batch 244/274 | loss -1.5631
-Epoch 5/5 | step 1350 | batch 254/274 | loss -1.5314
-Epoch 5/5 | step 1360 | batch 264/274 | loss -1.5645
-Epoch 5/5 | step 1370 | batch 274/274 | loss -1.5795
-Epoch 5 done | avg loss: -1.5106 | prior_var_mean: 1.0017
-
-✅ Training complete!
-m_time_sum' stats report
-
- Time (%)  Total Time (ns)  Count  Avg (ns)   Med (ns)   Min (ns)  Max (ns)  StdDev (ns)            Operation           
- --------  ---------------  -----  ---------  ---------  --------  --------  -----------  ------------------------------
-     89.6      214,233,121    274  781,872.7  791,442.0   274,497   865,155     50,478.1  [CUDA memcpy Host-to-Device]  
-      7.2       17,203,300  9,590    1,793.9    1,825.0       991     3,232        249.0  [CUDA memset]                 
-      2.3        5,435,252    548    9,918.3    9,968.0     4,992    11,904        955.1  [CUDA memcpy Device-to-Device]
-      0.9        2,232,042    580    3,848.3    2,080.0     1,216   272,161     11,648.7  [CUDA memcpy Device-to-Host]  
-
-[8/8] Executing 'cuda_gpu_mem_size_sum' stats report
-
- Total (MB)  Count  Avg (MB)  Med (MB)  Min (MB)  Max (MB)  StdDev (MB)            Operation           
- ----------  -----  --------  --------  --------  --------  -----------  ------------------------------
-  6,881.280    548    12.557    12.583     5.505    12.583        0.427  [CUDA memcpy Device-to-Device]
-  3,440.640    274    12.557    12.583     5.505    12.583        0.428  [CUDA memcpy Host-to-Device]  
-     24.909    580     0.043     0.001     0.000     4.194        0.194  [CUDA memcpy Device-to-Host]  
-      0.083  9,590     0.000     0.000     0.000     0.000        0.000  [CUDA memset]                 
-
-Generated:
-    /lustre/fswork/projects/rech/ltc/ufk94qf/hackathon_project/report_rank_with_nvtx0.nsys-rep
-    /lustre/fswork/projects/rech/ltc/ufk94qf/hackathon_project/report_rank_with_nvtx0.sqlite
