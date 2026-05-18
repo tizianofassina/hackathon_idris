@@ -8,7 +8,8 @@ from TarFlow.architecture import Model
 from TarFlow.utils import set_random_seed
 
 import torch.distributed as dist  # FSDP communication
-from torch.distributed.fsdp import fully_shard, MixedPrecisionPolicy
+from torch.distributed.fsdp import FullyShardedDataParallel as FSDP
+from torch.distributed.fsdp import MixedPrecision as MixedPrecisionPolicy
 from torch.distributed.checkpoint.state_dict import (
     get_model_state_dict,
     StateDictOptions,
@@ -149,9 +150,9 @@ def main(local_rank):
     # is computing). Then shard the top-level model.
     # CONCERNS MULTI GPU: this replaces DDP(model, ...)
     if hasattr(model, "blocks"):
-        for block in model.blocks:
-            fully_shard(block, mp_policy=mp_policy)
-    fully_shard(model, mp_policy=mp_policy)
+        for i, block in enumerate(model.blocks):
+            model.blocks[i] = FSDP(block, mixed_precision=mp_policy)
+    model = FSDP(model, mixed_precision=mp_policy)
 
     optimizer = torch.optim.AdamW(
         model.parameters(),
@@ -238,8 +239,7 @@ def main(local_rank):
             nvtx.range_push("Forward pass")
             z, outputs, logdets = model(x, y)
             # With FSDP2 (fully_shard), the model is NOT wrapped — methods are
-            # accessed directly, no .module needed
-            loss = model.get_loss(z, logdets)
+            loss = model.module.get_loss(z, logdets)
             nvtx.range_pop()
 
             nvtx.range_push("Backward pass")
