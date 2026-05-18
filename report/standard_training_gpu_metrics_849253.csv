@@ -1,3 +1,0 @@
-timestamp, index, name, utilization.gpu [%], utilization.memory [%], memory.used [MiB], memory.total [MiB], power.draw [W], temperature.gpu
-2026/05/18 21:02:54.889, 0, NVIDIA A100-SXM4-80GB, 0 %, 0 %, 0 MiB, 81920 MiB, 63.15 W, 29
-2026/05/18 21:02:55.891, 0, NVIDIA A100-SXM4-80GB, 0 %, 0 %, 0 MiB, 81920 MiB, 63.08 W, 29
