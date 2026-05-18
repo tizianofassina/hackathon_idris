@@ -25,7 +25,7 @@ export NUMEXPR_NUM_THREADS=1
 ln -sfn $JOBSCRATCH /tmp/nvidia
 
 # Create the correct directory for your standard torch reports
-mkdir -p ./report_standard
+mkdir -p ./report
 
 which nsys
 nsys --version
