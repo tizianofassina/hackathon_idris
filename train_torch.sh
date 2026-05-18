@@ -24,12 +24,17 @@ export NUMEXPR_NUM_THREADS=1
 
 ln -sfn $JOBSCRATCH /tmp/nvidia
 
+# Create the correct directory for your standard torch reports
+mkdir -p ./report_standard
+
 which nsys
 nsys --version
 
+# Run nsys profiling ONLY when triggered by the script API
 srun nsys profile \
     -t cuda,nvtx,osrt,cudnn,cublas \
     --force-overwrite=true \
     --stats=true \
-    -o "report_rank%q{SLURM_PROCID}" \
+    --capture-range=cudaProfilerApi \
+    -o "./report_standard/standard_training_report_rank%q{SLURM_PROCID}" \
     python -u train_torch.py
