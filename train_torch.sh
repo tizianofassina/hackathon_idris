@@ -49,7 +49,9 @@ trap cleanup EXIT
 srun nsys profile \
     -t cuda,nvtx,osrt,cudnn,cublas \
     --force-overwrite=true \
-    --stats=true \
     --capture-range=cudaProfilerApi \
-    -o "./report/standard_training_report_rank%q{SLURM_PROCID}" \
+    --cudabacktrace=true,2048 \
+    --gpu-metrics-device=all 
+    --capture-range-end=stop \
+    -o "$SLURM_SUBMIT_DIR/report/standard_training_report_${SLURM_JOB_ID}_rank%q{SLURM_PROCID}" \
     python -u train_torch.py
