@@ -35,7 +35,7 @@ nvidia-smi \
     --query-gpu=timestamp,index,utilization.gpu,utilization.memory,memory.used,memory.total,temperature.gpu,power.draw \
     --format=csv \
     -l 5 \
-    > logs/ddp_gpu_${SLURM_JOB_ID}.csv &
+    > logs/ddp_training_gpu_${SLURM_JOB_ID}.csv &
 NVIDIA_SMI_PID=$!
 
 cleanup() {
