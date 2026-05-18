@@ -53,20 +53,23 @@ rm -rf .nsys_cache_ddp
 mkdir -p .nsys_cache_ddp
 
 # ============================================================
-# Profiling (Rank 0 Only) + Training (DDP)
+# Profiling + Training (DDP) Configuration
 # ============================================================
 NUM_GPUS=$SLURM_GPUS_ON_NODE
-echo "Launching training with $NUM_GPUS GPUs"
+echo "Launching DDP training with $NUM_GPUS GPUs under Nsys Profiler..."
 
-# Launch nsys directly on top of torchrun to handle cross-process tracking
+# Set the cache directory via environment variable to keep nsys happy
+export NSYS_CACHE_DIR="./.nsys_cache_ddp"
+mkdir -p ./report_ddp
+
+# Launch torchrun directly wrapped inside nsys profile
 nsys profile \
-    --cachedir="./.nsys_cache_ddp" \
-    -t cuda,nvtx,osrt \
-    -o "$SLURM_SUBMIT_DIR/report_ddp_${SLURM_JOB_ID}" \
+    --trace=cuda,nvtx,osrt \
+    --output=./report_ddp/ddp_profile_report \
+    --capture-range=cudaProfilerApi \
+    --sample=cpu \
     --force-overwrite=true \
-    --stats=true \
     torchrun \
         --standalone \
         --nproc_per_node=$NUM_GPUS \
         train_torch_ddp.py
-        
