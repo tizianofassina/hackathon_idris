@@ -57,7 +57,7 @@ def setup_ddp():
     Reads RANK / LOCAL_RANK / WORLD_SIZE from environment variables
     (set automatically by torchrun).
     """
-    dist.init_process_group(backend="nccl")
+    dist.init_process_group(backend="nccl") # To establish the type of communication between GPUs
     local_rank = int(os.environ["LOCAL_RANK"])
     torch.cuda.set_device(local_rank)
     return local_rank
@@ -108,9 +108,9 @@ def main(local_rank):
     # ============================================================
     ## Device + rank info
     # ============================================================
-    DEVICE = torch.device(f"cuda:{local_rank}")
-    rank = dist.get_rank()
-    is_main = (rank == 0)
+    DEVICE = torch.device(f"cuda:{local_rank}") # CONCERNS MULTI GPU
+    rank = dist.get_rank() # CONCERNS MULTI GPU
+    is_main = (rank == 0)  # CONCERNS MULTI GPU
 
     if is_main:
         print(f"⚙️ Using FACTOR: {FACTOR}")
@@ -132,7 +132,7 @@ def main(local_rank):
         num_classes=NUM_CLASSES,
     ).to(DEVICE)
 
-    model = DDP(model, device_ids=[local_rank])
+    model = DDP(model, device_ids=[local_rank]) # CONCERNS MULTI GPU
 
     optimizer = torch.optim.AdamW(
         model.parameters(),
@@ -191,7 +191,7 @@ def main(local_rank):
     global_step = 0
 
     for epoch in range(EPOCHS):
-        train_sampler.set_epoch(epoch)
+        train_sampler.set_epoch(epoch) # CONCERNS MULTI GPU
 
         # Start CUDA profiler on epoch 2 (all ranks profile, nsys captures each)
         if epoch == 2:
