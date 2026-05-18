@@ -51,13 +51,4 @@ trap cleanup EXIT
 # ============================================================
 NUM_GPUS=$SLURM_GPUS_ON_NODE
 
-srun nsys profile \
-    -t cuda,nvtx,osrt,cudnn,cublas \
-    --capture-range=cudaProfilerApi \
-    --capture-range-end=stop \
-    --force-overwrite=true \
-    -o "$SLURM_SUBMIT_DIR/report/ddp_run_${SLURM_JOB_ID}" \
-    torchrun \
-        --standalone \
-        --nproc_per_node=$NUM_GPUS \
-        train_torch_ddp.py
+srun nsys profile -t cuda,nvtx,osrt,cudnn,cublas --capture-range=cudaProfilerApi --capture-range-end=stop --stop-on-exit=true --force-overwrite=true -o "$SLURM_SUBMIT_DIR/report/ddp_run_${SLURM_JOB_ID}" torchrun --standalone --nproc_per_node=$NUM_GPUS train_torch_ddp.py
