@@ -12,7 +12,7 @@
 
 module purge
 module load arch/a100
-module load pytorch-gpu/py3/2.3.0
+module load pytorch-gpu/py3/2.6.0
 module load nvidia-nsight-systems/2024.7.1.84
 
 export PYTHONPATH=$PYTHONPATH:$(pwd)
