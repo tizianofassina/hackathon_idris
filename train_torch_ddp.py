@@ -224,7 +224,7 @@ def main(local_rank):
                 nvtx.range_pop()
 
             nvtx.range_push("Backward pass")
-            fp16_scaler.scale(loss / ACCUMULATION_STEPS).backward()
+            fp16_scaler.scale(loss / ACCUMULATION_STEPS).backward() # To be understood what happens here. 
             fp16_scaler.step(optimizer)
             fp16_scaler.update()
             nvtx.range_pop()
