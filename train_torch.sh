@@ -8,7 +8,7 @@
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=16
 #SBATCH --time=02:00:00                 
-#SBATCH --output=%x_%A.out       
+#SBATCH --output=%x_%A.out        
 
 module purge
 module load arch/a100
@@ -27,6 +27,13 @@ ln -sfn $JOBSCRATCH /tmp/nvidia
 # Create the correct directory for your standard torch reports
 mkdir -p ./report
 
+# ============================================================
+# Start background nvidia-smi monitoring
+# ============================================================
+nvidia-smi --query-gpu=timestamp,name,utilization.gpu,utilization.memory,memory.used,memory.free,power.draw,temperature.gpu --format=csv -l 1 > ./report/standard_training_gpu_metrics_${SLURM_JOB_ID}.csv &
+NVIDIA_SMI_PID=$!
+echo "Started nvidia-smi monitoring (PID $NVIDIA_SMI_PID)"
+
 which nsys
 nsys --version
 
@@ -36,5 +43,11 @@ srun nsys profile \
     --force-overwrite=true \
     --stats=true \
     --capture-range=cudaProfilerApi \
-    -o "./report_standard/standard_training_report_rank%q{SLURM_PROCID}" \
+    -o "./report/standard_training_report_rank%q{SLURM_PROCID}" \
     python -u train_torch.py
+
+# ============================================================
+# Cleanup background monitoring
+# ============================================================
+kill $NVIDIA_SMI_PID
+echo "Stopping nvidia-smi monitoring (PID $NVIDIA_SMI_PID)"
