@@ -45,42 +45,28 @@ cleanup() {
     fi
 }
 trap cleanup EXIT
+# ============================================================
+# Directory Cleanup and Preparation
+# ============================================================
+# Remove the old local cache if present to start fresh
+rm -rf .nsys_cache_ddp
+mkdir -p .nsys_cache_ddp
 
 # ============================================================
-# Profiling + Training (DDP)
+# Profiling (Rank 0 Only) + Training (DDP)
 # ============================================================
 NUM_GPUS=$SLURM_GPUS_ON_NODE
 echo "Launching training with $NUM_GPUS GPUs"
 
-
-# ============================================================
-# Create a local bash function to intercept python on Rank 0
-# ============================================================
-python_nsys_wrapper() {
-    # If torchrun sets LOCAL_RANK to 0, prepend nsys to the command
-    if [ "${LOCAL_RANK:-0}" -eq 0 ]; then
-        echo "Profiling Rank 0 with Nsight Systems..."
-        exec nsys profile \
-            -t cuda,nvtx,osrt,cudnn,cublas \
-            --capture-range=cudaProfilerApi \
-            --capture-range-end=stop \
-            --force-overwrite=true \
-            --stats=true \
-            -o "report_ddp_${SLURM_JOB_ID}_rank0" \
-            python "$@"
-    else
-        # Other ranks execute the python command normally without nsys overhead
-        echo "Launching Rank ${LOCAL_RANK} without profiling..."
-        exec python "$@"
-    fi
-}
-
-# Export the function so it is inherited by the sub-shells spawned by torchrun
-export -f python_nsys_wrapper
-
-# Launch torchrun using our wrapper function as the entrypoint role
-torchrun \
-    --standalone \
-    --nproc_per_node=$NUM_GPUS \
-    --role python_nsys_wrapper \
-    train_torch_ddp.py
+# Launch nsys directly on top of torchrun to handle cross-process tracking
+nsys profile \
+    --cachedir="./.nsys_cache_ddp" \
+    -t cuda,nvtx,osrt \
+    -o "$SLURM_SUBMIT_DIR/report_ddp_${SLURM_JOB_ID}" \
+    --force-overwrite=true \
+    --stats=true \
+    torchrun \
+        --standalone \
+        --nproc_per_node=$NUM_GPUS \
+        train_torch_ddp.py
+        
