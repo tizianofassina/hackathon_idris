@@ -4,8 +4,8 @@
 #SBATCH --partition=gpu_p5
 #SBATCH --constraint=a100
 #SBATCH --nodes=1
-#SBATCH --ntasks=1                      # Controlled internally by torchrun
-#SBATCH --gres=gpu:2                     
+#SBATCH --ntasks=1
+#SBATCH --gres=gpu:2
 #SBATCH --cpus-per-task=16
 #SBATCH --time=02:00:00
 #SBATCH --output=%x_%A.out
@@ -23,20 +23,17 @@ export NUMEXPR_NUM_THREADS=1
 
 ln -sfn $JOBSCRATCH /tmp/nvidia
 
-# Create directories and clean local nsys cache
-mkdir -p ./report
-rm -rf .nsys_cache_ddp
-mkdir -p .nsys_cache_ddp
-export NSYS_CACHE_DIR="./.nsys_cache_ddp"
+# Create report directory
+mkdir -p "$SLURM_SUBMIT_DIR/report"
 
 # ============================================================
-# GPU Monitoring in background (Synchronized metrics)
+# GPU Monitoring in background
 # ============================================================
 nvidia-smi \
     --query-gpu=timestamp,index,name,utilization.gpu,utilization.memory,memory.used,memory.total,power.draw,temperature.gpu \
     --format=csv \
     -l 1 \
-    > ./report/ddp_training_gpu_metrics_${SLURM_JOB_ID}.csv &
+    > "$SLURM_SUBMIT_DIR/report/ddp_training_gpu_metrics_${SLURM_JOB_ID}.csv" &
 NVIDIA_SMI_PID=$!
 
 cleanup() {
@@ -47,29 +44,20 @@ cleanup() {
 trap cleanup EXIT
 
 # ============================================================
-# Critical Intercept Wrapper to isolate profiling to Rank 0
-# ============================================================
-python_nsys_wrapper() {
-    if [ "${LOCAL_RANK:-0}" -eq 0 ]; then
-        exec nsys profile \
-            -t cuda,nvtx,osrt,cudnn,cublas \
-            --sample=cpu \
-            --capture-range=cudaProfilerApi \
-            --force-overwrite=true \
-            -o "./report/ddp_profile_report_rank0" \
-            python "$@"
-    else
-        exec python "$@"
-    fi
-}
-export -f python_nsys_wrapper
-
-# ============================================================
-# Execution Launch via torchrun
+# Launch: nsys wraps torchrun.
+# Only rank 0 will activate the cuda profiler range in Python
+# (via cudaProfilerStart/Stop guarded by dist.get_rank() == 0).
+# Other ranks run normally but produce no profile data.
 # ============================================================
 NUM_GPUS=$SLURM_GPUS_ON_NODE
-torchrun \
-    --standalone \
-    --nproc_per_node=$NUM_GPUS \
-    --role python_nsys_wrapper \
-    train_torch_ddp.py
+
+srun nsys profile \
+    -t cuda,nvtx,osrt,cudnn,cublas \
+    --capture-range=cudaProfilerApi \
+    --capture-range-end=stop \
+    --force-overwrite=true \
+    -o "$SLURM_SUBMIT_DIR/report/ddp_run_${SLURM_JOB_ID}" \
+    torchrun \
+        --standalone \
+        --nproc_per_node=$NUM_GPUS \
+        train_torch_ddp.py
