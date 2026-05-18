@@ -1,0 +1,185 @@
+Loading pytorch-gpu/py3/2.3.0
+  Loading requirement: cuda/12.2.0 nccl/2.19.3-1-cuda cudnn/8.9.5.30-cuda
+    gcc/10.1.0 openmpi/4.1.5-cuda intel-mkl/2020.4 magma/2.7.2-cuda sox/14.4.2
+    hdf5/1.12.0-mpi-cuda libjpeg-turbo/2.1.3 ffmpeg/6.1.1
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.4.4 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "/lustre/fswork/projects/rech/ltc/ufk94qf/hackathon_project/train_torch_ddp.py", line 7, in <module>
+    from TarFlow.architecture import Model
+  File "/lustre/fswork/projects/rech/ltc/ufk94qf/hackathon_project/TarFlow/architecture.py", line 2, in <module>
+    import lightning as L
+  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/__init__.py", line 21, in <module>
+    from lightning.pytorch.callbacks import Callback  # noqa: E402
+  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/pytorch/__init__.py", line 27, in <module>
+    from lightning.pytorch.callbacks import Callback  # noqa: E402
+  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/pytorch/callbacks/__init__.py", line 14, in <module>
+    from lightning.pytorch.callbacks.batch_size_finder import BatchSizeFinder
+  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/pytorch/callbacks/batch_size_finder.py", line 26, in <module>
+    from lightning.pytorch.callbacks.callback import Callback
+  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/pytorch/callbacks/callback.py", line 22, in <module>
+    from lightning.pytorch.utilities.types import STEP_OUTPUT
+  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/pytorch/utilities/types.py", line 41, in <module>
+    from torchmetrics import Metric
+  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/torchmetrics/__init__.py", line 26, in <module>
+    from torchmetrics import functional  # noqa: E402
+  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/torchmetrics/functional/__init__.py", line 122, in <module>
+    from torchmetrics.functional.text._deprecated import _bleu_score as bleu_score
+  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/torchmetrics/functional/text/__init__.py", line 17, in <module>
+    from torchmetrics.functional.text.chrf import chrf_score
+  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/torchmetrics/functional/text/chrf.py", line 44, in <module>
+    _EPS_SMOOTHING = tensor(1e-16)
+/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/torchmetrics/functional/text/chrf.py:44: UserWarning: Failed to initialize NumPy: 
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.4.4 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+ (Triggered internally at /gpfs7kro/gpfslocalsup/src/pub/anaconda-py3/2023.09/pytorch-gpu-2.3.0+py3.11.5+cuda-12.2/pytorch-2.3.0/torch/csrc/utils/tensor_numpy.cpp:84.)
+  _EPS_SMOOTHING = tensor(1e-16)
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.4.4 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "/lustre/fswork/projects/rech/ltc/ufk94qf/hackathon_project/train_torch_ddp.py", line 7, in <module>
+    from TarFlow.architecture import Model
+  File "/lustre/fswork/projects/rech/ltc/ufk94qf/hackathon_project/TarFlow/architecture.py", line 2, in <module>
+    import lightning as L
+  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/__init__.py", line 21, in <module>
+    from lightning.pytorch.callbacks import Callback  # noqa: E402
+  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/pytorch/__init__.py", line 27, in <module>
+    from lightning.pytorch.callbacks import Callback  # noqa: E402
+  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/pytorch/callbacks/__init__.py", line 14, in <module>
+    from lightning.pytorch.callbacks.batch_size_finder import BatchSizeFinder
+  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/pytorch/callbacks/batch_size_finder.py", line 26, in <module>
+    from lightning.pytorch.callbacks.callback import Callback
+  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/pytorch/callbacks/callback.py", line 22, in <module>
+    from lightning.pytorch.utilities.types import STEP_OUTPUT
+  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/pytorch/utilities/types.py", line 41, in <module>
+    from torchmetrics import Metric
+  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/torchmetrics/__init__.py", line 26, in <module>
+    from torchmetrics import functional  # noqa: E402
+  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/torchmetrics/functional/__init__.py", line 122, in <module>
+    from torchmetrics.functional.text._deprecated import _bleu_score as bleu_score
+  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/torchmetrics/functional/text/__init__.py", line 17, in <module>
+    from torchmetrics.functional.text.chrf import chrf_score
+  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/torchmetrics/functional/text/chrf.py", line 44, in <module>
+    _EPS_SMOOTHING = tensor(1e-16)
+/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/torchmetrics/functional/text/chrf.py:44: UserWarning: Failed to initialize NumPy: 
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.4.4 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+ (Triggered internally at /gpfs7kro/gpfslocalsup/src/pub/anaconda-py3/2023.09/pytorch-gpu-2.3.0+py3.11.5+cuda-12.2/pytorch-2.3.0/torch/csrc/utils/tensor_numpy.cpp:84.)
+  _EPS_SMOOTHING = tensor(1e-16)
+⚙️ Using FACTOR: 1.0
+⚙️ World size: 2
+✅ Data, Model, and Optimizer initialized.
+💾 Checkpoint will be saved as: flow_models/model_20260518_211903.ckpt
+✅ Data loaded: 70000 samples, 136 batches per process.
+🔥 Starting Training for 5 epochs...
+Epoch 1/5 | step 10 | batch 10/136 | loss -0.4141
+Epoch 1/5 | step 20 | batch 20/136 | loss -0.7001
+Epoch 1/5 | step 30 | batch 30/136 | loss -0.7903
+Epoch 1/5 | step 40 | batch 40/136 | loss -0.8068
+Epoch 1/5 | step 50 | batch 50/136 | loss -0.8690
+Epoch 1/5 | step 60 | batch 60/136 | loss -0.9001
+Epoch 1/5 | step 70 | batch 70/136 | loss -0.9585
+Epoch 1/5 | step 80 | batch 80/136 | loss -0.9294
+Epoch 1/5 | step 90 | batch 90/136 | loss -0.9849
+Epoch 1/5 | step 100 | batch 100/136 | loss -1.0048
+Epoch 1/5 | step 110 | batch 110/136 | loss -1.0346
+Epoch 1/5 | step 120 | batch 120/136 | loss -1.0245
+Epoch 1/5 | step 130 | batch 130/136 | loss -1.0730
+Epoch 1 done | avg loss: -0.8562 | prior_var_mean: 1.0028
+Epoch 2/5 | step 140 | batch 4/136 | loss -1.0898
+Epoch 2/5 | step 150 | batch 14/136 | loss -1.1213
+Epoch 2/5 | step 160 | batch 24/136 | loss -1.1273
+Epoch 2/5 | step 170 | batch 34/136 | loss -1.1421
+Epoch 2/5 | step 180 | batch 44/136 | loss -1.1835
+Epoch 2/5 | step 190 | batch 54/136 | loss -1.1948
+Epoch 2/5 | step 200 | batch 64/136 | loss -1.2058
+Epoch 2/5 | step 210 | batch 74/136 | loss -1.2200
+Epoch 2/5 | step 220 | batch 84/136 | loss -1.2312
+Epoch 2/5 | step 230 | batch 94/136 | loss -1.1502
+Epoch 2/5 | step 240 | batch 104/136 | loss -1.1876
+Epoch 2/5 | step 250 | batch 114/136 | loss -1.2290
+Epoch 2/5 | step 260 | batch 124/136 | loss -1.2488
+Epoch 2/5 | step 270 | batch 134/136 | loss -1.2710
+Epoch 2 done | avg loss: -1.1884 | prior_var_mean: 1.0021
+Epoch 3/5 | step 280 | batch 8/136 | loss -1.2534
+Epoch 3/5 | step 290 | batch 18/136 | loss -1.2438
+Epoch 3/5 | step 300 | batch 28/136 | loss -1.2587
+Epoch 3/5 | step 310 | batch 38/136 | loss -1.2846
+Epoch 3/5 | step 320 | batch 48/136 | loss -1.2875
+Epoch 3/5 | step 330 | batch 58/136 | loss -1.2901
+Epoch 3/5 | step 340 | batch 68/136 | loss -1.2945
+Epoch 3/5 | step 350 | batch 78/136 | loss -1.3032
+Epoch 3/5 | step 360 | batch 88/136 | loss -1.2597
+Epoch 3/5 | step 370 | batch 98/136 | loss -1.2982
+Epoch 3/5 | step 380 | batch 108/136 | loss -1.2905
+Epoch 3/5 | step 390 | batch 118/136 | loss -1.2713
+Epoch 3/5 | step 400 | batch 128/136 | loss -1.3044
+Epoch 3 done | avg loss: -1.2745 | prior_var_mean: 0.9907
+Capture range started in the application.
+Capture range ended in the application.
+Generating '/tmp/nsys-report-e3cf.qdstrm'
+[1/1] [0%                          ] ddp_run_849657.nsys-repProcessing events...
+[1/1] [0%                          ] ddp_run_849657.nsys-rep[1/1] [14%                         ] ddp_run_849657.nsys-rep[1/1] [=16%                        ] ddp_run_849657.nsys-rep[1/1] [=17%                        ] ddp_run_849657.nsys-rep[1/1] [==18%                       ] ddp_run_849657.nsys-rep[1/1] [======33%                   ] ddp_run_849657.nsys-rep[1/1] [==========48%               ] ddp_run_849657.nsys-rep[1/1] [===========51%              ] ddp_run_849657.nsys-rep[1/1] [===========52%              ] ddp_run_849657.nsys-rep[1/1] [===========53%              ] ddp_run_849657.nsys-rep[1/1] [============54%             ] ddp_run_849657.nsys-rep[1/1] [============55%             ] ddp_run_849657.nsys-rep[1/1] [============57%             ] ddp_run_849657.nsys-rep[1/1] [=============59%            ] ddp_run_849657.nsys-rep[1/1] [==============61%           ] ddp_run_849657.nsys-rep[1/1] [==============63%           ] ddp_run_849657.nsys-rep[1/1] [==============64%           ] ddp_run_849657.nsys-rep[1/1] [===============66%          ] ddp_run_849657.nsys-rep[1/1] [================68%         ] ddp_run_849657.nsys-rep[1/1] [================70%         ] ddp_run_849657.nsys-rep[1/1] [=================72%        ] ddp_run_849657.nsys-rep[1/1] [=================73%        ] ddp_run_849657.nsys-rep[1/1] [==================75%       ] ddp_run_849657.nsys-rep[1/1] [==================77%       ] ddp_run_849657.nsys-rep[1/1] [===================79%      ] ddp_run_849657.nsys-rep[1/1] [===================81%      ] ddp_run_849657.nsys-rep[1/1] [===================82%      ] ddp_run_849657.nsys-rep[1/1] [====================84%     ] ddp_run_849657.nsys-rep[1/1] [=====================86%    ] ddp_run_849657.nsys-rep[1/1] [=====================88%    ] ddp_run_849657.nsys-rep[1/1] [======================90%   ] ddp_run_849657.nsys-rep[1/1] [======================91%   ] ddp_run_849657.nsys-rep[1/1] [=======================93%  ] ddp_run_849657.nsys-rep[1/1] [=======================95%  ] ddp_run_849657.nsys-rep[1/1] [========================97% ] ddp_run_849657.nsys-rep[1/1] [========================99% ] ddp_run_849657.nsys-rep[1/1] [========================100%] ddp_run_849657.nsys-rep[1/1] [========================100%] ddp_run_849657.nsys-rep[1/1] [========================100%] ddp_run_849657.nsys-rep
+Epoch 4/5 | step 410 | batch 2/136 | loss -1.3011
+Epoch 4/5 | step 420 | batch 12/136 | loss -1.3194
+Epoch 4/5 | step 430 | batch 22/136 | loss -1.2878
+Epoch 4/5 | step 440 | batch 32/136 | loss -1.3092
+Epoch 4/5 | step 450 | batch 42/136 | loss -1.3471
+Epoch 4/5 | step 460 | batch 52/136 | loss -1.2903
+Epoch 4/5 | step 470 | batch 62/136 | loss -1.2989
+Epoch 4/5 | step 480 | batch 72/136 | loss -1.3237
+Epoch 4/5 | step 490 | batch 82/136 | loss -1.3078
+Epoch 4/5 | step 500 | batch 92/136 | loss -1.3275
+Epoch 4/5 | step 510 | batch 102/136 | loss -1.3244
+Epoch 4/5 | step 520 | batch 112/136 | loss -1.3404
+Epoch 4/5 | step 530 | batch 122/136 | loss -1.3648
+Epoch 4/5 | step 540 | batch 132/136 | loss -1.3441
+Epoch 4 done | avg loss: -1.3213 | prior_var_mean: 0.9959
+Epoch 5/5 | step 550 | batch 6/136 | loss -1.3711
+Epoch 5/5 | step 560 | batch 16/136 | loss -1.3363
+Epoch 5/5 | step 570 | batch 26/136 | loss -1.2915
+Epoch 5/5 | step 580 | batch 36/136 | loss -1.3497
+Epoch 5/5 | step 590 | batch 46/136 | loss -1.3061
+Epoch 5/5 | step 600 | batch 56/136 | loss -1.3147
+Epoch 5/5 | step 610 | batch 66/136 | loss -1.3711
+Epoch 5/5 | step 620 | batch 76/136 | loss -1.3312
+Epoch 5/5 | step 630 | batch 86/136 | loss -1.3975
+Epoch 5/5 | step 640 | batch 96/136 | loss -1.3551
+Epoch 5/5 | step 650 | batch 106/136 | loss -1.3594
+Epoch 5/5 | step 660 | batch 116/136 | loss -1.3793
+Epoch 5/5 | step 670 | batch 126/136 | loss -1.3521
+Epoch 5/5 | step 680 | batch 136/136 | loss -1.3816
+Epoch 5 done | avg loss: -1.3485 | prior_var_mean: 0.9979
+
+✅ Training complete!
+Total training time: 137.88 seconds
+Generated:
+    /lustre/fswork/projects/rech/ltc/ufk94qf/hackathon_project/report/ddp_run_849657.nsys-rep
