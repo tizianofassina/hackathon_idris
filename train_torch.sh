@@ -7,13 +7,13 @@
 #SBATCH --ntasks=1
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=16
-#SBATCH --time=02:00:00                 
-#SBATCH --output=%x_%A.out        
+#SBATCH --time=02:00:00                 
+#SBATCH --output=%x_%A.out        
 
 module purge
 module load arch/a100
-module load pytorch-gpu/py3/2.3.0 
-module load nvidia-nsight-systems/2024.7.1.84  
+module load pytorch-gpu/py3/2.3.0 
+module load nvidia-nsight-systems/2024.7.1.84  
 
 export PYTHONPATH=$PYTHONPATH:$(pwd)
 export PYTHONUNBUFFERED=1
@@ -23,9 +23,12 @@ export NUMEXPR_NUM_THREADS=1
 
 ln -sfn $JOBSCRATCH /tmp/nvidia
 
+# Create the report output directory
 mkdir -p ./report
 
-# Monitoraggio GPU (Stesse colonne del ddp)
+# ============================================================
+# GPU Monitoring in background (Matching metrics formatting)
+# ============================================================
 nvidia-smi \
     --query-gpu=timestamp,index,name,utilization.gpu,utilization.memory,memory.used,memory.total,power.draw,temperature.gpu \
     --format=csv \
@@ -34,16 +37,19 @@ nvidia-smi \
 NVIDIA_SMI_PID=$!
 
 cleanup() {
-    if [[ -n "$NVIDIA_SMI_PID" ]] && kill -0 "$NVIDIA_SMI_PID" 2>/dev/null; then
-        kill "$NVIDIA_SMI_PID"
-    fi
+    if [[ -n "$NVIDIA_SMI_PID" ]] && kill -0 "$NVIDIA_SMI_PID" 2>/dev/null; then
+        kill "$NVIDIA_SMI_PID"
+    fi
 }
 trap cleanup EXIT
 
+# ============================================================
+# Execution Launch via srun (Single-GPU)
+# ============================================================
 srun nsys profile \
-    -t cuda,nvtx,osrt,cudnn,cublas \
-    --force-overwrite=true \
-    --stats=true \
-    --capture-range=cudaProfilerApi \
-    -o "./report/standard_training_report_rank%q{SLURM_PROCID}" \
-    python -u train_torch.py
+    -t cuda,nvtx,osrt,cudnn,cublas \
+    --force-overwrite=true \
+    --stats=true \
+    --capture-range=cudaProfilerApi \
+    -o "./report/standard_training_report_rank%q{SLURM_PROCID}" \
+    python -u train_torch.py
