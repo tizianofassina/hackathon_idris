@@ -60,12 +60,12 @@ echo "Launching DDP training with $NUM_GPUS GPUs under Nsys Profiler..."
 
 # Set the cache directory via environment variable to keep nsys happy
 export NSYS_CACHE_DIR="./.nsys_cache_ddp"
-mkdir -p ./report_ddp
+mkdir -p ./report
 
 # Launch torchrun directly wrapped inside nsys profile
 nsys profile \
     --trace=cuda,nvtx,osrt \
-    --output=./report_ddp/ddp_profile_report \
+    --output=./report/ddp_profile_report \
     --capture-range=cudaProfilerApi \
     --sample=cpu \
     --force-overwrite=true \
