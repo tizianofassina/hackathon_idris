@@ -35,7 +35,7 @@ nvidia-smi \
     --query-gpu=timestamp,index,utilization.gpu,utilization.memory,memory.used,memory.total,temperature.gpu,power.draw \
     --format=csv \
     -l 5 \
-    > logs/gpu_${SLURM_JOB_ID}.csv &
+    > logs/train_fsdp_gpu_${SLURM_JOB_ID}.csv &
 NVIDIA_SMI_PID=$!
 
 cleanup() {
@@ -47,19 +47,38 @@ cleanup() {
 trap cleanup EXIT
 
 # ============================================================
+# Intercept Python on Rank 0 for FSDP Profiling
+# ============================================================
+python_nsys_fsdp_wrapper() {
+    # If torchrun sets LOCAL_RANK to 0, prepend nsys to the command
+    if [ "${LOCAL_RANK:-0}" -eq 0 ]; then
+        echo "Profiling FSDP Rank 0 with Nsight Systems..."
+        exec nsys profile \
+            -t cuda,nvtx,osrt,cudnn,cublas \
+            --capture-range=cudaProfilerApi \
+            --capture-range-end=stop \
+            --force-overwrite=true \
+            --stats=true \
+            -o "report_fsdp_${SLURM_JOB_ID}_rank0" \
+            python "$@"
+    else
+        # Other ranks execute the python command normally without nsys overhead
+        echo "Launching FSDP Rank ${LOCAL_RANK} without profiling..."
+        exec python "$@"
+    fi
+}
+
+# Export the function so it is inherited by the sub-shells spawned by torchrun
+export -f python_nsys_fsdp_wrapper
+
+# ============================================================
 # Profiling + Training (FSDP)
 # ============================================================
 NUM_GPUS=$SLURM_GPUS_ON_NODE
 echo "Launching FSDP training with $NUM_GPUS GPUs"
 
-nsys profile \
-    -t cuda,nvtx,osrt,cudnn,cublas,nccl \
-    --capture-range=cudaProfilerApi \
-    --capture-range-end=stop \
-    --force-overwrite=true \
-    --stats=true \
-    -o "report_fsdp_${SLURM_JOB_ID}" \
-    torchrun \
-        --standalone \
-        --nproc_per_node=$NUM_GPUS \
-        train_torch_fsdp.py
+torchrun \
+    --standalone \
+    --nproc_per_node=$NUM_GPUS \
+    --role python_nsys_fsdp_wrapper \
+    train_torch_fsdp.py
