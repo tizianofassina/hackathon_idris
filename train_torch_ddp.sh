@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH -A ltc@h100
-#SBATCH --job-name=TRAIN_FLOW_DDP
+#SBATCH --job-name=TRAIN_FLOW_DDP_PROF
 #SBATCH --partition=gpu_p6
 #SBATCH --constraint="h100&prof2"
 #SBATCH --nodes=1
