@@ -137,16 +137,13 @@ def main(local_rank):
         num_classes=NUM_CLASSES,
     ).to(DEVICE)
 
-    # FSDP mixed precision policy — parameters/grads gathered in bf16,
-    # but optimizer state remains in fp32 for numerical stability
+    # FSDP mixed precision policy 
     mp_policy = MixedPrecisionPolicy(
         param_dtype=torch.bfloat16,
         reduce_dtype=torch.bfloat16,
     )
 
-    # Shard each transformer block individually so we get communication/compute
-    # overlap (each block's all_gather can be prefetched while the previous one
-    # is computing). Then shard the top-level model.
+    
     # CONCERNS MULTI GPU: this replaces DDP(model, ...)
     if hasattr(model, "blocks"):
         for block in model.blocks:
@@ -179,7 +176,6 @@ def main(local_rank):
 
     # NOTE: With bf16 mixed precision handled by FSDP's MixedPrecisionPolicy,
     # we don't need autocast or GradScaler — bf16 has the same range as fp32
-    # so loss scaling is unnecessary, and FSDP does the casting itself.
 
     # ============================================================
     ## DataLoader
