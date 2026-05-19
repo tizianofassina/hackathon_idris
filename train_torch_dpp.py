@@ -235,6 +235,7 @@ def main(local_rank):
             #fp16_scaler.update()
             #nvtx.range_push("Optimizer step")
             optimizer.step()
+            torch.cuda.synchronize()
             nvtx.range_pop()
             
 
@@ -243,20 +244,21 @@ def main(local_rank):
                 model.module.update_prior(z)
             
             
-            global_step += 1
+            
             # Logging
-            if global_step %10 ==0:
-                nvtx.range_push("Logging loss")
-                loss_val = loss.detach().float()
-                epoch_loss_sum += loss_val
-                epoch_batches += 1
-                if is_main and global_step % LOG_EVERY_N_STEPS == 0:
-                    writer.add_scalar("train/loss_step", loss_val, global_step)
-                    print(
-                        f"Epoch {epoch+1}/{EPOCHS} | step {global_step} | "
-                        f"batch {batch_idx+1}/{total_batches} | loss {loss_val:.4f}"
-                    )
-                nvtx.range_pop()
+        
+            nvtx.range_push("Logging loss")
+            loss_val = loss.detach().item()
+            global_step += 1
+            epoch_loss_sum += loss_val
+            epoch_batches += 1
+            if is_main and global_step % LOG_EVERY_N_STEPS == 0:
+                writer.add_scalar("train/loss_step", loss_val, global_step)
+                print(
+                    f"Epoch {epoch+1}/{EPOCHS} | step {global_step} | "
+                    f"batch {batch_idx+1}/{total_batches} | loss {loss_val:.4f}"
+                )
+            nvtx.range_pop()
 
             nvtx.range_push("Dataloader")
 
