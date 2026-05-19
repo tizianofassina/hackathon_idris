@@ -231,11 +231,11 @@ def main(local_rank, batch_size):
             loss.backward()
 
             optimizer.step()
-            torch.cuda.synchronize()
+            
             # Update prior (running variance) – done in fp32, no grad
             with torch.no_grad():
                 model.module.update_prior(z)
-                
+            torch.cuda.synchronize()
             nvtx.range_pop()
 
             
