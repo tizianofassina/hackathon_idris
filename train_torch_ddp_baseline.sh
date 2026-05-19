@@ -25,22 +25,18 @@ export NUMEXPR_NUM_THREADS=1
 
 NUM_GPUS=2
 BATCH_SIZES=(256 512 1024 2048 4096 8192)
-
 BS=${BATCH_SIZES[$SLURM_ARRAY_TASK_ID]}
-
 
 ln -sfn $JOBSCRATCH /tmp/nvidia
 
-# Create report directory
+
 mkdir -p "$SLURM_SUBMIT_DIR/report"
 
+echo "============================================================"
+echo "Array task $SLURM_ARRAY_TASK_ID — batch size = $BS"
+echo "============================================================"
 
-srun nsys profile -t cuda,nvtx,osrt,cudnn,cublas \
-    --capture-range=cudaProfilerApi \
-    --capture-range-end=stop \
-    --stop-on-exit=true \
-    --force-overwrite=true \
-    --stats=true \
-    -o report/report_2gpus_bs${BS} torchrun \
+srun torchrun \
     --standalone \
-    --nproc_per_node=$NUM_GPUS train_torch_ddp.py --batch_size $BS
+    --nproc_per_node=$NUM_GPUS \
+    train_ddp_baseline.py --batch_size $BS

@@ -11,6 +11,7 @@ import torch.distributed as dist  # DDP communication
 from torch.nn.parallel import DistributedDataParallel as DDP
 from torch.utils.data.distributed import DistributedSampler
 
+import argparse
 import time
 
 # ============================================================
@@ -23,7 +24,6 @@ set_random_seed(RANDOM_SEED)
 # ============================================================
 ## 🛠️ Training Parameters and Hyperparameters
 # ============================================================
-BATCH_SIZE = 256
 EPOCHS = 5
 LEARNING_RATE = 3e-4
 
@@ -56,7 +56,7 @@ def setup_ddp():
     Reads RANK / LOCAL_RANK / WORLD_SIZE from environment variables
     (set automatically by torchrun).
     """
-    dist.init_process_group(backend="nccl") # To establish the type of communication between GPUs
+    dist.init_process_group(backend="nccl")
     local_rank = int(os.environ["LOCAL_RANK"])
     torch.cuda.set_device(local_rank)
     return local_rank
@@ -64,6 +64,13 @@ def setup_ddp():
 
 def cleanup_ddp():
     dist.destroy_process_group()
+
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--batch_size", type=int, required=True,
+                        help="Per-process batch size")
+    return parser.parse_args()
 
 
 # ============================================================
@@ -87,13 +94,12 @@ def build_dataloader(data_path: str, batch_size: int, sigma_max: float,
 
     dataset = TensorDataset(data_train_x)
 
-    # DistributedSampler splits the dataset across processes
     sampler = DistributedSampler(dataset, shuffle=True)
 
     loader = DataLoader(
         dataset,
         batch_size=batch_size,
-        shuffle=False,                  # shuffle handled by sampler
+        shuffle=False,
         sampler=sampler,
         num_workers=num_workers,
         pin_memory=True,
@@ -103,13 +109,13 @@ def build_dataloader(data_path: str, batch_size: int, sigma_max: float,
     return loader, sampler
 
 
-def main(local_rank):
+def main(local_rank, batch_size):
     # ============================================================
     ## Device + rank info
     # ============================================================
-    DEVICE = torch.device(f"cuda:{local_rank}") # CONCERNS MULTI GPU
-    rank = dist.get_rank() # CONCERNS MULTI GPU
-    is_main = (rank == 0)  # CONCERNS MULTI GPU
+    DEVICE = torch.device(f"cuda:{local_rank}")
+    rank = dist.get_rank()
+    is_main = (rank == 0)
 
     if is_main:
         print(f"⚙️ Using FACTOR: {FACTOR}")
@@ -131,7 +137,7 @@ def main(local_rank):
         num_classes=NUM_CLASSES,
     ).to(DEVICE)
 
-    model = DDP(model, device_ids=[local_rank]) # CONCERNS MULTI GPU
+    model = DDP(model, device_ids=[local_rank])
 
     optimizer = torch.optim.AdamW(
         model.parameters(),
@@ -140,7 +146,6 @@ def main(local_rank):
         weight_decay=1e-4,
     )
 
-    # Mixed precision (bf16)
     amp_dtype = torch.bfloat16
 
     if is_main:
@@ -161,18 +166,15 @@ def main(local_rank):
 
     LOG_EVERY_N_STEPS = 1
 
-    #fp16_scaler = torch.amp.GradScaler("cuda")
-
     # ============================================================
     ## DataLoader
     # ============================================================
-    # Read CPUs per task from SLURM if available, fallback to 8
     num_workers = int(os.environ.get("SLURM_CPUS_PER_TASK", 8))
     num_workers = min(num_workers, 8)
 
     train_loader, train_sampler = build_dataloader(
         data_path=DATA_PATH,
-        batch_size=BATCH_SIZE,
+        batch_size=batch_size,
         sigma_max=SIGMA_MAX,
         num_workers=num_workers,
         size_data=None,
@@ -190,7 +192,7 @@ def main(local_rank):
     global_step = 0
 
     for epoch in range(EPOCHS):
-        train_sampler.set_epoch(epoch) # CONCERNS MULTI GPU
+        train_sampler.set_epoch(epoch)
 
         # Start CUDA profiler on epoch 2 (all ranks profile, nsys captures each)
         if epoch == 2:
@@ -203,11 +205,11 @@ def main(local_rank):
 
         nvtx.range_push("Dataloader")
         for batch_idx, batch in enumerate(train_loader):
-            
+
             nvtx.range_pop()
-            
+
             optimizer.zero_grad(set_to_none=True)
-            
+
             nvtx.range_push("Copying to Device")
             if len(batch) == 2:
                 x, y = batch
@@ -226,27 +228,19 @@ def main(local_rank):
                 nvtx.range_pop()
 
             nvtx.range_push("Backward pass")
-            #fp16_scaler.scale(loss).backward() # To be understood what happens here. 
             loss.backward()
-            # nvtx.range_pop()
-            
-            # nvtx.range_push("Gradient Step")
-            #fp16_scaler.step(optimizer)
-            #fp16_scaler.update()
-            #nvtx.range_push("Optimizer step")
+
             optimizer.step()
             torch.cuda.synchronize()
-            nvtx.range_pop()
-            
-
             # Update prior (running variance) – done in fp32, no grad
             with torch.no_grad():
                 model.module.update_prior(z)
+                
+            nvtx.range_pop()
+
             
-            
-            
+
             # Logging
-        
             nvtx.range_push("Logging loss")
             loss_val = loss.detach().item()
             global_step += 1
@@ -262,8 +256,9 @@ def main(local_rank):
 
             nvtx.range_push("Dataloader")
 
-        # End of epoch
-        # Aggregate loss across all processes
+        # End of epoch — close the dangling Dataloader range
+        nvtx.range_pop()
+
         avg_loss_tensor = torch.tensor(
             [epoch_loss_sum / max(epoch_batches, 1)], device=DEVICE
         )
@@ -298,7 +293,7 @@ def main(local_rank):
                     "nvp": NVP,
                     "num_classes": NUM_CLASSES,
                     "lr": LEARNING_RATE,
-                    "batch_size": BATCH_SIZE,
+                    "batch_size": batch_size,
                     "rescale_factor": RESCALE_FACTOR,
                     "sigma_max": SIGMA_MAX,
                 },
@@ -312,13 +307,16 @@ def main(local_rank):
 
 
 if __name__ == "__main__":
+    args = parse_args()
     local_rank = setup_ddp()
     try:
         start_time = time.time()
-        main(local_rank)
+        main(local_rank, args.batch_size)
         end_time = time.time()
         elapsed_time = end_time - start_time
         if dist.get_rank() == 0:
             print(f"Total training time: {elapsed_time:.2f} seconds")
+            with open("total_times.txt", "a") as f:
+                f.write(f"profiled | batch_size={args.batch_size} | time={elapsed_time:.2f}s\n")
     finally:
         cleanup_ddp()

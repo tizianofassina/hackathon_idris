@@ -9,7 +9,7 @@ from TarFlow.utils import set_random_seed
 import torch.distributed as dist  # DDP communication
 from torch.nn.parallel import DistributedDataParallel as DDP
 from torch.utils.data.distributed import DistributedSampler
-
+import argparse
 import time
 
 # ============================================================
@@ -22,7 +22,6 @@ set_random_seed(RANDOM_SEED)
 # ============================================================
 ## 🛠️ Training Parameters and Hyperparameters
 # ============================================================
-BATCH_SIZE = 256
 EPOCHS = 5
 LEARNING_RATE = 3e-4
 
@@ -60,6 +59,12 @@ def setup_ddp():
     torch.cuda.set_device(local_rank)
     return local_rank
 
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--batch_size", type=int, required=True,
+                        help="Per-process batch size")
+    return parser.parse_args()
 
 def cleanup_ddp():
     dist.destroy_process_group()
@@ -102,10 +107,12 @@ def build_dataloader(data_path: str, batch_size: int, sigma_max: float,
     return loader, sampler
 
 
-def main(local_rank):
+def main(local_rank, batch_size):
     # ============================================================
     ## Device + rank info
     # ============================================================
+    BATCH_SIZE = batch_size
+
     DEVICE = torch.device(f"cuda:{local_rank}") # CONCERNS MULTI GPU
     rank = dist.get_rank() # CONCERNS MULTI GPU
     is_main = (rank == 0)  # CONCERNS MULTI GPU
@@ -160,7 +167,6 @@ def main(local_rank):
 
     LOG_EVERY_N_STEPS = 1
 
-    #fp16_scaler = torch.amp.GradScaler("cuda")
 
     # ============================================================
     ## DataLoader
@@ -191,23 +197,16 @@ def main(local_rank):
     for epoch in range(EPOCHS):
         train_sampler.set_epoch(epoch) # CONCERNS MULTI GPU
 
-        # Start CUDA profiler on epoch 2 (all ranks profile, nsys captures each)
-        # if epoch == 2:
-        #     torch.cuda.cudart().cudaProfilerStart()
-
         model.train()
 
         epoch_loss_sum = 0.0
         epoch_batches = 0
 
-        #nvtx.range_push("Dataloader")
         for batch_idx, batch in enumerate(train_loader):
             
-            #nvtx.range_pop()
             
             optimizer.zero_grad(set_to_none=True)
             
-            #nvtx.range_push("Copying to Device")
             if len(batch) == 2:
                 x, y = batch
                 y = y.to(DEVICE, non_blocking=True)
@@ -216,25 +215,16 @@ def main(local_rank):
                 y = None
             x = x.to(DEVICE, non_blocking=True)
             x = x * RESCALE_FACTOR
-            #nvtx.range_pop()
 
             with torch.amp.autocast(device_type='cuda', dtype=amp_dtype, enabled=True):
-                #nvtx.range_push("Forward pass")
+                
                 z, outputs, logdets = model(x, y)
                 loss = model.module.get_loss(z, logdets)
-                #nvtx.range_pop()
+                
 
-            #nvtx.range_push("Backward pass")
-            #fp16_scaler.scale(loss).backward() # To be understood what happens here. 
             loss.backward()
-            # #nvtx.range_pop()
             
-            # #nvtx.range_push("Gradient Step")
-            #fp16_scaler.step(optimizer)
-            #fp16_scaler.update()
-            ##nvtx.range_push("Optimizer step")
             optimizer.step()
-            #nvtx.range_pop()
             
 
             # Update prior (running variance) – done in fp32, no grad
@@ -243,9 +233,7 @@ def main(local_rank):
             
             
             global_step += 1
-            # Logging
             if global_step %10 ==0:
-                #nvtx.range_push("Logging loss")
                 loss_val = loss.detach().float()
                 epoch_loss_sum += loss_val
                 epoch_batches += 1
@@ -255,9 +243,7 @@ def main(local_rank):
                         f"Epoch {epoch+1}/{EPOCHS} | step {global_step} | "
                         f"batch {batch_idx+1}/{total_batches} | loss {loss_val:.4f}"
                     )
-                #nvtx.range_pop()
 
-            #nvtx.range_push("Dataloader")
 
         # End of epoch
         # Aggregate loss across all processes
@@ -275,10 +261,6 @@ def main(local_rank):
                 f"Epoch {epoch+1} done | avg loss: {avg_loss:.4f} | "
                 f"prior_var_mean: {prior_var_mean:.4f}"
             )
-
-        # if epoch == 2:
-        #     torch.cuda.cudart().cudaProfilerStop()
-
     if is_main:
         torch.save(
             {
@@ -309,13 +291,16 @@ def main(local_rank):
 
 
 if __name__ == "__main__":
+    args = parse_args()
     local_rank = setup_ddp()
     try:
         start_time = time.time()
-        main(local_rank)
+        main(local_rank, args.batch_size)
         end_time = time.time()
         elapsed_time = end_time - start_time
         if dist.get_rank() == 0:
             print(f"Total training time: {elapsed_time:.2f} seconds")
+            with open("total_times.txt", "a") as f:
+                f.write(f"baseline | batch_size={args.batch_size} | time={elapsed_time:.2f}s\n")
     finally:
         cleanup_ddp()
