@@ -159,7 +159,7 @@ def main(local_rank):
         CKPT_FILE = os.path.join("flow_models", f"{RUN_NAME}.ckpt")
         print(f"💾 Checkpoint will be saved as: {CKPT_FILE}")
 
-    LOG_EVERY_N_STEPS = 10
+    LOG_EVERY_N_STEPS = 1
 
     #fp16_scaler = torch.amp.GradScaler("cuda")
 
@@ -241,21 +241,22 @@ def main(local_rank):
             # Update prior (running variance) – done in fp32, no grad
             with torch.no_grad():
                 model.module.update_prior(z)
-
-            # Logging
-            nvtx.range_push("Logging loss")
-            loss_val = loss.detach().item()
-            epoch_loss_sum += loss_val
-            epoch_batches += 1
+            
+            
             global_step += 1
-
-            if is_main and global_step % LOG_EVERY_N_STEPS == 0:
-                writer.add_scalar("train/loss_step", loss_val, global_step)
-                print(
-                    f"Epoch {epoch+1}/{EPOCHS} | step {global_step} | "
-                    f"batch {batch_idx+1}/{total_batches} | loss {loss_val:.4f}"
-                )
-            nvtx.range_pop()
+            # Logging
+            if global_step %10 ==0:
+                nvtx.range_push("Logging loss")
+                loss_val = loss.detach().float()
+                epoch_loss_sum += loss_val
+                epoch_batches += 1
+                if is_main and global_step % LOG_EVERY_N_STEPS == 0:
+                    writer.add_scalar("train/loss_step", loss_val, global_step)
+                    print(
+                        f"Epoch {epoch+1}/{EPOCHS} | step {global_step} | "
+                        f"batch {batch_idx+1}/{total_batches} | loss {loss_val:.4f}"
+                    )
+                nvtx.range_pop()
 
             nvtx.range_push("Dataloader")
 
