@@ -17,7 +17,7 @@ module load nvidia-nsight-systems/2024.7.1.84
 
 export PYTHONPATH=$PYTHONPATH:$(pwd)
 export PYTHONUNBUFFERED=1
-export OMP_NUM_THREADS=1
+export OMP_NUM_THREADS=1 # deepen them 
 export MKL_NUM_THREADS=1
 export NUMEXPR_NUM_THREADS=1
 
@@ -43,12 +43,26 @@ cleanup() {
 }
 trap cleanup EXIT
 
-# ============================================================
-# Launch: nsys wraps torchrun.
-# Only rank 0 will activate the cuda profiler range in Python
-# (via cudaProfilerStart/Stop guarded by dist.get_rank() == 0).
-# Other ranks run normally but produce no profile data.
-# ============================================================
 NUM_GPUS=$SLURM_GPUS_ON_NODE
 
-srun nsys profile -t cuda,nvtx,osrt,cudnn,cublas --capture-range=cudaProfilerApi --capture-range-end=stop --stop-on-exit=true --force-overwrite=true -o "$SLURM_SUBMIT_DIR/report/ddp_run_${SLURM_JOB_ID}" torchrun --standalone --nproc_per_node=$NUM_GPUS train_torch_ddp.py
+srun nsys profile -t cuda,nvtx,osrt,cudnn,cublas \
+    --capture-range=cudaProfilerApi \
+    --capture-range-end=stop \
+    --stop-on-exit=true \
+    --force-overwrite=true \
+    -o "$SLURM_SUBMIT_DIR/report/ddp_run_${SLURM_JOB_ID}" torchrun \
+    --standalone \
+    --nproc_per_node=$NUM_GPUS train_torch_ddp.py \
+
+
+
+
+nsys profile -t cuda,nvtx,osrt,cudnn,cublas \
+    --capture-range=cudaProfilerApi \
+    --capture-range-end=stop \
+    --stop-on-exit=true \
+    --force-overwrite=true \
+    --stats=true \
+    -o report/report_static torchrun \
+    --standalone \
+    --nproc_per_node=2 train_torch_ddp.py 

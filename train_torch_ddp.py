@@ -26,7 +26,6 @@ set_random_seed(RANDOM_SEED)
 BATCH_SIZE = 256
 EPOCHS = 5
 LEARNING_RATE = 3e-4
-ACCUMULATION_STEPS = 1
 
 FACTOR = 1.0
 RESCALE_FACTOR = 1 / FACTOR
@@ -162,7 +161,7 @@ def main(local_rank):
 
     LOG_EVERY_N_STEPS = 10
 
-    fp16_scaler = torch.amp.GradScaler("cuda", enabled=torch.cuda.is_available())
+    fp16_scaler = torch.amp.GradScaler("cuda")
 
     # ============================================================
     ## DataLoader
@@ -204,8 +203,11 @@ def main(local_rank):
 
         nvtx.range_push("Dataloader")
         for batch_idx, batch in enumerate(train_loader):
+            
             nvtx.range_pop()
-
+            
+            optimizer.zero_grad(set_to_none=True)
+            
             nvtx.range_push("Copying to Device")
             if len(batch) == 2:
                 x, y = batch
@@ -224,11 +226,16 @@ def main(local_rank):
                 nvtx.range_pop()
 
             nvtx.range_push("Backward pass")
-            fp16_scaler.scale(loss / ACCUMULATION_STEPS).backward() # To be understood what happens here. 
+            fp16_scaler.scale(loss).backward() # To be understood what happens here. 
+            # nvtx.range_pop()
+            
+            # nvtx.range_push("Gradient Step")
             fp16_scaler.step(optimizer)
             fp16_scaler.update()
+            # loss.backward()
+            # optimizer.step()
             nvtx.range_pop()
-            optimizer.zero_grad(set_to_none=True)
+            
 
             # Update prior (running variance) – done in fp32, no grad
             with torch.no_grad():
