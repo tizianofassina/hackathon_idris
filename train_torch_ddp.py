@@ -161,7 +161,7 @@ def main(local_rank):
 
     LOG_EVERY_N_STEPS = 10
 
-    fp16_scaler = torch.amp.GradScaler("cuda")
+    #fp16_scaler = torch.amp.GradScaler("cuda")
 
     # ============================================================
     ## DataLoader
@@ -226,14 +226,15 @@ def main(local_rank):
                 nvtx.range_pop()
 
             nvtx.range_push("Backward pass")
-            fp16_scaler.scale(loss).backward() # To be understood what happens here. 
+            #fp16_scaler.scale(loss).backward() # To be understood what happens here. 
+            loss.backward()
             # nvtx.range_pop()
             
             # nvtx.range_push("Gradient Step")
-            fp16_scaler.step(optimizer)
-            fp16_scaler.update()
-            # loss.backward()
-            # optimizer.step()
+            #fp16_scaler.step(optimizer)
+            #fp16_scaler.update()
+            #nvtx.range_push("Optimizer step")
+            optimizer.step()
             nvtx.range_pop()
             
 
