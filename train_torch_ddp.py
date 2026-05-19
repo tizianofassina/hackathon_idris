@@ -1,7 +1,6 @@
 import os
 from datetime import datetime
 import torch
-from torch.cuda import nvtx
 from torch.utils.data import DataLoader, TensorDataset
 from torch.utils.tensorboard import SummaryWriter
 from TarFlow.architecture import Model
@@ -193,22 +192,22 @@ def main(local_rank):
         train_sampler.set_epoch(epoch) # CONCERNS MULTI GPU
 
         # Start CUDA profiler on epoch 2 (all ranks profile, nsys captures each)
-        if epoch == 2:
-            torch.cuda.cudart().cudaProfilerStart()
+        # if epoch == 2:
+        #     torch.cuda.cudart().cudaProfilerStart()
 
         model.train()
 
         epoch_loss_sum = 0.0
         epoch_batches = 0
 
-        nvtx.range_push("Dataloader")
+        #nvtx.range_push("Dataloader")
         for batch_idx, batch in enumerate(train_loader):
             
-            nvtx.range_pop()
+            #nvtx.range_pop()
             
             optimizer.zero_grad(set_to_none=True)
             
-            nvtx.range_push("Copying to Device")
+            #nvtx.range_push("Copying to Device")
             if len(batch) == 2:
                 x, y = batch
                 y = y.to(DEVICE, non_blocking=True)
@@ -217,25 +216,25 @@ def main(local_rank):
                 y = None
             x = x.to(DEVICE, non_blocking=True)
             x = x * RESCALE_FACTOR
-            nvtx.range_pop()
+            #nvtx.range_pop()
 
             with torch.amp.autocast(device_type='cuda', dtype=amp_dtype, enabled=True):
-                nvtx.range_push("Forward pass")
+                #nvtx.range_push("Forward pass")
                 z, outputs, logdets = model(x, y)
                 loss = model.module.get_loss(z, logdets)
-                nvtx.range_pop()
+                #nvtx.range_pop()
 
-            nvtx.range_push("Backward pass")
+            #nvtx.range_push("Backward pass")
             #fp16_scaler.scale(loss).backward() # To be understood what happens here. 
             loss.backward()
-            # nvtx.range_pop()
+            # #nvtx.range_pop()
             
-            # nvtx.range_push("Gradient Step")
+            # #nvtx.range_push("Gradient Step")
             #fp16_scaler.step(optimizer)
             #fp16_scaler.update()
-            #nvtx.range_push("Optimizer step")
+            ##nvtx.range_push("Optimizer step")
             optimizer.step()
-            nvtx.range_pop()
+            #nvtx.range_pop()
             
 
             # Update prior (running variance) – done in fp32, no grad
@@ -246,7 +245,7 @@ def main(local_rank):
             global_step += 1
             # Logging
             if global_step %10 ==0:
-                nvtx.range_push("Logging loss")
+                #nvtx.range_push("Logging loss")
                 loss_val = loss.detach().float()
                 epoch_loss_sum += loss_val
                 epoch_batches += 1
@@ -256,9 +255,9 @@ def main(local_rank):
                         f"Epoch {epoch+1}/{EPOCHS} | step {global_step} | "
                         f"batch {batch_idx+1}/{total_batches} | loss {loss_val:.4f}"
                     )
-                nvtx.range_pop()
+                #nvtx.range_pop()
 
-            nvtx.range_push("Dataloader")
+            #nvtx.range_push("Dataloader")
 
         # End of epoch
         # Aggregate loss across all processes
@@ -277,8 +276,8 @@ def main(local_rank):
                 f"prior_var_mean: {prior_var_mean:.4f}"
             )
 
-        if epoch == 2:
-            torch.cuda.cudart().cudaProfilerStop()
+        # if epoch == 2:
+        #     torch.cuda.cudart().cudaProfilerStop()
 
     if is_main:
         torch.save(
