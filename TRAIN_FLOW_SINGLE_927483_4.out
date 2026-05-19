@@ -1,0 +1,71 @@
+Loading pytorch-gpu/py3/2.3.1
+  Loading requirement: cuda/12.4.1 nccl/2.21.5-1-cuda cudnn/9.2.0.82-cuda
+    gcc/11.5.0 openmpi/4.1.5-cuda intel-oneapi-mkl/2024.1 magma/2.8.0-cuda
+    sox/14.4.2 hdf5/1.12.0-mpi-cuda libjpeg-turbo/2.1.3 ffmpeg/6.1.1
+============================================================
+[BASELINE SINGLE GPU] Array task 4 — batch size = 4096
+============================================================
+/lustre/fshomisc/sup/pub/anaconda-py3/h100/2024.06/envs/pytorch-gpu-2.3.1+py3.11.9/lib/python3.11/site-packages/torchvision-0.18.1a0+126fc22-py3.11-linux-x86_64.egg/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: ''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+⚙️ Using FACTOR: 1.0
+⚙️ Device: cuda
+✅ Data loaded: 70000 samples, 17 batches.
+✅ Data, Model, and Optimizer initialized.
+💾 Checkpoint will be saved as: flow_models/model_20260519_203754.ckpt
+🔥 Starting Training for 5 epochs...
+Traceback (most recent call last):
+  File "/lustre/fswork/projects/rech/ltc/ufk94qf/hackathon_project/train_torch.py", line 262, in <module>
+    main(args.batch_size)
+  File "/lustre/fswork/projects/rech/ltc/ufk94qf/hackathon_project/train_torch.py", line 186, in main
+    z, outputs, logdets = model(x, y)
+                          ^^^^^^^^^^^
+  File "/lustre/fshomisc/sup/pub/anaconda-py3/h100/2024.06/envs/pytorch-gpu-2.3.1+py3.11.9/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre/fshomisc/sup/pub/anaconda-py3/h100/2024.06/envs/pytorch-gpu-2.3.1+py3.11.9/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre/fswork/projects/rech/ltc/ufk94qf/hackathon_project/TarFlow/architecture.py", line 359, in forward
+    x, logdet = block(x, y)
+                ^^^^^^^^^^^
+  File "/lustre/fshomisc/sup/pub/anaconda-py3/h100/2024.06/envs/pytorch-gpu-2.3.1+py3.11.9/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre/fshomisc/sup/pub/anaconda-py3/h100/2024.06/envs/pytorch-gpu-2.3.1+py3.11.9/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre/fswork/projects/rech/ltc/ufk94qf/hackathon_project/TarFlow/architecture.py", line 211, in forward
+    x = block(x, self.attn_mask)
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre/fshomisc/sup/pub/anaconda-py3/h100/2024.06/envs/pytorch-gpu-2.3.1+py3.11.9/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre/fshomisc/sup/pub/anaconda-py3/h100/2024.06/envs/pytorch-gpu-2.3.1+py3.11.9/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre/fswork/projects/rech/ltc/ufk94qf/hackathon_project/TarFlow/architecture.py", line 149, in forward
+    x = x + self.attention(x, attn_mask, attn_temp, which_cache)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre/fshomisc/sup/pub/anaconda-py3/h100/2024.06/envs/pytorch-gpu-2.3.1+py3.11.9/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre/fshomisc/sup/pub/anaconda-py3/h100/2024.06/envs/pytorch-gpu-2.3.1+py3.11.9/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre/fswork/projects/rech/ltc/ufk94qf/hackathon_project/TarFlow/architecture.py", line 118, in forward
+    return self.forward_spda(x, mask, temp, which_cache)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre/fswork/projects/rech/ltc/ufk94qf/hackathon_project/TarFlow/architecture.py", line 58, in forward_spda
+    self.qkv(x)
+  File "/lustre/fshomisc/sup/pub/anaconda-py3/h100/2024.06/envs/pytorch-gpu-2.3.1+py3.11.9/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre/fshomisc/sup/pub/anaconda-py3/h100/2024.06/envs/pytorch-gpu-2.3.1+py3.11.9/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre/fshomisc/sup/pub/anaconda-py3/h100/2024.06/envs/pytorch-gpu-2.3.1+py3.11.9/lib/python3.11/site-packages/torch/nn/modules/linear.py", line 116, in forward
+    return F.linear(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 1024.00 MiB. GPU 
+srun: error: jzxh080: task 0: Exited with exit code 1
+srun: Terminating StepId=927483.0

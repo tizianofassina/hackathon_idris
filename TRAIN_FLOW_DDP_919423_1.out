@@ -1,0 +1,59 @@
+Loading pytorch-gpu/py3/2.3.1
+  Loading requirement: cuda/12.4.1 nccl/2.21.5-1-cuda cudnn/9.2.0.82-cuda
+    gcc/11.5.0 openmpi/4.1.5-cuda intel-oneapi-mkl/2024.1 magma/2.8.0-cuda
+    sox/14.4.2 hdf5/1.12.0-mpi-cuda libjpeg-turbo/2.1.3 ffmpeg/6.1.1
+============================================================
+Array task 1 — batch size = 512
+============================================================
+/lustre/fshomisc/sup/pub/anaconda-py3/h100/2024.06/envs/pytorch-gpu-2.3.1+py3.11.9/lib/python3.11/site-packages/torchvision-0.18.1a0+126fc22-py3.11-linux-x86_64.egg/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: ''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+/lustre/fshomisc/sup/pub/anaconda-py3/h100/2024.06/envs/pytorch-gpu-2.3.1+py3.11.9/lib/python3.11/site-packages/torchvision-0.18.1a0+126fc22-py3.11-linux-x86_64.egg/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: ''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+⚙️ Using FACTOR: 1.0
+⚙️ World size: 2
+✅ Data, Model, and Optimizer initialized.
+💾 Checkpoint will be saved as: flow_models/model_20260519_200344.ckpt
+✅ Data loaded: 70000 samples, 68 batches per process.
+🔥 Starting Training for 5 epochs...
+Epoch 1/5 | step 10 | batch 10/68 | loss -0.4142
+Epoch 1/5 | step 20 | batch 20/68 | loss -0.6851
+Epoch 1/5 | step 30 | batch 30/68 | loss -0.7786
+Epoch 1/5 | step 40 | batch 40/68 | loss -0.8119
+Epoch 1/5 | step 50 | batch 50/68 | loss -0.8880
+Epoch 1/5 | step 60 | batch 60/68 | loss -0.9074
+Epoch 1 done | avg loss: -0.7516 | prior_var_mean: 0.9997
+Epoch 2/5 | step 70 | batch 2/68 | loss -0.9387
+Epoch 2/5 | step 80 | batch 12/68 | loss -0.9675
+Epoch 2/5 | step 90 | batch 22/68 | loss -0.9703
+Epoch 2/5 | step 100 | batch 32/68 | loss -0.9977
+Epoch 2/5 | step 110 | batch 42/68 | loss -1.0231
+Epoch 2/5 | step 120 | batch 52/68 | loss -1.0254
+Epoch 2/5 | step 130 | batch 62/68 | loss -1.0735
+Epoch 2 done | avg loss: -1.0021 | prior_var_mean: 0.9959
+Epoch 3/5 | step 140 | batch 4/68 | loss -1.1067
+Epoch 3/5 | step 150 | batch 14/68 | loss -1.1200
+Epoch 3/5 | step 160 | batch 24/68 | loss -1.1533
+Epoch 3/5 | step 170 | batch 34/68 | loss -1.1276
+Epoch 3/5 | step 180 | batch 44/68 | loss -1.1772
+Epoch 3/5 | step 190 | batch 54/68 | loss -1.1923
+Epoch 3/5 | step 200 | batch 64/68 | loss -1.2167
+Epoch 3 done | avg loss: -1.1544 | prior_var_mean: 0.9915
+Epoch 4/5 | step 210 | batch 6/68 | loss -1.2339
+Epoch 4/5 | step 220 | batch 16/68 | loss -1.2010
+Epoch 4/5 | step 230 | batch 26/68 | loss -1.2081
+Epoch 4/5 | step 240 | batch 36/68 | loss -1.2150
+Epoch 4/5 | step 250 | batch 46/68 | loss -1.1990
+Epoch 4/5 | step 260 | batch 56/68 | loss -1.2357
+Epoch 4/5 | step 270 | batch 66/68 | loss -1.2574
+Epoch 4 done | avg loss: -1.2285 | prior_var_mean: 1.0061
+Epoch 5/5 | step 280 | batch 8/68 | loss -1.2763
+Epoch 5/5 | step 290 | batch 18/68 | loss -1.2842
+Epoch 5/5 | step 300 | batch 28/68 | loss -1.2419
+Epoch 5/5 | step 310 | batch 38/68 | loss -1.2537
+Epoch 5/5 | step 320 | batch 48/68 | loss -1.2799
+Epoch 5/5 | step 330 | batch 58/68 | loss -1.2980
+Epoch 5/5 | step 340 | batch 68/68 | loss -1.2947
+Epoch 5 done | avg loss: -1.2720 | prior_var_mean: 0.9978
+
+✅ Training complete!
+Total training time: 79.87 seconds

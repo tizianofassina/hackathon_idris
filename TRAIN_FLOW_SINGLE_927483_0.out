@@ -1,0 +1,159 @@
+Loading pytorch-gpu/py3/2.3.1
+  Loading requirement: cuda/12.4.1 nccl/2.21.5-1-cuda cudnn/9.2.0.82-cuda
+    gcc/11.5.0 openmpi/4.1.5-cuda intel-oneapi-mkl/2024.1 magma/2.8.0-cuda
+    sox/14.4.2 hdf5/1.12.0-mpi-cuda libjpeg-turbo/2.1.3 ffmpeg/6.1.1
+============================================================
+[BASELINE SINGLE GPU] Array task 0 — batch size = 256
+============================================================
+/lustre/fshomisc/sup/pub/anaconda-py3/h100/2024.06/envs/pytorch-gpu-2.3.1+py3.11.9/lib/python3.11/site-packages/torchvision-0.18.1a0+126fc22-py3.11-linux-x86_64.egg/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: ''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+⚙️ Using FACTOR: 1.0
+⚙️ Device: cuda
+✅ Data loaded: 70000 samples, 273 batches.
+✅ Data, Model, and Optimizer initialized.
+💾 Checkpoint will be saved as: flow_models/model_20260519_202540.ckpt
+🔥 Starting Training for 5 epochs...
+Epoch 1/5 | step 10 | batch 10/273 | loss -0.5251
+Epoch 1/5 | step 20 | batch 20/273 | loss -0.6822
+Epoch 1/5 | step 30 | batch 30/273 | loss -0.7898
+Epoch 1/5 | step 40 | batch 40/273 | loss -0.8519
+Epoch 1/5 | step 50 | batch 50/273 | loss -0.8958
+Epoch 1/5 | step 60 | batch 60/273 | loss -0.9423
+Epoch 1/5 | step 70 | batch 70/273 | loss -0.9407
+Epoch 1/5 | step 80 | batch 80/273 | loss -0.9657
+Epoch 1/5 | step 90 | batch 90/273 | loss -0.9772
+Epoch 1/5 | step 100 | batch 100/273 | loss -0.9971
+Epoch 1/5 | step 110 | batch 110/273 | loss -1.0171
+Epoch 1/5 | step 120 | batch 120/273 | loss -1.0734
+Epoch 1/5 | step 130 | batch 130/273 | loss -1.0580
+Epoch 1/5 | step 140 | batch 140/273 | loss -1.1046
+Epoch 1/5 | step 150 | batch 150/273 | loss -1.1334
+Epoch 1/5 | step 160 | batch 160/273 | loss -1.1343
+Epoch 1/5 | step 170 | batch 170/273 | loss -1.1511
+Epoch 1/5 | step 180 | batch 180/273 | loss -1.1749
+Epoch 1/5 | step 190 | batch 190/273 | loss -1.1806
+Epoch 1/5 | step 200 | batch 200/273 | loss -1.2153
+Epoch 1/5 | step 210 | batch 210/273 | loss -1.1605
+Epoch 1/5 | step 220 | batch 220/273 | loss -1.2171
+Epoch 1/5 | step 230 | batch 230/273 | loss -1.2227
+Epoch 1/5 | step 240 | batch 240/273 | loss -1.2313
+Epoch 1/5 | step 250 | batch 250/273 | loss -1.2485
+Epoch 1/5 | step 260 | batch 260/273 | loss -1.2190
+Epoch 1/5 | step 270 | batch 270/273 | loss -1.2271
+Epoch 1 done | avg loss: -1.0302 | prior_var_mean: 1.0063
+Epoch 2/5 | step 280 | batch 7/273 | loss -1.2636
+Epoch 2/5 | step 290 | batch 17/273 | loss -1.2589
+Epoch 2/5 | step 300 | batch 27/273 | loss -1.2575
+Epoch 2/5 | step 310 | batch 37/273 | loss -1.2417
+Epoch 2/5 | step 320 | batch 47/273 | loss -1.2838
+Epoch 2/5 | step 330 | batch 57/273 | loss -1.2587
+Epoch 2/5 | step 340 | batch 67/273 | loss -1.2706
+Epoch 2/5 | step 350 | batch 77/273 | loss -1.2718
+Epoch 2/5 | step 360 | batch 87/273 | loss -1.3028
+Epoch 2/5 | step 370 | batch 97/273 | loss -1.3016
+Epoch 2/5 | step 380 | batch 107/273 | loss -1.2539
+Epoch 2/5 | step 390 | batch 117/273 | loss -1.2647
+Epoch 2/5 | step 400 | batch 127/273 | loss -1.3102
+Epoch 2/5 | step 410 | batch 137/273 | loss -1.3180
+Epoch 2/5 | step 420 | batch 147/273 | loss -1.3167
+Epoch 2/5 | step 430 | batch 157/273 | loss -1.2965
+Epoch 2/5 | step 440 | batch 167/273 | loss -1.3190
+Epoch 2/5 | step 450 | batch 177/273 | loss -1.3102
+Epoch 2/5 | step 460 | batch 187/273 | loss -1.3263
+Epoch 2/5 | step 470 | batch 197/273 | loss -1.2848
+Epoch 2/5 | step 480 | batch 207/273 | loss -1.2931
+Epoch 2/5 | step 490 | batch 217/273 | loss -1.3371
+Epoch 2/5 | step 500 | batch 227/273 | loss -1.3517
+Epoch 2/5 | step 510 | batch 237/273 | loss -1.3368
+Epoch 2/5 | step 520 | batch 247/273 | loss -1.3508
+Epoch 2/5 | step 530 | batch 257/273 | loss -1.3191
+Epoch 2/5 | step 540 | batch 267/273 | loss -1.3182
+Epoch 2 done | avg loss: -1.2977 | prior_var_mean: 1.0123
+Epoch 3/5 | step 550 | batch 4/273 | loss -1.3023
+Epoch 3/5 | step 560 | batch 14/273 | loss -1.3257
+Epoch 3/5 | step 570 | batch 24/273 | loss -1.3409
+Epoch 3/5 | step 580 | batch 34/273 | loss -1.3740
+Epoch 3/5 | step 590 | batch 44/273 | loss -1.3129
+Epoch 3/5 | step 600 | batch 54/273 | loss -1.3369
+Epoch 3/5 | step 610 | batch 64/273 | loss -1.3321
+Epoch 3/5 | step 620 | batch 74/273 | loss -1.3847
+Epoch 3/5 | step 630 | batch 84/273 | loss -1.2420
+Epoch 3/5 | step 640 | batch 94/273 | loss -1.3401
+Epoch 3/5 | step 650 | batch 104/273 | loss -1.3687
+Epoch 3/5 | step 660 | batch 114/273 | loss -1.3676
+Epoch 3/5 | step 670 | batch 124/273 | loss -1.3605
+Epoch 3/5 | step 680 | batch 134/273 | loss -1.3865
+Epoch 3/5 | step 690 | batch 144/273 | loss -1.3302
+Epoch 3/5 | step 700 | batch 154/273 | loss -1.3511
+Epoch 3/5 | step 710 | batch 164/273 | loss -1.4037
+Epoch 3/5 | step 720 | batch 174/273 | loss -1.4105
+Epoch 3/5 | step 730 | batch 184/273 | loss -1.3755
+Epoch 3/5 | step 740 | batch 194/273 | loss -1.4113
+Epoch 3/5 | step 750 | batch 204/273 | loss -1.3903
+Epoch 3/5 | step 760 | batch 214/273 | loss -1.3747
+Epoch 3/5 | step 770 | batch 224/273 | loss -1.4134
+Epoch 3/5 | step 780 | batch 234/273 | loss -1.4177
+Epoch 3/5 | step 790 | batch 244/273 | loss -1.3636
+Epoch 3/5 | step 800 | batch 254/273 | loss -1.3997
+Epoch 3/5 | step 810 | batch 264/273 | loss -1.4244
+Epoch 3 done | avg loss: -1.3689 | prior_var_mean: 0.9959
+Epoch 4/5 | step 820 | batch 1/273 | loss -1.4186
+Epoch 4/5 | step 830 | batch 11/273 | loss -1.4133
+Epoch 4/5 | step 840 | batch 21/273 | loss -1.4082
+Epoch 4/5 | step 850 | batch 31/273 | loss -1.4047
+Epoch 4/5 | step 860 | batch 41/273 | loss -1.4170
+Epoch 4/5 | step 870 | batch 51/273 | loss -1.4312
+Epoch 4/5 | step 880 | batch 61/273 | loss -1.4493
+Epoch 4/5 | step 890 | batch 71/273 | loss -1.4137
+Epoch 4/5 | step 900 | batch 81/273 | loss -1.4341
+Epoch 4/5 | step 910 | batch 91/273 | loss -1.3956
+Epoch 4/5 | step 920 | batch 101/273 | loss -1.4240
+Epoch 4/5 | step 930 | batch 111/273 | loss -1.4056
+Epoch 4/5 | step 940 | batch 121/273 | loss -1.4748
+Epoch 4/5 | step 950 | batch 131/273 | loss -1.4406
+Epoch 4/5 | step 960 | batch 141/273 | loss -1.4095
+Epoch 4/5 | step 970 | batch 151/273 | loss -1.4183
+Epoch 4/5 | step 980 | batch 161/273 | loss -1.4754
+Epoch 4/5 | step 990 | batch 171/273 | loss -1.4418
+Epoch 4/5 | step 1000 | batch 181/273 | loss -1.4529
+Epoch 4/5 | step 1010 | batch 191/273 | loss -1.4296
+Epoch 4/5 | step 1020 | batch 201/273 | loss -1.4284
+Epoch 4/5 | step 1030 | batch 211/273 | loss -1.4710
+Epoch 4/5 | step 1040 | batch 221/273 | loss -1.4568
+Epoch 4/5 | step 1050 | batch 231/273 | loss -1.4367
+Epoch 4/5 | step 1060 | batch 241/273 | loss -1.4769
+Epoch 4/5 | step 1070 | batch 251/273 | loss -1.4914
+Epoch 4/5 | step 1080 | batch 261/273 | loss -1.4357
+Epoch 4/5 | step 1090 | batch 271/273 | loss -1.4838
+Epoch 4 done | avg loss: -1.4362 | prior_var_mean: 1.0003
+Epoch 5/5 | step 1100 | batch 8/273 | loss -1.4838
+Epoch 5/5 | step 1110 | batch 18/273 | loss -1.4315
+Epoch 5/5 | step 1120 | batch 28/273 | loss -1.4813
+Epoch 5/5 | step 1130 | batch 38/273 | loss -1.4935
+Epoch 5/5 | step 1140 | batch 48/273 | loss -1.4640
+Epoch 5/5 | step 1150 | batch 58/273 | loss -1.3572
+Epoch 5/5 | step 1160 | batch 68/273 | loss -1.5005
+Epoch 5/5 | step 1170 | batch 78/273 | loss -1.4864
+Epoch 5/5 | step 1180 | batch 88/273 | loss -1.4913
+Epoch 5/5 | step 1190 | batch 98/273 | loss -1.4753
+Epoch 5/5 | step 1200 | batch 108/273 | loss -1.4664
+Epoch 5/5 | step 1210 | batch 118/273 | loss -1.4831
+Epoch 5/5 | step 1220 | batch 128/273 | loss -1.5018
+Epoch 5/5 | step 1230 | batch 138/273 | loss -1.4418
+Epoch 5/5 | step 1240 | batch 148/273 | loss -1.5017
+Epoch 5/5 | step 1250 | batch 158/273 | loss -1.5310
+Epoch 5/5 | step 1260 | batch 168/273 | loss -1.5353
+Epoch 5/5 | step 1270 | batch 178/273 | loss -1.4321
+Epoch 5/5 | step 1280 | batch 188/273 | loss -1.5121
+Epoch 5/5 | step 1290 | batch 198/273 | loss -1.5010
+Epoch 5/5 | step 1300 | batch 208/273 | loss -1.4918
+Epoch 5/5 | step 1310 | batch 218/273 | loss -1.5426
+Epoch 5/5 | step 1320 | batch 228/273 | loss -1.5472
+Epoch 5/5 | step 1330 | batch 238/273 | loss -1.5101
+Epoch 5/5 | step 1340 | batch 248/273 | loss -1.5431
+Epoch 5/5 | step 1350 | batch 258/273 | loss -1.5756
+Epoch 5/5 | step 1360 | batch 268/273 | loss -1.5376
+Epoch 5 done | avg loss: -1.4995 | prior_var_mean: 0.9928
+
+✅ Training complete!
+Total training time: 155.78 seconds

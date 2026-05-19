@@ -1,0 +1,50 @@
+Loading pytorch-gpu/py3/2.3.1
+  Loading requirement: cuda/12.4.1 nccl/2.21.5-1-cuda cudnn/9.2.0.82-cuda
+    gcc/11.5.0 openmpi/4.1.5-cuda intel-oneapi-mkl/2024.1 magma/2.8.0-cuda
+    sox/14.4.2 hdf5/1.12.0-mpi-cuda libjpeg-turbo/2.1.3 ffmpeg/6.1.1
+============================================================
+Array task 1 — batch size = 512
+============================================================
+/lustre/fshomisc/sup/pub/anaconda-py3/h100/2024.06/envs/pytorch-gpu-2.3.1+py3.11.9/bin/python: can't open file '/lustre/fswork/projects/rech/ltc/ufk94qf/hackathon_project/train_ddp_baseline.py': [Errno 2] No such file or directory
+/lustre/fshomisc/sup/pub/anaconda-py3/h100/2024.06/envs/pytorch-gpu-2.3.1+py3.11.9/bin/python: can't open file '/lustre/fswork/projects/rech/ltc/ufk94qf/hackathon_project/train_ddp_baseline.py': [Errno 2] No such file or directory
+E0519 20:00:02.888000 22840954788928 torch/distributed/elastic/multiprocessing/api.py:826] failed (exitcode: 2) local_rank: 0 (pid: 1927172) of binary: /lustre/fshomisc/sup/pub/anaconda-py3/h100/2024.06/envs/pytorch-gpu-2.3.1+py3.11.9/bin/python
+Traceback (most recent call last):
+  File "/lustre/fshomisc/sup/pub/anaconda-py3/h100/2024.06/envs/pytorch-gpu-2.3.1+py3.11.9/bin/torchrun", line 33, in <module>
+    sys.exit(load_entry_point('torch==2.3.1', 'console_scripts', 'torchrun')())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre/fshomisc/sup/pub/anaconda-py3/h100/2024.06/envs/pytorch-gpu-2.3.1+py3.11.9/lib/python3.11/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 347, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/lustre/fshomisc/sup/pub/anaconda-py3/h100/2024.06/envs/pytorch-gpu-2.3.1+py3.11.9/lib/python3.11/site-packages/torch/distributed/run.py", line 879, in main
+    run(args)
+  File "/lustre/fshomisc/sup/pub/anaconda-py3/h100/2024.06/envs/pytorch-gpu-2.3.1+py3.11.9/lib/python3.11/site-packages/torch/distributed/run.py", line 870, in run
+    elastic_launch(
+  File "/lustre/fshomisc/sup/pub/anaconda-py3/h100/2024.06/envs/pytorch-gpu-2.3.1+py3.11.9/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 132, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre/fshomisc/sup/pub/anaconda-py3/h100/2024.06/envs/pytorch-gpu-2.3.1+py3.11.9/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 263, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+train_ddp_baseline.py FAILED
+------------------------------------------------------------
+Failures:
+[1]:
+  time      : 2026-05-19_20:00:02
+  host      : jzxh080.hpc.idris.fr
+  rank      : 1 (local_rank: 1)
+  exitcode  : 2 (pid: 1927173)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2026-05-19_20:00:02
+  host      : jzxh080.hpc.idris.fr
+  rank      : 0 (local_rank: 0)
+  exitcode  : 2 (pid: 1927172)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+srun: error: jzxh080: task 0: Exited with exit code 1
+srun: Terminating StepId=919359.0

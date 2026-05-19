@@ -1,0 +1,12 @@
+baseline | batch_size=256 | time=84.57s
+baseline | batch_size=512 | time=79.87s
+baseline | batch_size=1024 | time=79.59s
+baseline | batch_size=2048 | time=83.87s
+profiled | batch_size=256 | time=99.98s
+profiled | batch_size=512 | time=93.12s
+profiled | batch_size=1024 | time=91.00s
+profiled | batch_size=2048 | time=96.81s
+baseline_single_gpu | batch_size=256 | time=155.78s
+baseline_single_gpu | batch_size=512 | time=151.50s
+baseline_single_gpu | batch_size=1024 | time=147.67s
+baseline_single_gpu | batch_size=2048 | time=154.89s
