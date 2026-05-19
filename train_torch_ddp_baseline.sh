@@ -39,4 +39,4 @@ echo "============================================================"
 srun torchrun \
     --standalone \
     --nproc_per_node=$NUM_GPUS \
-    train_ddp_baseline.py --batch_size $BS
+    train_torch_ddp_baseline.py --batch_size $BS
