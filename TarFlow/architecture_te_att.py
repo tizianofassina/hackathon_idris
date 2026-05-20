@@ -85,7 +85,7 @@ class Attention_dot_te(torch.nn.Module):
         print("k shape : ", k.shape)
         print("v shape : ", v.shape)
         print("mask shape : ", mask.shape)
-        x = self.attention_dot(query = q, key = k, value = v, attention_mask=mask) #, scale=scale)
+        x = self.attention_dot(q, k, v, mask) #, scale=scale)
         x = x.transpose(1, 2).reshape(B, T, C)
         x = self.proj(x)
         return x
