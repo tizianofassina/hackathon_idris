@@ -318,6 +318,6 @@ if __name__ == "__main__":
         if dist.get_rank() == 0:
             print(f"Total training time: {elapsed_time:.2f} seconds")
             with open("total_times.txt", "a") as f:
-                f.write(f"profiled | batch_size={args.batch_size} | time={elapsed_time:.2f}s\n")
+                f.write(f" profiled te | batch_size={args.batch_size} | time={elapsed_time:.2f}s\n")
     finally:
         cleanup_ddp()
