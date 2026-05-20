@@ -1,868 +1,0 @@
-Loading pytorch-gpu/py3/2.3.1
-  Loading requirement: cuda/12.4.1 nccl/2.21.5-1-cuda cudnn/9.2.0.82-cuda
-    gcc/11.5.0 openmpi/4.1.5-cuda intel-oneapi-mkl/2024.1 magma/2.8.0-cuda
-    sox/14.4.2 hdf5/1.12.0-mpi-cuda libjpeg-turbo/2.1.3 ffmpeg/6.1.1
-/lustre/fshomisc/sup/pub/anaconda-py3/h100/2024.06/envs/pytorch-gpu-2.3.1+py3.11.9/lib/python3.11/site-packages/torchvision-0.18.1a0+126fc22-py3.11-linux-x86_64.egg/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: ''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
-  warn(
-/lustre/fshomisc/sup/pub/anaconda-py3/h100/2024.06/envs/pytorch-gpu-2.3.1+py3.11.9/lib/python3.11/site-packages/torchvision-0.18.1a0+126fc22-py3.11-linux-x86_64.egg/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: ''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
-  warn(
-⚙️ Using FACTOR: 1.0
-⚙️ World size: 2
-✅ Data, Model, and Optimizer initialized.
-💾 Checkpoint will be saved as: flow_models/model_20260519_221627.ckpt
-✅ Data loaded: 70000 samples, 136 batches per process.
-🔥 Starting Training for 5 epochs...
-Epoch 1/5 | step 1 | batch 1/136 | loss 0.1615
-Epoch 1/5 | step 2 | batch 2/136 | loss 0.1325
-Epoch 1/5 | step 3 | batch 3/136 | loss 0.0663
-Epoch 1/5 | step 4 | batch 4/136 | loss -0.0181
-Epoch 1/5 | step 5 | batch 5/136 | loss -0.1019
-Epoch 1/5 | step 6 | batch 6/136 | loss -0.1780
-Epoch 1/5 | step 7 | batch 7/136 | loss -0.2687
-Epoch 1/5 | step 8 | batch 8/136 | loss -0.3063
-Epoch 1/5 | step 9 | batch 9/136 | loss -0.3370
-Epoch 1/5 | step 10 | batch 10/136 | loss -0.4141
-Epoch 1/5 | step 11 | batch 11/136 | loss -0.4635
-Epoch 1/5 | step 12 | batch 12/136 | loss -0.5134
-Epoch 1/5 | step 13 | batch 13/136 | loss -0.5677
-Epoch 1/5 | step 14 | batch 14/136 | loss -0.6178
-Epoch 1/5 | step 15 | batch 15/136 | loss -0.6168
-Epoch 1/5 | step 16 | batch 16/136 | loss -0.6429
-Epoch 1/5 | step 17 | batch 17/136 | loss -0.6755
-Epoch 1/5 | step 18 | batch 18/136 | loss -0.6869
-Epoch 1/5 | step 19 | batch 19/136 | loss -0.7021
-Epoch 1/5 | step 20 | batch 20/136 | loss -0.6999
-Epoch 1/5 | step 21 | batch 21/136 | loss -0.6858
-Epoch 1/5 | step 22 | batch 22/136 | loss -0.7020
-Epoch 1/5 | step 23 | batch 23/136 | loss -0.7280
-Epoch 1/5 | step 24 | batch 24/136 | loss -0.7326
-Epoch 1/5 | step 25 | batch 25/136 | loss -0.7279
-Epoch 1/5 | step 26 | batch 26/136 | loss -0.7540
-Epoch 1/5 | step 27 | batch 27/136 | loss -0.7764
-Epoch 1/5 | step 28 | batch 28/136 | loss -0.7810
-Epoch 1/5 | step 29 | batch 29/136 | loss -0.8015
-Epoch 1/5 | step 30 | batch 30/136 | loss -0.8013
-Epoch 1/5 | step 31 | batch 31/136 | loss -0.7738
-Epoch 1/5 | step 32 | batch 32/136 | loss -0.7577
-Epoch 1/5 | step 33 | batch 33/136 | loss -0.8126
-Epoch 1/5 | step 34 | batch 34/136 | loss -0.8067
-Epoch 1/5 | step 35 | batch 35/136 | loss -0.8162
-Epoch 1/5 | step 36 | batch 36/136 | loss -0.8002
-Epoch 1/5 | step 37 | batch 37/136 | loss -0.8258
-Epoch 1/5 | step 38 | batch 38/136 | loss -0.7967
-Epoch 1/5 | step 39 | batch 39/136 | loss -0.8319
-Epoch 1/5 | step 40 | batch 40/136 | loss -0.8076
-Epoch 1/5 | step 41 | batch 41/136 | loss -0.8282
-Epoch 1/5 | step 42 | batch 42/136 | loss -0.8473
-Epoch 1/5 | step 43 | batch 43/136 | loss -0.8476
-Epoch 1/5 | step 44 | batch 44/136 | loss -0.8530
-Epoch 1/5 | step 45 | batch 45/136 | loss -0.8310
-Epoch 1/5 | step 46 | batch 46/136 | loss -0.8418
-Epoch 1/5 | step 47 | batch 47/136 | loss -0.8756
-Epoch 1/5 | step 48 | batch 48/136 | loss -0.8697
-Epoch 1/5 | step 49 | batch 49/136 | loss -0.8708
-Epoch 1/5 | step 50 | batch 50/136 | loss -0.8698
-Epoch 1/5 | step 51 | batch 51/136 | loss -0.8818
-Epoch 1/5 | step 52 | batch 52/136 | loss -0.9024
-Epoch 1/5 | step 53 | batch 53/136 | loss -0.8949
-Epoch 1/5 | step 54 | batch 54/136 | loss -0.8987
-Epoch 1/5 | step 55 | batch 55/136 | loss -0.8875
-Epoch 1/5 | step 56 | batch 56/136 | loss -0.9135
-Epoch 1/5 | step 57 | batch 57/136 | loss -0.9110
-Epoch 1/5 | step 58 | batch 58/136 | loss -0.9160
-Epoch 1/5 | step 59 | batch 59/136 | loss -0.9140
-Epoch 1/5 | step 60 | batch 60/136 | loss -0.8941
-Epoch 1/5 | step 61 | batch 61/136 | loss -0.9335
-Epoch 1/5 | step 62 | batch 62/136 | loss -0.9422
-Epoch 1/5 | step 63 | batch 63/136 | loss -0.9477
-Epoch 1/5 | step 64 | batch 64/136 | loss -0.9311
-Epoch 1/5 | step 65 | batch 65/136 | loss -0.9453
-Epoch 1/5 | step 66 | batch 66/136 | loss -0.9299
-Epoch 1/5 | step 67 | batch 67/136 | loss -0.9346
-Epoch 1/5 | step 68 | batch 68/136 | loss -0.9447
-Epoch 1/5 | step 69 | batch 69/136 | loss -0.9377
-Epoch 1/5 | step 70 | batch 70/136 | loss -0.9530
-Epoch 1/5 | step 71 | batch 71/136 | loss -0.9643
-Epoch 1/5 | step 72 | batch 72/136 | loss -0.9653
-Epoch 1/5 | step 73 | batch 73/136 | loss -0.9359
-Epoch 1/5 | step 74 | batch 74/136 | loss -0.9440
-Epoch 1/5 | step 75 | batch 75/136 | loss -0.9438
-Epoch 1/5 | step 76 | batch 76/136 | loss -0.9492
-Epoch 1/5 | step 77 | batch 77/136 | loss -0.9566
-Epoch 1/5 | step 78 | batch 78/136 | loss -0.9401
-Epoch 1/5 | step 79 | batch 79/136 | loss -0.9225
-Epoch 1/5 | step 80 | batch 80/136 | loss -0.9329
-Epoch 1/5 | step 81 | batch 81/136 | loss -0.9484
-Epoch 1/5 | step 82 | batch 82/136 | loss -0.9660
-Epoch 1/5 | step 83 | batch 83/136 | loss -0.9436
-Epoch 1/5 | step 84 | batch 84/136 | loss -0.9650
-Epoch 1/5 | step 85 | batch 85/136 | loss -0.9677
-Epoch 1/5 | step 86 | batch 86/136 | loss -0.9818
-Epoch 1/5 | step 87 | batch 87/136 | loss -0.9604
-Epoch 1/5 | step 88 | batch 88/136 | loss -0.9695
-Epoch 1/5 | step 89 | batch 89/136 | loss -0.9913
-Epoch 1/5 | step 90 | batch 90/136 | loss -0.9804
-Epoch 1/5 | step 91 | batch 91/136 | loss -0.9579
-Epoch 1/5 | step 92 | batch 92/136 | loss -0.9845
-Epoch 1/5 | step 93 | batch 93/136 | loss -0.9926
-Epoch 1/5 | step 94 | batch 94/136 | loss -0.9783
-Epoch 1/5 | step 95 | batch 95/136 | loss -1.0039
-Epoch 1/5 | step 96 | batch 96/136 | loss -1.0051
-Epoch 1/5 | step 97 | batch 97/136 | loss -0.9907
-Epoch 1/5 | step 98 | batch 98/136 | loss -0.9945
-Epoch 1/5 | step 99 | batch 99/136 | loss -0.9891
-Epoch 1/5 | step 100 | batch 100/136 | loss -1.0056
-Epoch 1/5 | step 101 | batch 101/136 | loss -0.9878
-Epoch 1/5 | step 102 | batch 102/136 | loss -1.0252
-Epoch 1/5 | step 103 | batch 103/136 | loss -0.9950
-Epoch 1/5 | step 104 | batch 104/136 | loss -1.0032
-Epoch 1/5 | step 105 | batch 105/136 | loss -1.0143
-Epoch 1/5 | step 106 | batch 106/136 | loss -0.9966
-Epoch 1/5 | step 107 | batch 107/136 | loss -1.0277
-Epoch 1/5 | step 108 | batch 108/136 | loss -1.0250
-Epoch 1/5 | step 109 | batch 109/136 | loss -0.9944
-Epoch 1/5 | step 110 | batch 110/136 | loss -1.0254
-Epoch 1/5 | step 111 | batch 111/136 | loss -1.0225
-Epoch 1/5 | step 112 | batch 112/136 | loss -1.0268
-Epoch 1/5 | step 113 | batch 113/136 | loss -1.0296
-Epoch 1/5 | step 114 | batch 114/136 | loss -1.0190
-Epoch 1/5 | step 115 | batch 115/136 | loss -1.0485
-Epoch 1/5 | step 116 | batch 116/136 | loss -1.0394
-Epoch 1/5 | step 117 | batch 117/136 | loss -1.0438
-Epoch 1/5 | step 118 | batch 118/136 | loss -1.0596
-Epoch 1/5 | step 119 | batch 119/136 | loss -1.0480
-Epoch 1/5 | step 120 | batch 120/136 | loss -1.0343
-Epoch 1/5 | step 121 | batch 121/136 | loss -1.0586
-Epoch 1/5 | step 122 | batch 122/136 | loss -1.0571
-Epoch 1/5 | step 123 | batch 123/136 | loss -1.0520
-Epoch 1/5 | step 124 | batch 124/136 | loss -1.0697
-Epoch 1/5 | step 125 | batch 125/136 | loss -1.0689
-Epoch 1/5 | step 126 | batch 126/136 | loss -1.0589
-Epoch 1/5 | step 127 | batch 127/136 | loss -1.0702
-Epoch 1/5 | step 128 | batch 128/136 | loss -1.0504
-Epoch 1/5 | step 129 | batch 129/136 | loss -1.0770
-Epoch 1/5 | step 130 | batch 130/136 | loss -1.0557
-Epoch 1/5 | step 131 | batch 131/136 | loss -1.0532
-Epoch 1/5 | step 132 | batch 132/136 | loss -1.1022
-Epoch 1/5 | step 133 | batch 133/136 | loss -1.0583
-Epoch 1/5 | step 134 | batch 134/136 | loss -1.0696
-Epoch 1/5 | step 135 | batch 135/136 | loss -1.0648
-Epoch 1/5 | step 136 | batch 136/136 | loss -1.0782
-Epoch 1 done | avg loss: -0.8555 | prior_var_mean: 0.9897
-Epoch 2/5 | step 137 | batch 1/136 | loss -1.0699
-Epoch 2/5 | step 138 | batch 2/136 | loss -1.0591
-Epoch 2/5 | step 139 | batch 3/136 | loss -1.0732
-Epoch 2/5 | step 140 | batch 4/136 | loss -1.0885
-Epoch 2/5 | step 141 | batch 5/136 | loss -1.0832
-Epoch 2/5 | step 142 | batch 6/136 | loss -1.0792
-Epoch 2/5 | step 143 | batch 7/136 | loss -1.0985
-Epoch 2/5 | step 144 | batch 8/136 | loss -1.0998
-Epoch 2/5 | step 145 | batch 9/136 | loss -1.0976
-Epoch 2/5 | step 146 | batch 10/136 | loss -1.1085
-Epoch 2/5 | step 147 | batch 11/136 | loss -1.1145
-Epoch 2/5 | step 148 | batch 12/136 | loss -1.1025
-Epoch 2/5 | step 149 | batch 13/136 | loss -1.1078
-Epoch 2/5 | step 150 | batch 14/136 | loss -1.1165
-Epoch 2/5 | step 151 | batch 15/136 | loss -1.1278
-Epoch 2/5 | step 152 | batch 16/136 | loss -1.1307
-Epoch 2/5 | step 153 | batch 17/136 | loss -1.1269
-Epoch 2/5 | step 154 | batch 18/136 | loss -1.1232
-Epoch 2/5 | step 155 | batch 19/136 | loss -1.1242
-Epoch 2/5 | step 156 | batch 20/136 | loss -1.1156
-Epoch 2/5 | step 157 | batch 21/136 | loss -1.1411
-Epoch 2/5 | step 158 | batch 22/136 | loss -1.1615
-Epoch 2/5 | step 159 | batch 23/136 | loss -1.1320
-Epoch 2/5 | step 160 | batch 24/136 | loss -1.1538
-Epoch 2/5 | step 161 | batch 25/136 | loss -1.1321
-Epoch 2/5 | step 162 | batch 26/136 | loss -1.1162
-Epoch 2/5 | step 163 | batch 27/136 | loss -1.1668
-Epoch 2/5 | step 164 | batch 28/136 | loss -1.1344
-Epoch 2/5 | step 165 | batch 29/136 | loss -1.1031
-Epoch 2/5 | step 166 | batch 30/136 | loss -1.1204
-Epoch 2/5 | step 167 | batch 31/136 | loss -1.1369
-Epoch 2/5 | step 168 | batch 32/136 | loss -1.1486
-Epoch 2/5 | step 169 | batch 33/136 | loss -1.1344
-Epoch 2/5 | step 170 | batch 34/136 | loss -1.1599
-Epoch 2/5 | step 171 | batch 35/136 | loss -1.1603
-Epoch 2/5 | step 172 | batch 36/136 | loss -1.1447
-Epoch 2/5 | step 173 | batch 37/136 | loss -1.1642
-Epoch 2/5 | step 174 | batch 38/136 | loss -1.1385
-Epoch 2/5 | step 175 | batch 39/136 | loss -1.1928
-Epoch 2/5 | step 176 | batch 40/136 | loss -1.1600
-Epoch 2/5 | step 177 | batch 41/136 | loss -1.1748
-Epoch 2/5 | step 178 | batch 42/136 | loss -1.1721
-Epoch 2/5 | step 179 | batch 43/136 | loss -1.1741
-Epoch 2/5 | step 180 | batch 44/136 | loss -1.1751
-Epoch 2/5 | step 181 | batch 45/136 | loss -1.1580
-Epoch 2/5 | step 182 | batch 46/136 | loss -1.1592
-Epoch 2/5 | step 183 | batch 47/136 | loss -1.1736
-Epoch 2/5 | step 184 | batch 48/136 | loss -1.1728
-Epoch 2/5 | step 185 | batch 49/136 | loss -1.1764
-Epoch 2/5 | step 186 | batch 50/136 | loss -1.1829
-Epoch 2/5 | step 187 | batch 51/136 | loss -1.2041
-Epoch 2/5 | step 188 | batch 52/136 | loss -1.1766
-Epoch 2/5 | step 189 | batch 53/136 | loss -1.1941
-Epoch 2/5 | step 190 | batch 54/136 | loss -1.1939
-Epoch 2/5 | step 191 | batch 55/136 | loss -1.2000
-Epoch 2/5 | step 192 | batch 56/136 | loss -1.2115
-Epoch 2/5 | step 193 | batch 57/136 | loss -1.2077
-Epoch 2/5 | step 194 | batch 58/136 | loss -1.2031
-Epoch 2/5 | step 195 | batch 59/136 | loss -1.2002
-Epoch 2/5 | step 196 | batch 60/136 | loss -1.2258
-Epoch 2/5 | step 197 | batch 61/136 | loss -1.1842
-Epoch 2/5 | step 198 | batch 62/136 | loss -1.1848
-Epoch 2/5 | step 199 | batch 63/136 | loss -1.1994
-Epoch 2/5 | step 200 | batch 64/136 | loss -1.2102
-Epoch 2/5 | step 201 | batch 65/136 | loss -1.2126
-Epoch 2/5 | step 202 | batch 66/136 | loss -1.2102
-Epoch 2/5 | step 203 | batch 67/136 | loss -1.2314
-Epoch 2/5 | step 204 | batch 68/136 | loss -1.2134
-Epoch 2/5 | step 205 | batch 69/136 | loss -1.2465
-Epoch 2/5 | step 206 | batch 70/136 | loss -1.2123
-Epoch 2/5 | step 207 | batch 71/136 | loss -1.2299
-Epoch 2/5 | step 208 | batch 72/136 | loss -1.2510
-Epoch 2/5 | step 209 | batch 73/136 | loss -1.2055
-Epoch 2/5 | step 210 | batch 74/136 | loss -1.2222
-Epoch 2/5 | step 211 | batch 75/136 | loss -1.1711
-Epoch 2/5 | step 212 | batch 76/136 | loss -1.1306
-Epoch 2/5 | step 213 | batch 77/136 | loss -1.1984
-Epoch 2/5 | step 214 | batch 78/136 | loss -1.0861
-Epoch 2/5 | step 215 | batch 79/136 | loss -1.1164
-Epoch 2/5 | step 216 | batch 80/136 | loss -1.0245
-Epoch 2/5 | step 217 | batch 81/136 | loss -1.1388
-Epoch 2/5 | step 218 | batch 82/136 | loss -1.2245
-Epoch 2/5 | step 219 | batch 83/136 | loss -1.0609
-Epoch 2/5 | step 220 | batch 84/136 | loss -1.1916
-Epoch 2/5 | step 221 | batch 85/136 | loss -1.1721
-Epoch 2/5 | step 222 | batch 86/136 | loss -1.1111
-Epoch 2/5 | step 223 | batch 87/136 | loss -1.1405
-Epoch 2/5 | step 224 | batch 88/136 | loss -1.1864
-Epoch 2/5 | step 225 | batch 89/136 | loss -1.1757
-Epoch 2/5 | step 226 | batch 90/136 | loss -1.1438
-Epoch 2/5 | step 227 | batch 91/136 | loss -1.1841
-Epoch 2/5 | step 228 | batch 92/136 | loss -1.1988
-Epoch 2/5 | step 229 | batch 93/136 | loss -1.1799
-Epoch 2/5 | step 230 | batch 94/136 | loss -1.1801
-Epoch 2/5 | step 231 | batch 95/136 | loss -1.1857
-Epoch 2/5 | step 232 | batch 96/136 | loss -1.1857
-Epoch 2/5 | step 233 | batch 97/136 | loss -1.1878
-Epoch 2/5 | step 234 | batch 98/136 | loss -1.2004
-Epoch 2/5 | step 235 | batch 99/136 | loss -1.2133
-Epoch 2/5 | step 236 | batch 100/136 | loss -1.2105
-Epoch 2/5 | step 237 | batch 101/136 | loss -1.2056
-Epoch 2/5 | step 238 | batch 102/136 | loss -1.2111
-Epoch 2/5 | step 239 | batch 103/136 | loss -1.1790
-Epoch 2/5 | step 240 | batch 104/136 | loss -1.2125
-Epoch 2/5 | step 241 | batch 105/136 | loss -1.2256
-Epoch 2/5 | step 242 | batch 106/136 | loss -1.1982
-Epoch 2/5 | step 243 | batch 107/136 | loss -1.2100
-Epoch 2/5 | step 244 | batch 108/136 | loss -1.2238
-Epoch 2/5 | step 245 | batch 109/136 | loss -1.2293
-Epoch 2/5 | step 246 | batch 110/136 | loss -1.2332
-Epoch 2/5 | step 247 | batch 111/136 | loss -1.2097
-Epoch 2/5 | step 248 | batch 112/136 | loss -1.2432
-Epoch 2/5 | step 249 | batch 113/136 | loss -1.2338
-Epoch 2/5 | step 250 | batch 114/136 | loss -1.2252
-Epoch 2/5 | step 251 | batch 115/136 | loss -1.2339
-Epoch 2/5 | step 252 | batch 116/136 | loss -1.2305
-Epoch 2/5 | step 253 | batch 117/136 | loss -1.2428
-Epoch 2/5 | step 254 | batch 118/136 | loss -1.2250
-Epoch 2/5 | step 255 | batch 119/136 | loss -1.2661
-Epoch 2/5 | step 256 | batch 120/136 | loss -1.2514
-Epoch 2/5 | step 257 | batch 121/136 | loss -1.2525
-Epoch 2/5 | step 258 | batch 122/136 | loss -1.2431
-Epoch 2/5 | step 259 | batch 123/136 | loss -1.2325
-Epoch 2/5 | step 260 | batch 124/136 | loss -1.2469
-Epoch 2/5 | step 261 | batch 125/136 | loss -1.2454
-Epoch 2/5 | step 262 | batch 126/136 | loss -1.2618
-Epoch 2/5 | step 263 | batch 127/136 | loss -1.2354
-Epoch 2/5 | step 264 | batch 128/136 | loss -1.2253
-Epoch 2/5 | step 265 | batch 129/136 | loss -1.2316
-Epoch 2/5 | step 266 | batch 130/136 | loss -1.2372
-Epoch 2/5 | step 267 | batch 131/136 | loss -1.2292
-Epoch 2/5 | step 268 | batch 132/136 | loss -1.2516
-Epoch 2/5 | step 269 | batch 133/136 | loss -1.2622
-Epoch 2/5 | step 270 | batch 134/136 | loss -1.2689
-Epoch 2/5 | step 271 | batch 135/136 | loss -1.2471
-Epoch 2/5 | step 272 | batch 136/136 | loss -1.2442
-Epoch 2 done | avg loss: -1.1793 | prior_var_mean: 0.9919
-Epoch 3/5 | step 273 | batch 1/136 | loss -1.2774
-Epoch 3/5 | step 274 | batch 2/136 | loss -1.2319
-Epoch 3/5 | step 275 | batch 3/136 | loss -1.2600
-Epoch 3/5 | step 276 | batch 4/136 | loss -1.2617
-Epoch 3/5 | step 277 | batch 5/136 | loss -1.2455
-Epoch 3/5 | step 278 | batch 6/136 | loss -1.2657
-Epoch 3/5 | step 279 | batch 7/136 | loss -1.2610
-Epoch 3/5 | step 280 | batch 8/136 | loss -1.2548
-Epoch 3/5 | step 281 | batch 9/136 | loss -1.2767
-Epoch 3/5 | step 282 | batch 10/136 | loss -1.2612
-Epoch 3/5 | step 283 | batch 11/136 | loss -1.2303
-Epoch 3/5 | step 284 | batch 12/136 | loss -1.2527
-Epoch 3/5 | step 285 | batch 13/136 | loss -1.2744
-Epoch 3/5 | step 286 | batch 14/136 | loss -1.2674
-Epoch 3/5 | step 287 | batch 15/136 | loss -1.2812
-Epoch 3/5 | step 288 | batch 16/136 | loss -1.2640
-Epoch 3/5 | step 289 | batch 17/136 | loss -1.2320
-Epoch 3/5 | step 290 | batch 18/136 | loss -1.2558
-Epoch 3/5 | step 291 | batch 19/136 | loss -1.2579
-Epoch 3/5 | step 292 | batch 20/136 | loss -1.2673
-Epoch 3/5 | step 293 | batch 21/136 | loss -1.2648
-Epoch 3/5 | step 294 | batch 22/136 | loss -1.2319
-Epoch 3/5 | step 295 | batch 23/136 | loss -1.2125
-Epoch 3/5 | step 296 | batch 24/136 | loss -1.2625
-Epoch 3/5 | step 297 | batch 25/136 | loss -1.2422
-Epoch 3/5 | step 298 | batch 26/136 | loss -1.1427
-Epoch 3/5 | step 299 | batch 27/136 | loss -1.1854
-Epoch 3/5 | step 300 | batch 28/136 | loss -1.1017
-Epoch 3/5 | step 301 | batch 29/136 | loss -1.1762
-Epoch 3/5 | step 302 | batch 30/136 | loss -1.2187
-Epoch 3/5 | step 303 | batch 31/136 | loss -1.1798
-Epoch 3/5 | step 304 | batch 32/136 | loss -1.1808
-Epoch 3/5 | step 305 | batch 33/136 | loss -1.2476
-Epoch 3/5 | step 306 | batch 34/136 | loss -1.1995
-Epoch 3/5 | step 307 | batch 35/136 | loss -1.1743
-Epoch 3/5 | step 308 | batch 36/136 | loss -1.2444
-Epoch 3/5 | step 309 | batch 37/136 | loss -1.2291
-Epoch 3/5 | step 310 | batch 38/136 | loss -1.2319
-Epoch 3/5 | step 311 | batch 39/136 | loss -1.2371
-Epoch 3/5 | step 312 | batch 40/136 | loss -1.2505
-Epoch 3/5 | step 313 | batch 41/136 | loss -1.2459
-Epoch 3/5 | step 314 | batch 42/136 | loss -1.2111
-Epoch 3/5 | step 315 | batch 43/136 | loss -1.2345
-Epoch 3/5 | step 316 | batch 44/136 | loss -1.2644
-Epoch 3/5 | step 317 | batch 45/136 | loss -1.2346
-Epoch 3/5 | step 318 | batch 46/136 | loss -1.2672
-Epoch 3/5 | step 319 | batch 47/136 | loss -1.2794
-Epoch 3/5 | step 320 | batch 48/136 | loss -1.2645
-Epoch 3/5 | step 321 | batch 49/136 | loss -1.2541
-Epoch 3/5 | step 322 | batch 50/136 | loss -1.2891
-Epoch 3/5 | step 323 | batch 51/136 | loss -1.2665
-Epoch 3/5 | step 324 | batch 52/136 | loss -1.2491
-Epoch 3/5 | step 325 | batch 53/136 | loss -1.2644
-Epoch 3/5 | step 326 | batch 54/136 | loss -1.2741
-Epoch 3/5 | step 327 | batch 55/136 | loss -1.2469
-Epoch 3/5 | step 328 | batch 56/136 | loss -1.2575
-Epoch 3/5 | step 329 | batch 57/136 | loss -1.2878
-Epoch 3/5 | step 330 | batch 58/136 | loss -1.2932
-Epoch 3/5 | step 331 | batch 59/136 | loss -1.2939
-Epoch 3/5 | step 332 | batch 60/136 | loss -1.2874
-Epoch 3/5 | step 333 | batch 61/136 | loss -1.2846
-Epoch 3/5 | step 334 | batch 62/136 | loss -1.2882
-Epoch 3/5 | step 335 | batch 63/136 | loss -1.2915
-Epoch 3/5 | step 336 | batch 64/136 | loss -1.2976
-Epoch 3/5 | step 337 | batch 65/136 | loss -1.2951
-Epoch 3/5 | step 338 | batch 66/136 | loss -1.2834
-Epoch 3/5 | step 339 | batch 67/136 | loss -1.3084
-Epoch 3/5 | step 340 | batch 68/136 | loss -1.2851
-Epoch 3/5 | step 341 | batch 69/136 | loss -1.2680
-Epoch 3/5 | step 342 | batch 70/136 | loss -1.2756
-Epoch 3/5 | step 343 | batch 71/136 | loss -1.2761
-Epoch 3/5 | step 344 | batch 72/136 | loss -1.2515
-Epoch 3/5 | step 345 | batch 73/136 | loss -1.2847
-Epoch 3/5 | step 346 | batch 74/136 | loss -1.2511
-Epoch 3/5 | step 347 | batch 75/136 | loss -1.2826
-Epoch 3/5 | step 348 | batch 76/136 | loss -1.2609
-Epoch 3/5 | step 349 | batch 77/136 | loss -1.2782
-Epoch 3/5 | step 350 | batch 78/136 | loss -1.2931
-Epoch 3/5 | step 351 | batch 79/136 | loss -1.2812
-Epoch 3/5 | step 352 | batch 80/136 | loss -1.2806
-Epoch 3/5 | step 353 | batch 81/136 | loss -1.2776
-Epoch 3/5 | step 354 | batch 82/136 | loss -1.2813
-Epoch 3/5 | step 355 | batch 83/136 | loss -1.2844
-Epoch 3/5 | step 356 | batch 84/136 | loss -1.2834
-Epoch 3/5 | step 357 | batch 85/136 | loss -1.2749
-Epoch 3/5 | step 358 | batch 86/136 | loss -1.2958
-Epoch 3/5 | step 359 | batch 87/136 | loss -1.2829
-Epoch 3/5 | step 360 | batch 88/136 | loss -1.2807
-Epoch 3/5 | step 361 | batch 89/136 | loss -1.2838
-Epoch 3/5 | step 362 | batch 90/136 | loss -1.2868
-Epoch 3/5 | step 363 | batch 91/136 | loss -1.2807
-Epoch 3/5 | step 364 | batch 92/136 | loss -1.2702
-Epoch 3/5 | step 365 | batch 93/136 | loss -1.2878
-Epoch 3/5 | step 366 | batch 94/136 | loss -1.3229
-Epoch 3/5 | step 367 | batch 95/136 | loss -1.2898
-Epoch 3/5 | step 368 | batch 96/136 | loss -1.2452
-Epoch 3/5 | step 369 | batch 97/136 | loss -1.2615
-Epoch 3/5 | step 370 | batch 98/136 | loss -1.3030
-Epoch 3/5 | step 371 | batch 99/136 | loss -1.2799
-Epoch 3/5 | step 372 | batch 100/136 | loss -1.2683
-Epoch 3/5 | step 373 | batch 101/136 | loss -1.2522
-Epoch 3/5 | step 374 | batch 102/136 | loss -1.2813
-Epoch 3/5 | step 375 | batch 103/136 | loss -1.2825
-Epoch 3/5 | step 376 | batch 104/136 | loss -1.2875
-Epoch 3/5 | step 377 | batch 105/136 | loss -1.2855
-Epoch 3/5 | step 378 | batch 106/136 | loss -1.3025
-Epoch 3/5 | step 379 | batch 107/136 | loss -1.2916
-Epoch 3/5 | step 380 | batch 108/136 | loss -1.2755
-Epoch 3/5 | step 381 | batch 109/136 | loss -1.3146
-Epoch 3/5 | step 382 | batch 110/136 | loss -1.3059
-Epoch 3/5 | step 383 | batch 111/136 | loss -1.2911
-Epoch 3/5 | step 384 | batch 112/136 | loss -1.3129
-Epoch 3/5 | step 385 | batch 113/136 | loss -1.2787
-Epoch 3/5 | step 386 | batch 114/136 | loss -1.3038
-Epoch 3/5 | step 387 | batch 115/136 | loss -1.2947
-Epoch 3/5 | step 388 | batch 116/136 | loss -1.2970
-Epoch 3/5 | step 389 | batch 117/136 | loss -1.2956
-Epoch 3/5 | step 390 | batch 118/136 | loss -1.2923
-Epoch 3/5 | step 391 | batch 119/136 | loss -1.2761
-Epoch 3/5 | step 392 | batch 120/136 | loss -1.2545
-Epoch 3/5 | step 393 | batch 121/136 | loss -1.3051
-Epoch 3/5 | step 394 | batch 122/136 | loss -1.3030
-Epoch 3/5 | step 395 | batch 123/136 | loss -1.2975
-Epoch 3/5 | step 396 | batch 124/136 | loss -1.2977
-Epoch 3/5 | step 397 | batch 125/136 | loss -1.2939
-Epoch 3/5 | step 398 | batch 126/136 | loss -1.3157
-Epoch 3/5 | step 399 | batch 127/136 | loss -1.3034
-Epoch 3/5 | step 400 | batch 128/136 | loss -1.3093
-Epoch 3/5 | step 401 | batch 129/136 | loss -1.2885
-Epoch 3/5 | step 402 | batch 130/136 | loss -1.3078
-Epoch 3/5 | step 403 | batch 131/136 | loss -1.3141
-Epoch 3/5 | step 404 | batch 132/136 | loss -1.2852
-Epoch 3/5 | step 405 | batch 133/136 | loss -1.3179
-Epoch 3/5 | step 406 | batch 134/136 | loss -1.3114
-Epoch 3/5 | step 407 | batch 135/136 | loss -1.2889
-Epoch 3/5 | step 408 | batch 136/136 | loss -1.2968
-Epoch 3 done | avg loss: -1.2663 | prior_var_mean: 1.0047
-Capture range started in the application.
-Capture range ended in the application.
-Generating '/tmp/nsys-report-c256.qdstrm'
-[1/8] [0%                          ] report_2gpus_fwd_sync_bs256.nsys-repProcessing events...
-[1/8] [0%                          ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [8%                          ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [7%                          ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [6%                          ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [5%                          ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [10%                         ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [11%                         ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [12%                         ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [11%                         ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [12%                         ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [11%                         ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [10%                         ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [9%                          ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [8%                          ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [7%                          ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [6%                          ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [7%                          ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [8%                          ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [9%                          ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [10%                         ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [11%                         ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [12%                         ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [14%                         ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [=16%                        ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [=17%                        ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [==19%                       ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [==21%                       ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [===23%                      ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [===24%                      ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [====26%                     ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [====28%                     ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [=====30%                    ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [=====31%                    ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [======33%                   ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [======34%                   ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [=======36%                  ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [=======38%                  ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [========40%                 ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [========41%                 ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [=========43%                ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [=========45%                ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [=========46%                ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [==========48%               ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [===========50%              ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [===========52%              ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [===========53%              ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [============55%             ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [============57%             ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [=============59%            ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [=============60%            ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [==============62%           ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [==============64%           ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [===============65%          ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [===============67%          ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [================69%         ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [================71%         ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [=================72%        ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [=================74%        ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [==================76%       ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [==================77%       ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [==================78%       ] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [========================100%] report_2gpus_fwd_sync_bs256.nsys-rep[1/8] [========================100%] report_2gpus_fwd_sync_bs256.nsys-rep
-[2/8] [0%                          ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [1%                          ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [2%                          ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [3%                          ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [4%                          ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [5%                          ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [6%                          ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [7%                          ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [8%                          ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [9%                          ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [10%                         ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [11%                         ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [12%                         ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [13%                         ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [14%                         ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [=15%                        ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [=16%                        ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [=17%                        ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [==18%                       ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [==19%                       ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [==20%                       ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [==21%                       ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [===22%                      ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [===23%                      ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [===24%                      ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [====25%                     ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [====26%                     ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [====27%                     ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [====28%                     ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [=====29%                    ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [=====30%                    ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [=====31%                    ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [=====32%                    ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [======33%                   ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [======34%                   ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [======35%                   ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [=======36%                  ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [=======37%                  ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [=======38%                  ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [=======39%                  ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [========40%                 ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [========41%                 ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [========42%                 ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [=========43%                ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [=========44%                ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [=========45%                ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [=========46%                ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [==========47%               ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [==========48%               ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [==========49%               ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [===========50%              ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [===========51%              ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [===========52%              ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [===========53%              ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [============54%             ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [============55%             ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [============56%             ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [============57%             ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [=============58%            ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [=============59%            ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [=============60%            ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [==============61%           ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [==============62%           ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [==============63%           ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [==============64%           ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [===============65%          ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [===============66%          ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [===============67%          ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [================68%         ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [================69%         ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [================70%         ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [================71%         ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [=================72%        ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [=================73%        ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [=================74%        ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [==================75%       ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [==================76%       ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [==================77%       ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [==================78%       ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [===================79%      ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [===================80%      ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [===================81%      ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [===================82%      ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [====================83%     ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [====================84%     ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [====================85%     ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [=====================86%    ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [=====================87%    ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [=====================88%    ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [=====================89%    ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [======================90%   ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [======================91%   ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [======================92%   ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [=======================93%  ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [=======================94%  ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [=======================95%  ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [=======================96%  ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [========================97% ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [========================98% ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [========================99% ] report_2gpus_fwd_sync_bs256.sqlite[2/8] [========================100%] report_2gpus_fwd_sync_bs256.sqlite[2/8] [========================100%] report_2gpus_fwd_sync_bs256.sqlite
-[3/8] Executing 'nvtx_sum' stats report
-
- Time (%)  Total Time (ns)  Instances   Avg (ns)    Med (ns)   Min (ns)  Max (ns)   StdDev (ns)   Style         Range       
- --------  ---------------  ---------  ----------  ----------  --------  ---------  -----------  -------  ------------------
-     69.4      21103569828        272  77586653.8  77513138.0  77335318   79433611     273701.4  PushPop  :Backward pass    
-     28.8       8745926601        272  32154141.9  31982199.0  31799434   67612326    2170165.0  PushPop  :Forward pass     
-      1.6        492162390        275   1789681.4     90385.0     37492  185203455   15106056.4  PushPop  :Dataloader       
-      0.1         22418112        272     82419.5     73979.0     57153    1022667      60868.7  PushPop  :Copying to Device
-      0.1         19016254        272     69912.7     79446.5     27967     241835      41726.1  PushPop  :Logging loss     
-      0.0         13996232        546     25634.1     24010.0     20426      80855       5765.6  PushPop  NCCL:ncclAllReduce
-      0.0          7553450        272     27770.0     25576.0     21565     142018       9431.9  PushPop  NCCL:ncclBroadcast
-
-[4/8] Executing 'osrt_sum' stats report
-
- Time (%)  Total Time (ns)  Num Calls    Avg (ns)      Med (ns)     Min (ns)    Max (ns)   StdDev (ns)           Name         
- --------  ---------------  ---------  ------------  ------------  ----------  ----------  -----------  ----------------------
-     49.0     241906738710        331   730836068.6   880972946.0       16268  2640984551  505613671.7  sem_wait              
-     31.5     155216964943       3250    47759066.1    10058193.5        1025  5001402569  162377823.1  poll                  
-      6.2      30530006051        305   100098380.5   100081742.0   100035038   105226426     294847.8  pthread_cond_clockwait
-      6.0      29803868230        546    54585839.2    14377065.5       15697   104095088   47359123.9  pthread_cond_wait     
-      5.1      25251875897        152   166130762.5   109712094.5     3960702  5000096724  560945046.8  sem_timedwait         
-      2.0      10000208244          2  5000104122.0  5000104122.0  5000104024  5000104220        138.6  clock_nanosleep       
-      0.1        250000049        292      856164.6      896263.5        3667     1625163     274782.0  munmap                
-      0.0        210193369         17    12364315.8    12228665.0    12009418    14542498     571577.7  fork                  
-      0.0        203571675       2752       73972.3       15612.5        1002    14182158     536035.9  pthread_cond_timedwait
-      0.0         45234837       1923       23523.1        2925.0        1005     3092137     100753.9  read                  
-      0.0         17517932       1634       10720.9        2606.5        1000     6224701     189204.2  write                 
-      0.0         11563364        504       22943.2        7533.0        1009      632983      77522.3  pthread_mutex_lock    
-      0.0          8772063        272       32250.2       28602.0       12105      181582      15681.5  recvmsg               
-      0.0          5336324         20      266816.2      252465.5      213331      374373      50326.3  pthread_create        
-      0.0          5066185         34      149005.4        7347.0        1168     1262430     339879.7  waitpid               
-      0.0          4739050         38      124711.8       17879.5        1186     1808938     396619.9  pthread_rwlock_wrlock 
-      0.0          4262859       1804        2363.0        1876.0        1000       39363       2240.1  pthread_cond_signal   
-      0.0          3801591        292       13019.1        8934.5        3896     1142276      66330.6  mmap64                
-      0.0          3540488        138       25655.7       16183.5        4106      745007      71931.9  open64                
-      0.0          2654120        272        9757.8        9171.0        6420       22695       2360.3  connect               
-      0.0          1824945        272        6709.4        6389.0        4019       40571       2471.3  socket                
-      0.0           365626         22       16619.4       15027.0        1034       51833      17146.0  ioctl                 
-      0.0           293538         23       12762.5        2504.0        1011      109823      24010.5  recv                  
-      0.0           209786         22        9535.7        5878.0        1472       31304       8586.1  send                  
-      0.0           192695         54        3568.4        2888.0        1579        9544       1738.8  pipe2                 
-      0.0           181981          7       25997.3       28196.0       15892       38701       8457.0  pthread_rwlock_rdlock 
-      0.0            13491          8        1686.4        1121.0        1018        4543       1226.1  fcntl                 
-      0.0             7756          4        1939.0        2180.5        1079        2316        584.8  waitid                
-      0.0             3523          3        1174.3        1069.0        1026        1428        220.7  dup                   
-      0.0             1124          1        1124.0        1124.0        1124        1124          0.0  fstat64               
-
-[5/8] Executing 'cuda_api_sum' stats report
-
- Time (%)  Total Time (ns)  Num Calls   Avg (ns)    Med (ns)   Min (ns)  Max (ns)  StdDev (ns)                 Name               
- --------  ---------------  ---------  ----------  ----------  --------  --------  -----------  ----------------------------------
-     95.7      25744824069        544  47325044.2  58954633.0  22199080  69644683   20924822.4  cudaDeviceSynchronize             
-      2.7        733436557     227938      3217.7      2881.0      2126   1818008       4161.9  cudaLaunchKernel                  
-      0.4        120087420      29110      4125.3      3320.0      2867    809982       5335.7  cudaMemcpyAsync                   
-      0.3         88069803      22850      3854.3      3343.0      2768     75483       1644.4  cudaLaunchKernelExC_v11060        
-      0.3         84912682      29648      2864.0      2507.0        97   1761610      10330.7  cudaMemsetAsync                   
-      0.2         56765344          1  56765344.0  56765344.0  56765344  56765344          0.0  cudaProfilerStop                  
-      0.1         26094937       7616      3426.3      3007.5      2433    169940       2781.6  cuLaunchKernel                    
-      0.0          6905990        278     24841.7      7509.5      3706   4860645     291081.5  cudaStreamSynchronize             
-      0.0          6558293       2001      3277.5      2170.0       300     92328       3624.0  cudaEventQuery                    
-      0.0          5572568       4656      1196.9       517.0       335     51435       1491.7  cudaEventRecord                   
-      0.0          4374676       1636      2674.0      1413.5       296     53974       7219.1  cudaEventCreateWithFlags          
-      0.0          4080431       3272      1247.1       979.5       348     10562        933.2  cudaStreamWaitEvent               
-      0.0          4067964       7616       534.1       383.0       254      6376        397.8  cuKernelGetFunction               
-      0.0          2661680       3266       815.0       621.0       358      8912        616.3  cudaStreamIsCapturing_v10000      
-      0.0          2371992       1635      1450.8      1103.0       277    147307       4117.8  cudaEventDestroy                  
-      0.0           760490        818       929.7       877.0       645      7144        345.9  cudaStreamGetCaptureInfo_v2_v11030
-      0.0            66070         32      2064.7      1612.5      1514      5915       1186.2  cudaEventSynchronize              
-      0.0             8549          2      4274.5      4274.5      4125      4424        211.4  cuProfilerStart                   
-
-[6/8] Executing 'cuda_gpu_kern_sum' stats report
-
- Time (%)  Total Time (ns)  Instances  Avg (ns)   Med (ns)   Min (ns)  Max (ns)  StdDev (ns)                                                  Name                                                
- --------  ---------------  ---------  ---------  ---------  --------  --------  -----------  ----------------------------------------------------------------------------------------------------
-     25.9       7545894185       2176  3467782.3  3467675.0   3453507   3482113       4330.8  fmha_cutlassB_bf16_aligned_64x64_k64_seqaligned_sm80(PyTorchMemEffAttention::AttentionBackwardKerne…
-     15.5       4524963240       4352  1039743.4  1043969.0   1005536   1065345      17532.0  void at::native::<unnamed>::GammaBetaBackwardCUDAKernel_32x32<float, float>(long, long, const T1 *,…
-     11.2       3253756268       2176  1495292.4  1494881.0   1488672   1505627       2631.1  fmha_cutlassF_bf16_aligned_64x64_rf_sm80(PyTorchMemEffAttention::AttentionKernel<cutlass::bfloat16_…
-      7.4       2142299070       4352   492256.2   492223.0    491648    493950        261.7  void at::native::<unnamed>::vectorized_layer_norm_kernel<float, float>(int, T2, const T1 *, const T…
-      4.7       1370232134       9248   148165.2   146016.0     17504    211743      26791.6  void at::native::reduce_kernel<(int)128, (int)4, at::native::ReduceOp<c10::BFloat16, at::native::fu…
-      3.6       1061462916      29376    36133.7     4064.0      1408    108927      47876.4  void at::native::unrolled_elementwise_kernel<at::native::direct_copy_kernel_cuda(at::TensorIterator…
-      3.5       1031515773       4352   237021.1   237024.0    235840    252928        666.0  void at::native::<unnamed>::layer_norm_grad_input_kernel_vectorized<float, float>(const T1 *, const…
-      3.0        883784208       2176   406150.8   406110.0    404865    408864        485.5  void at::native::<unnamed>::CatArrayBatchedCopy<at::native::<unnamed>::OpaqueType<(unsigned int)2>,…
-      2.9        845243836       8976    94167.1    96448.0     34304    124448      31249.0  sm90_xmma_gemm_bf16bf16_bf16f32_f32_nn_n_tilesize128x128x64_warpgroupsize1x1x1_execute_segment_k_of…
-      2.9        836798434       8704    96139.5   107888.0     45440    125280      29843.9  sm90_xmma_gemm_bf16bf16_bf16f32_f32_tn_n_tilesize128x128x64_warpgroupsize1x1x1_execute_segment_k_of…
-      2.4        688949769       2176   316612.9   315937.0    314560    331232       2353.2  void at::native::vectorized_elementwise_kernel<(int)4, at::native::GeluBackwardCUDAKernelImpl(at::T…
-      2.3        660020363       2720   242654.5   300479.0      8736    301120     115768.5  void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl_nocast<at::n…
-      2.1        621010464       4624   134301.6   141984.0      1600    145216      33196.5  void at::native::unrolled_elementwise_kernel<at::native::CUDAFunctor_add<float>, at::detail::Array<…
-      1.9        545556072       4352   125357.6   125248.0    124032    127328        518.7  void at::native::vectorized_elementwise_kernel<(int)4, at::native::CUDAFunctor_add<float>, at::deta…
-      1.9        544415681      23392    23273.6     3872.0      1248    110016      40568.2  void at::native::unrolled_elementwise_kernel<at::native::direct_copy_kernel_cuda(at::TensorIterator…
-      1.8        517602361       2176   237868.7   237792.0    236640    239167        471.6  void at::native::vectorized_elementwise_kernel<(int)4, at::native::GeluCUDAKernelImpl(at::TensorIte…
-      1.6        473779770       4352   108864.8   109199.5     96064    146272      10827.0  void cutlass::Kernel2<cutlass_80_tensorop_s16816gemm_bf16_128x128_64x3_nt_align8>(T1::Params)       
-      1.2        346451343       2176   159214.8   159200.0    158656    159584         84.6  void at::native::vectorized_elementwise_kernel<(int)4, at::native::FillFunctor<unsigned char>, at::…
-      1.0        280713765       2176   129004.5   128831.5    127520    131935        708.0  sm90_xmma_gemm_bf16bf16_bf16f32_f32_nt_n_tilesize128x128x64_warpgroupsize1x1x1_execute_segment_k_on…
-      0.8        244254533      69632     3507.8     3488.0      3136      4096        121.8  void at::native::im2col_kernel<float>(long, const T1 *, long, long, long, long, long, long, long, l…
-      0.4        123619485       2176    56810.4    56928.0     55615     58624        611.5  void cutlass::Kernel2<cutlass_80_tensorop_s16816gemm_bf16_64x128_64x6_nt_align8>(T1::Params)        
-      0.3        101237298        546   185416.3    84960.0     44320   4938821     288062.8  ncclDevKernel_AllReduce_Sum_f32_RING_LL(ncclDevComm *, unsigned long, ncclWork *)                   
-      0.3         98147500        272   360836.4    87920.0     51168  35121388    2125046.7  ncclDevKernel_Broadcast_RING_LL(ncclDevComm *, unsigned long, ncclWork *)                           
-      0.2         50446705        544    92732.9    93039.5     21024    163935      70564.3  void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl<at::native::…
-      0.1         38947785      28560     1363.7     1280.0      1087      7872        768.6  void at::native::vectorized_elementwise_kernel<(int)4, at::native::AUnaryFunctor<float, float, floa…
-      0.1         28913423        272   106299.3   106272.0    105664    107104        219.3  void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl_nocast<at::n…
-      0.1         28112870       7072     3975.2     3712.0      3391      6272        644.2  void cublasLt::splitKreduce_kernel<(int)32, (int)16, int, float, __nv_bfloat16, float, __nv_bfloat1…
-      0.1         20985470       2176     9644.1     9600.0      7616     15616        967.7  sm90_xmma_gemm_bf16bf16_bf16f32_f32_nt_n_tilesize128x128x64_warpgroupsize1x1x1_execute_split_k_kern…
-      0.1         15071309        816    18469.7    17984.0     15552     20768       1165.5  void at::native::<unnamed>::multi_tensor_apply_kernel<at::native::<unnamed>::TensorListScalarListMe…
-      0.0         13871115        272    50996.7    50928.0     50112     53792        609.3  void at::native::reduce_kernel<(int)128, (int)4, at::native::ReduceOp<float, at::native::func_wrapp…
-      0.0         13165075       2176     6050.1     5984.0      5376      7584        268.8  void at::native::unrolled_elementwise_kernel<at::native::direct_copy_kernel_cuda(at::TensorIterator…
-      0.0         12117841        272    44550.9    44512.0     42912     46592        544.3  void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_64x256_32x4_tn_align8>(T1::Para…
-      0.0         10827191        272    39805.8    39744.0     39552     40512        187.9  void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_bf16_128x256_32x3_tn_align2>(T1::Params)  
-      0.0         10694415        272    39317.7    39264.0     38496     40608        476.6  void cutlass::Kernel2<cutlass_80_tensorop_s16816gemm_bf16_128x64_64x6_nt_align8>(T1::Params)        
-      0.0          9967606       2992     3331.4     2336.0       960      8672       2441.9  void at::native::vectorized_elementwise_kernel<(int)4, at::native::FillFunctor<c10::BFloat16>, at::…
-      0.0          9742706        816    11939.6    12064.0      9056     12608        548.1  void at::native::<unnamed>::multi_tensor_apply_kernel<at::native::<unnamed>::TensorListMetadata<(in…
-      0.0          9634897        544    17711.2    17824.0     16672     18752        492.6  void at::native::<unnamed>::multi_tensor_apply_kernel<at::native::<unnamed>::TensorListMetadata<(in…
-      0.0          9541359        544    17539.3    17536.0     16768     18560        290.4  void at::native::<unnamed>::multi_tensor_apply_kernel<at::native::<unnamed>::TensorListMetadata<(in…
-      0.0          8819346        544    16212.0    16432.0     14560     18592       1396.9  void at::native::elementwise_kernel<(int)128, (int)2, void at::native::gpu_kernel_impl_nocast<at::n…
-      0.0          8762479        272    32215.0    31904.0     31168     34080        788.7  void cutlass::Kernel2<cutlass_80_tensorop_s16816gemm_bf16_64x128_64x3_nt_align2>(T1::Params)        
-      0.0          8670574        272    31877.1    31808.0     31040     32960        346.2  void at::native::<unnamed>::CatArrayBatchedCopy<at::native::<unnamed>::OpaqueType<(unsigned int)2>,…
-      0.0          7823346        544    14381.2    14368.0     14080     14784        115.9  void at::native::<unnamed>::multi_tensor_apply_kernel<at::native::<unnamed>::TensorListMetadata<(in…
-      0.0          7644531        544    14052.4    14144.0     12448     14912        437.2  void at::native::<unnamed>::multi_tensor_apply_kernel<at::native::<unnamed>::TensorListScalarListMe…
-      0.0          5596275       1088     5143.6     6016.0      1120      8352       2381.9  void at::native::vectorized_elementwise_kernel<(int)4, at::native::neg_kernel_cuda(at::TensorIterat…
-      0.0          5531035       2176     2541.8     2528.0      2496      3584         71.6  void at::native::vectorized_elementwise_kernel<(int)4, at::native::<unnamed>::masked_fill_kernel(at…
-      0.0          5509369       2176     2531.9     2528.0      2464      3584         77.0  void at::native::vectorized_elementwise_kernel<(int)4, at::native::logical_not_kernel_cuda(at::Tens…
-      0.0          5214519        546     9550.4     7264.0      3360     12576       2605.5  void at::native::reduce_kernel<(int)512, (int)1, at::native::ReduceOp<float, at::native::MeanOps<fl…
-      0.0          5076885        272    18665.0    18624.0     17984     19552        278.6  void at::native::<unnamed>::CatArrayBatchedCopy_contig<at::native::<unnamed>::OpaqueType<(unsigned …
-      0.0          4540376        544     8346.3     8480.0      6400     11008       1607.9  void at::native::vectorized_elementwise_kernel<(int)4, void at::native::<unnamed>::pow_tensor_scala…
-      0.0          4539287        272    16688.6    16608.0     16160     17536        305.9  void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl<at::native::…
-      0.0          3874236        272    14243.5    14176.0     13792     15136        299.7  void at::native::unrolled_elementwise_kernel<at::native::BinaryFunctor<float, float, float, at::nat…
-      0.0          3683164        544     6770.5     6736.0      2048     12544       4647.1  void at::native::reduce_kernel<(int)512, (int)1, at::native::ReduceOp<c10::BFloat16, at::native::Me…
-      0.0          3035514        272    11160.0    11168.0     11008     11360         64.1  void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl<at::native::…
-      0.0          2738079        272    10066.5     9888.0      9312     11712        466.8  void at::native::vectorized_elementwise_kernel<(int)4, at::native::BinaryFunctor<float, float, floa…
-      0.0          2654013        272     9757.4     9856.0      8640     10144        339.4  void at::native::<unnamed>::multi_tensor_apply_kernel<at::native::<unnamed>::TensorListMetadata<(in…
-      0.0          2448895        544     4501.6     4640.0      1760      7264       2674.0  void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl_nocast<at::n…
-      0.0          2446332        272     8993.9     8992.0      8928      9088         24.0  void at::native::elementwise_kernel<(int)128, (int)2, void at::native::gpu_kernel_impl_nocast<at::n…
-      0.0          1673182        272     6151.4     6176.0      5728      6592        163.3  void at::native::vectorized_elementwise_kernel<(int)4, at::native::exp_kernel_cuda(at::TensorIterat…
-      0.0          1579357        272     5806.5     5775.5      5536      6560        176.0  void at::native::vectorized_elementwise_kernel<(int)4, at::native::CUDAFunctor_add<c10::BFloat16>, …
-      0.0          1373277        272     5048.8     5024.0      4800      5760        155.6  void at::native::<unnamed>::CatArrayBatchedCopy_aligned16_contig<at::native::<unnamed>::OpaqueType<…
-      0.0           745116        544     1369.7     1440.0      1152      2112        140.8  void at::native::vectorized_elementwise_kernel<(int)4, at::native::neg_kernel_cuda(at::TensorIterat…
-      0.0           738014        272     2713.3     2688.0      2592      3392         91.2  voidEpoch 4/5 | step 409 | batch 1/136 | loss -1.3169
-Epoch 4/5 | step 410 | batch 2/136 | loss -1.3085
-Epoch 4/5 | step 411 | batch 3/136 | loss -1.2985
-Epoch 4/5 | step 412 | batch 4/136 | loss -1.2933
-Epoch 4/5 | step 413 | batch 5/136 | loss -1.3033
-Epoch 4/5 | step 414 | batch 6/136 | loss -1.3248
-Epoch 4/5 | step 415 | batch 7/136 | loss -1.3058
-Epoch 4/5 | step 416 | batch 8/136 | loss -1.2964
-Epoch 4/5 | step 417 | batch 9/136 | loss -1.3061
-Epoch 4/5 | step 418 | batch 10/136 | loss -1.3269
-Epoch 4/5 | step 419 | batch 11/136 | loss -1.3219
-Epoch 4/5 | step 420 | batch 12/136 | loss -1.3182
-Epoch 4/5 | step 421 | batch 13/136 | loss -1.2839
-Epoch 4/5 | step 422 | batch 14/136 | loss -1.3005
-Epoch 4/5 | step 423 | batch 15/136 | loss -1.3141
-Epoch 4/5 | step 424 | batch 16/136 | loss -1.3165
-Epoch 4/5 | step 425 | batch 17/136 | loss -1.3148
-Epoch 4/5 | step 426 | batch 18/136 | loss -1.3051
-Epoch 4/5 | step 427 | batch 19/136 | loss -1.2935
-Epoch 4/5 | step 428 | batch 20/136 | loss -1.3180
-Epoch 4/5 | step 429 | batch 21/136 | loss -1.3223
-Epoch 4/5 | step 430 | batch 22/136 | loss -1.3091
-Epoch 4/5 | step 431 | batch 23/136 | loss -1.3200
-Epoch 4/5 | step 432 | batch 24/136 | loss -1.3288
-Epoch 4/5 | step 433 | batch 25/136 | loss -1.3358
-Epoch 4/5 | step 434 | batch 26/136 | loss -1.2848
-Epoch 4/5 | step 435 | batch 27/136 | loss -1.2809
-Epoch 4/5 | step 436 | batch 28/136 | loss -1.3336
-Epoch 4/5 | step 437 | batch 29/136 | loss -1.2593
-Epoch 4/5 | step 438 | batch 30/136 | loss -1.2784
-Epoch 4/5 | step 439 | batch 31/136 | loss -1.2336
-Epoch 4/5 | step 440 | batch 32/136 | loss -1.2686
-Epoch 4/5 | step 441 | batch 33/136 | loss -1.3158
-Epoch 4/5 | step 442 | batch 34/136 | loss -1.2780
-Epoch 4/5 | step 443 | batch 35/136 | loss -1.2857
-Epoch 4/5 | step 444 | batch 36/136 | loss -1.3073
-Epoch 4/5 | step 445 | batch 37/136 | loss -1.2931
-Epoch 4/5 | step 446 | batch 38/136 | loss -1.2938
-Epoch 4/5 | step 447 | batch 39/136 | loss -1.3276
-Epoch 4/5 | step 448 | batch 40/136 | loss -1.2928
-Epoch 4/5 | step 449 | batch 41/136 | loss -1.2948
-Epoch 4/5 | step 450 | batch 42/136 | loss -1.3406
-Epoch 4/5 | step 451 | batch 43/136 | loss -1.3399
-Epoch 4/5 | step 452 | batch 44/136 | loss -1.3158
-Epoch 4/5 | step 453 | batch 45/136 | loss -1.3096
-Epoch 4/5 | step 454 | batch 46/136 | loss -1.3003
-Epoch 4/5 | step 455 | batch 47/136 | loss -1.3137
-Epoch 4/5 | step 456 | batch 48/136 | loss -1.3200
-Epoch 4/5 | step 457 | batch 49/136 | loss -1.3116
-Epoch 4/5 | step 458 | batch 50/136 | loss -1.3144
-Epoch 4/5 | step 459 | batch 51/136 | loss -1.3021
-Epoch 4/5 | step 460 | batch 52/136 | loss -1.2867
-Epoch 4/5 | step 461 | batch 53/136 | loss -1.2942
-Epoch 4/5 | step 462 | batch 54/136 | loss -1.3096
-Epoch 4/5 | step 463 | batch 55/136 | loss -1.3166
-Epoch 4/5 | step 464 | batch 56/136 | loss -1.3156
-Epoch 4/5 | step 465 | batch 57/136 | loss -1.3164
-Epoch 4/5 | step 466 | batch 58/136 | loss -1.3529
-Epoch 4/5 | step 467 | batch 59/136 | loss -1.3197
-Epoch 4/5 | step 468 | batch 60/136 | loss -1.3181
-Epoch 4/5 | step 469 | batch 61/136 | loss -1.3066
-Epoch 4/5 | step 470 | batch 62/136 | loss -1.3163
-Epoch 4/5 | step 471 | batch 63/136 | loss -1.3406
-Epoch 4/5 | step 472 | batch 64/136 | loss -1.3132
-Epoch 4/5 | step 473 | batch 65/136 | loss -1.3105
-Epoch 4/5 | step 474 | batch 66/136 | loss -1.2787
-Epoch 4/5 | step 475 | batch 67/136 | loss -1.3334
-Epoch 4/5 | step 476 | batch 68/136 | loss -1.2862
-Epoch 4/5 | step 477 | batch 69/136 | loss -1.2731
-Epoch 4/5 | step 478 | batch 70/136 | loss -1.2680
-Epoch 4/5 | step 479 | batch 71/136 | loss -1.2396
-Epoch 4/5 | step 480 | batch 72/136 | loss -1.3038
-Epoch 4/5 | step 481 | batch 73/136 | loss -1.2470
-Epoch 4/5 | step 482 | batch 74/136 | loss -1.3022
-Epoch 4/5 | step 483 | batch 75/136 | loss -1.2838
-Epoch 4/5 | step 484 | batch 76/136 | loss -1.2895
-Epoch 4/5 | step 485 | batch 77/136 | loss -1.2859
-Epoch 4/5 | step 486 | batch 78/136 | loss -1.3059
-Epoch 4/5 | step 487 | batch 79/136 | loss -1.2596
-Epoch 4/5 | step 488 | batch 80/136 | loss -1.3126
-Epoch 4/5 | step 489 | batch 81/136 | loss -1.3112
-Epoch 4/5 | step 490 | batch 82/136 | loss -1.2913
-Epoch 4/5 | step 491 | batch 83/136 | loss -1.3285
-Epoch 4/5 | step 492 | batch 84/136 | loss -1.3193
-Epoch 4/5 | step 493 | batch 85/136 | loss -1.3278
-Epoch 4/5 | step 494 | batch 86/136 | loss -1.2988
-Epoch 4/5 | step 495 | batch 87/136 | loss -1.3404
-Epoch 4/5 | step 496 | batch 88/136 | loss -1.3320
-Epoch 4/5 | step 497 | batch 89/136 | loss -1.3481
-Epoch 4/5 | step 498 | batch 90/136 | loss -1.3408
-Epoch 4/5 | step 499 | batch 91/136 | loss -1.3260
-Epoch 4/5 | step 500 | batch 92/136 | loss -1.3203
-Epoch 4/5 | step 501 | batch 93/136 | loss -1.3031
-Epoch 4/5 | step 502 | batch 94/136 | loss -1.3260
-Epoch 4/5 | step 503 | batch 95/136 | loss -1.3255
-Epoch 4/5 | step 504 | batch 96/136 | loss -1.3388
-Epoch 4/5 | step 505 | batch 97/136 | loss -1.3346
-Epoch 4/5 | step 506 | batch 98/136 | loss -1.3333
-Epoch 4/5 | step 507 | batch 99/136 | loss -1.3260
-Epoch 4/5 | step 508 | batch 100/136 | loss -1.3315
-Epoch 4/5 | step 509 | batch 101/136 | loss -1.3199
-Epoch 4/5 | step 510 | batch 102/136 | loss -1.3328
-Epoch 4/5 | step 511 | batch 103/136 | loss -1.3250
-Epoch 4/5 | step 512 | batch 104/136 | loss -1.3590
-Epoch 4/5 | step 513 | batch 105/136 | loss -1.3589
-Epoch 4/5 | step 514 | batch 106/136 | loss -1.2970
-Epoch 4/5 | step 515 | batch 107/136 | loss -1.3120
-Epoch 4/5 | step 516 | batch 108/136 | loss -1.3179
-Epoch 4/5 | step 517 | batch 109/136 | loss -1.3117
-Epoch 4/5 | step 518 | batch 110/136 | loss -1.2858
-Epoch 4/5 | step 519 | batch 111/136 | loss -1.2777
-Epoch 4/5 | step 520 | batch 112/136 | loss -1.2921
-Epoch 4/5 | step 521 | batch 113/136 | loss -1.3420
-Epoch 4/5 | step 522 | batch 114/136 | loss -1.2998
-Epoch 4/5 | step 523 | batch 115/136 | loss -1.2416
-Epoch 4/5 | step 524 | batch 116/136 | loss -1.2767
-Epoch 4/5 | step 525 | batch 117/136 | loss -1.2477
-Epoch 4/5 | step 526 | batch 118/136 | loss -1.2708
-Epoch 4/5 | step 527 | batch 119/136 | loss -1.3090
-Epoch 4/5 | step 528 | batch 120/136 | loss -1.2814
-Epoch 4/5 | step 529 | batch 121/136 | loss -1.3061
-Epoch 4/5 | step 530 | batch 122/136 | loss -1.3488
-Epoch 4/5 | step 531 | batch 123/136 | loss -1.3011
-Epoch 4/5 | step 532 | batch 124/136 | loss -1.3142
-Epoch 4/5 | step 533 | batch 125/136 | loss -1.3136
-Epoch 4/5 | step 534 | batch 126/136 | loss -1.3365
-Epoch 4/5 | step 535 | batch 127/136 | loss -1.3292
-Epoch 4/5 | step 536 | batch 128/136 | loss -1.3250
-Epoch 4/5 | step 537 | batch 129/136 | loss -1.3387
-Epoch 4/5 | step 538 | batch 130/136 | loss -1.3250
-Epoch 4/5 | step 539 | batch 131/136 | loss -1.3253
-Epoch 4/5 | step 540 | batch 132/136 | loss -1.3394
-Epoch 4/5 | step 541 | batch 133/136 | loss -1.3183
-Epoch 4/5 | step 542 | batch 134/136 | loss -1.3234
-Epoch 4/5 | step 543 | batch 135/136 | loss -1.3321
-Epoch 4/5 | step 544 | batch 136/136 | loss -1.3464
-Epoch 4 done | avg loss: -1.3103 | prior_var_mean: 0.9979
-Epoch 5/5 | step 545 | batch 1/136 | loss -1.3265
-Epoch 5/5 | step 546 | batch 2/136 | loss -1.3405
-Epoch 5/5 | step 547 | batch 3/136 | loss -1.3426
-Epoch 5/5 | step 548 | batch 4/136 | loss -1.3467
-Epoch 5/5 | step 549 | batch 5/136 | loss -1.3503
-Epoch 5/5 | step 550 | batch 6/136 | loss -1.3600
-Epoch 5/5 | step 551 | batch 7/136 | loss -1.3410
-Epoch 5/5 | step 552 | batch 8/136 | loss -1.3357
-Epoch 5/5 | step 553 | batch 9/136 | loss -1.3464
-Epoch 5/5 | step 554 | batch 10/136 | loss -1.3391
-Epoch 5/5 | step 555 | batch 11/136 | loss -1.3108
-Epoch 5/5 | step 556 | batch 12/136 | loss -1.3361
-Epoch 5/5 | step 557 | batch 13/136 | loss -1.3424
-Epoch 5/5 | step 558 | batch 14/136 | loss -1.3216
-Epoch 5/5 | step 559 | batch 15/136 | loss -1.3201
-Epoch 5/5 | step 560 | batch 16/136 | loss -1.3490
-Epoch 5/5 | step 561 | batch 17/136 | loss -1.3280
-Epoch 5/5 | step 562 | batch 18/136 | loss -1.3254
-Epoch 5/5 | step 563 | batch 19/136 | loss -1.3243
-Epoch 5/5 | step 564 | batch 20/136 | loss -1.3548
-Epoch 5/5 | step 565 | batch 21/136 | loss -1.3160
-Epoch 5/5 | step 566 | batch 22/136 | loss -1.3408
-Epoch 5/5 | step 567 | batch 23/136 | loss -1.3482
-Epoch 5/5 | step 568 | batch 24/136 | loss -1.3488
-Epoch 5/5 | step 569 | batch 25/136 | loss -1.3659
-Epoch 5/5 | step 570 | batch 26/136 | loss -1.3205
-Epoch 5/5 | step 571 | batch 27/136 | loss -1.3443
-Epoch 5/5 | step 572 | batch 28/136 | loss -1.3470
-Epoch 5/5 | step 573 | batch 29/136 | loss -1.3906
-Epoch 5/5 | step 574 | batch 30/136 | loss -1.3675
-Epoch 5/5 | step 575 | batch 31/136 | loss -1.3393
-Epoch 5/5 | step 576 | batch 32/136 | loss -1.3330
-Epoch 5/5 | step 577 | batch 33/136 | loss -1.3757
-Epoch 5/5 | step 578 | batch 34/136 | loss -1.3235
-Epoch 5/5 | step 579 | batch 35/136 | loss -1.3746
-Epoch 5/5 | step 580 | batch 36/136 | loss -1.3550
-Epoch 5/5 | step 581 | batch 37/136 | loss -1.3323
-Epoch 5/5 | step 582 | batch 38/136 | loss -1.3411
-Epoch 5/5 | step 583 | batch 39/136 | loss -1.3195
-Epoch 5/5 | step 584 | batch 40/136 | loss -1.3361
-Epoch 5/5 | step 585 | batch 41/136 | loss -1.3746
-Epoch 5/5 | step 586 | batch 42/136 | loss -1.3225
-Epoch 5/5 | step 587 | batch 43/136 | loss -1.3457
-Epoch 5/5 | step 588 | batch 44/136 | loss -1.3632
-Epoch 5/5 | step 589 | batch 45/136 | loss -1.3650
-Epoch 5/5 | step 590 | batch 46/136 | loss -1.3348
-Epoch 5/5 | step 591 | batch 47/136 | loss -1.3570
-Epoch 5/5 | step 592 | batch 48/136 | loss -1.3556
-Epoch 5/5 | step 593 | batch 49/136 | loss -1.3287
-Epoch 5/5 | step 594 | batch 50/136 | loss -1.3660
-Epoch 5/5 | step 595 | batch 51/136 | loss -1.3711
-Epoch 5/5 | step 596 | batch 52/136 | loss -1.3386
-Epoch 5/5 | step 597 | batch 53/136 | loss -1.3259
-Epoch 5/5 | step 598 | batch 54/136 | loss -1.3901
-Epoch 5/5 | step 599 | batch 55/136 | loss -1.3663
-Epoch 5/5 | step 600 | batch 56/136 | loss -1.2796
-Epoch 5/5 | step 601 | batch 57/136 | loss -1.3072
-Epoch 5/5 | step 602 | batch 58/136 | loss -1.2651
-Epoch 5/5 | step 603 | batch 59/136 | loss -1.3195
-Epoch 5/5 | step 604 | batch 60/136 | loss -1.3444
-Epoch 5/5 | step 605 | batch 61/136 | loss -1.3303
-Epoch 5/5 | step 606 | batch 62/136 | loss -1.3479
-Epoch 5/5 | step 607 | batch 63/136 | loss -1.3131
-Epoch 5/5 | step 608 | batch 64/136 | loss -1.3506
-Epoch 5/5 | step 609 | batch 65/136 | loss -1.2969
-Epoch 5/5 | step 610 | batch 66/136 | loss -1.3682
-Epoch 5/5 | step 611 | batch 67/136 | loss -1.3251
-Epoch 5/5 | step 612 | batch 68/136 | loss -1.3502
-Epoch 5/5 | step 613 | batch 69/136 | loss -1.3662
-Epoch 5/5 | step 614 | batch 70/136 | loss -1.3398
-Epoch 5/5 | step 615 | batch 71/136 | loss -1.3521
-Epoch 5/5 | step 616 | batch 72/136 | loss -1.3691
-Epoch 5/5 | step 617 | batch 73/136 | loss -1.3647
-Epoch 5/5 | step 618 | batch 74/136 | loss -1.3657
-Epoch 5/5 | step 619 | batch 75/136 | loss -1.3618
-Epoch 5/5 | step 620 | batch 76/136 | loss -1.3385
-Epoch 5/5 | step 621 | batch 77/136 | loss -1.3440
-Epoch 5/5 | step 622 | batch 78/136 | loss -1.3663
-Epoch 5/5 | step 623 | batch 79/136 | loss -1.3771
-Epoch 5/5 | step 624 | batch 80/136 | loss -1.3749
-Epoch 5/5 | step 625 | batch 81/136 | loss -1.3849
-Epoch 5/5 | step 626 | batch 82/136 | loss -1.3590
-Epoch 5/5 | step 627 | batch 83/136 | loss -1.3842
-Epoch 5/5 | step 628 | batch 84/136 | loss -1.3946
-Epoch 5/5 | step 629 | batch 85/136 | loss -1.3802
-Epoch 5/5 | step 630 | batch 86/136 | loss -1.3964
-Epoch 5/5 | step 631 | batch 87/136 | loss -1.3444
-Epoch 5/5 | step 632 | batch 88/136 | loss -1.3608
-Epoch 5/5 | step 633 | batch 89/136 | loss -1.3535
-Epoch 5/5 | step 634 | batch 90/136 | loss -1.3747
-Epoch 5/5 | step 635 | batch 91/136 | loss -1.3741
-Epoch 5/5 | step 636 | batch 92/136 | loss -1.3674
-Epoch 5/5 | step 637 | batch 93/136 | loss -1.3827
-Epoch 5/5 | step 638 | batch 94/136 | loss -1.3505
-Epoch 5/5 | step 639 | batch 95/136 | loss -1.3237
-Epoch 5/5 | step 640 | batch 96/136 | loss -1.3395
-Epoch 5/5 | step 641 | batch 97/136 | loss -1.3550
-Epoch 5/5 | step 642 | batch 98/136 | loss -1.3136
-Epoch 5/5 | step 643 | batch 99/136 | loss -1.3473
-Epoch 5/5 | step 644 | batch 100/136 | loss -1.3380
-Epoch 5/5 | step 645 | batch 101/136 | loss -1.3198
-Epoch 5/5 | step 646 | batch 102/136 | loss -1.3611
-Epoch 5/5 | step 647 | batch 103/136 | loss -1.3332
-Epoch 5/5 | step 648 | batch 104/136 | loss -1.3435
-Epoch 5/5 | step 649 | batch 105/136 | loss -1.3503
-Epoch 5/5 | step 650 | batch 106/136 | loss -1.3470
-Epoch 5/5 | step 651 | batch 107/136 | loss -1.3640
-Epoch 5/5 | step 652 | batch 108/136 | loss -1.3537
-Epoch 5/5 | step 653 | batch 109/136 | loss -1.3605
-Epoch 5/5 | step 654 | batch 110/136 | loss -1.3640
-Epoch 5/5 | step 655 | batch 111/136 | loss -1.3847
-Epoch 5/5 | step 656 | batch 112/136 | loss -1.3682
-Epoch 5/5 | step 657 | batch 113/136 | loss -1.3668
-Epoch 5/5 | step 658 | batch 114/136 | loss -1.3697
-Epoch 5/5 | step 659 | batch 115/136 | loss -1.3732
-Epoch 5/5 | step 660 | batch 116/136 | loss -1.3715
-Epoch 5/5 | step 661 | batch 117/136 | loss -1.3595
-Epoch 5/5 | step 662 | batch 118/136 | loss -1.3688
-Epoch 5/5 | step 663 | batch 119/136 | loss -1.3800
-Epoch 5/5 | step 664 | batch 120/136 | loss -1.3816
-Epoch 5/5 | step 665 | batch 121/136 | loss -1.3753
-Epoch 5/5 | step 666 | batch 122/136 | loss -1.4081
-Epoch 5/5 | step 667 | batch 123/136 | loss -1.4153
-Epoch 5/5 | step 668 | batch 124/136 | loss -1.3736
-Epoch 5/5 | step 669 | batch 125/136 | loss -1.4092
-Epoch 5/5 | step 670 | batch 126/136 | loss -1.3643
-Epoch 5/5 | step 671 | batch 127/136 | loss -1.3970
-Epoch 5/5 | step 672 | batch 128/136 | loss -1.4128
-Epoch 5/5 | step 673 | batch 129/136 | loss -1.3696
-Epoch 5/5 | step 674 | batch 130/136 | loss -1.3578
-Epoch 5/5 | step 675 | batch 131/136 | loss -1.3531
-Epoch 5/5 | step 676 | batch 132/136 | loss -1.3751
-Epoch 5/5 | step 677 | batch 133/136 | loss -1.3612
-Epoch 5/5 | step 678 | batch 134/136 | loss -1.3539
-Epoch 5/5 | step 679 | batch 135/136 | loss -1.3225
-Epoch 5/5 | step 680 | batch 136/136 | loss -1.3796
-Epoch 5 done | avg loss: -1.3517 | prior_var_mean: 0.9885
-
-✅ Training complete!
-Total training time: 102.72 seconds
- at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl<at::native::…
-      0.0           546081        544     1003.8      992.0       960      1248         27.3  void at::native::vectorized_elementwise_kernel<(int)4, at::native::FillFunctor<float>, at::detail::…
-      0.0           441566        272     1623.4     1632.0      1472      2080         86.0  void at::native::vectorized_elementwise_kernel<(int)4, at::native::<unnamed>::lerp_scalar_kernel(at…
-
-[7/8] Executing 'cuda_gpu_mem_time_sum' stats report
-
- Time (%)  Total Time (ns)  Count  Avg (ns)  Med (ns)  Min (ns)  Max (ns)  StdDev (ns)            Operation           
- --------  ---------------  -----  --------  --------  --------  --------  -----------  ------------------------------
-     44.0         62305182    274  227391.2  228191.5       736    380831      21730.9  [CUDA memcpy Host-to-Device]  
-     35.3         49951402  28560    1749.0    1152.0      1023     78912       4973.2  [CUDA memcpy Device-to-Device]
-     20.2         28659762  29376     975.6     960.0       703     63872        627.3  [CUDA memset]                 
-      0.5           752639    276    2727.0    2720.0      2112      3104         99.6  [CUDA memcpy Device-to-Host]  
-
-[8/8] Executing 'cuda_gpu_mem_size_sum' stats report
-
- Total (MB)  Count  Avg (MB)  Med (MB)  Min (MB)  Max (MB)  StdDev (MB)            Operation           
- ----------  -----  --------  --------  --------  --------  -----------  ------------------------------
-   9872.869  28560     0.346     0.002     0.000    12.583        1.755  [CUDA memcpy Device-to-Device]
-   3422.552    274    12.491    12.583     0.000    12.583        1.073  [CUDA memcpy Host-to-Device]  
-      1.442  29376     0.000     0.000     0.000     0.001        0.000  [CUDA memset]                 
-      0.001    276     0.000     0.000     0.000     0.000        0.000  [CUDA memcpy Device-to-Host]  
-
-Generated:
-    /lustre/fswork/projects/rech/ltc/ufk94qf/hackathon_project/report/report_2gpus_fwd_sync_bs256.nsys-rep
-    /lustre/fswork/projects/rech/ltc/ufk94qf/hackathon_project/report/report_2gpus_fwd_sync_bs256.sqlite

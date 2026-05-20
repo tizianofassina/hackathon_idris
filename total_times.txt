@@ -10,7 +10,7 @@ baseline_single_gpu | batch_size=256 | time=155.78s
 baseline_single_gpu | batch_size=512 | time=151.50s
 baseline_single_gpu | batch_size=1024 | time=147.67s
 baseline_single_gpu | batch_size=2048 | time=154.89s
-profiled | batch_size=512 | time=98.48s
-profiled | batch_size=256 | time=102.72s
-profiled | batch_size=1024 | time=91.34s
-profiled | batch_size=2048 | time=94.52s
+profiled fwd sync | batch_size=512 | time=98.48s
+profiled fwd sync | batch_size=256 | time=102.72s
+profiled fwd sync | batch_size=1024 | time=91.34s
+profiled fwd sync | batch_size=2048 | time=94.52s

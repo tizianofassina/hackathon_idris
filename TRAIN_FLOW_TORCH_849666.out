@@ -1,207 +1,0 @@
-Loading pytorch-gpu/py3/2.3.0
-  Loading requirement: cuda/12.2.0 nccl/2.19.3-1-cuda cudnn/8.9.5.30-cuda
-    gcc/10.1.0 openmpi/4.1.5-cuda intel-mkl/2020.4 magma/2.7.2-cuda sox/14.4.2
-    hdf5/1.12.0-mpi-cuda libjpeg-turbo/2.1.3 ffmpeg/6.1.1
-
-A module that was compiled using NumPy 1.x cannot be run in
-NumPy 2.4.4 as it may crash. To support both 1.x and 2.x
-versions of NumPy, modules must be compiled with NumPy 2.0.
-Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
-
-If you are a user of the module, the easiest solution will be to
-downgrade to 'numpy<2' or try to upgrade the affected module.
-We expect that some modules will need time to support NumPy 2.
-
-Traceback (most recent call last):  File "/lustre/fswork/projects/rech/ltc/ufk94qf/hackathon_project/train_torch.py", line 7, in <module>
-    from TarFlow.architecture import Model
-  File "/lustre/fswork/projects/rech/ltc/ufk94qf/hackathon_project/TarFlow/architecture.py", line 2, in <module>
-    import lightning as L
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/__init__.py", line 21, in <module>
-    from lightning.pytorch.callbacks import Callback  # noqa: E402
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/pytorch/__init__.py", line 27, in <module>
-    from lightning.pytorch.callbacks import Callback  # noqa: E402
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/pytorch/callbacks/__init__.py", line 14, in <module>
-    from lightning.pytorch.callbacks.batch_size_finder import BatchSizeFinder
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/pytorch/callbacks/batch_size_finder.py", line 26, in <module>
-    from lightning.pytorch.callbacks.callback import Callback
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/pytorch/callbacks/callback.py", line 22, in <module>
-    from lightning.pytorch.utilities.types import STEP_OUTPUT
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/lightning/pytorch/utilities/types.py", line 41, in <module>
-    from torchmetrics import Metric
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/torchmetrics/__init__.py", line 26, in <module>
-    from torchmetrics import functional  # noqa: E402
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/torchmetrics/functional/__init__.py", line 122, in <module>
-    from torchmetrics.functional.text._deprecated import _bleu_score as bleu_score
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/torchmetrics/functional/text/__init__.py", line 17, in <module>
-    from torchmetrics.functional.text.chrf import chrf_score
-  File "/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/torchmetrics/functional/text/chrf.py", line 44, in <module>
-    _EPS_SMOOTHING = tensor(1e-16)
-/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/torchmetrics/functional/text/chrf.py:44: UserWarning: Failed to initialize NumPy: 
-A module that was compiled using NumPy 1.x cannot be run in
-NumPy 2.4.4 as it may crash. To support both 1.x and 2.x
-versions of NumPy, modules must be compiled with NumPy 2.0.
-Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
-
-If you are a user of the module, the easiest solution will be to
-downgrade to 'numpy<2' or try to upgrade the affected module.
-We expect that some modules will need time to support NumPy 2.
-
- (Triggered internally at /gpfs7kro/gpfslocalsup/src/pub/anaconda-py3/2023.09/pytorch-gpu-2.3.0+py3.11.5+cuda-12.2/pytorch-2.3.0/torch/csrc/utils/tensor_numpy.cpp:84.)
-  _EPS_SMOOTHING = tensor(1e-16)
-⚙️ Using FACTOR: 1.0
-⚙️ Device: cuda
-✅ Data loaded: 70000 samples, 273 batches.
-✅ Data, Model, and Optimizer initialized.
-💾 Checkpoint will be saved as: flow_models/model_20260518_211932.ckpt
-🔥 Starting Training for 5 epochs...
-Epoch 1/5 | step 10 | batch 10/273 | loss -0.5251
-Epoch 1/5 | step 20 | batch 20/273 | loss -0.6822
-Epoch 1/5 | step 30 | batch 30/273 | loss -0.7898
-Epoch 1/5 | step 40 | batch 40/273 | loss -0.8526
-Epoch 1/5 | step 50 | batch 50/273 | loss -0.8962
-Epoch 1/5 | step 60 | batch 60/273 | loss -0.9423
-Epoch 1/5 | step 70 | batch 70/273 | loss -0.9402
-Epoch 1/5 | step 80 | batch 80/273 | loss -0.9682
-Epoch 1/5 | step 90 | batch 90/273 | loss -0.9789
-Epoch 1/5 | step 100 | batch 100/273 | loss -0.9999
-Epoch 1/5 | step 110 | batch 110/273 | loss -1.0156
-Epoch 1/5 | step 120 | batch 120/273 | loss -1.0692
-Epoch 1/5 | step 130 | batch 130/273 | loss -1.0712
-Epoch 1/5 | step 140 | batch 140/273 | loss -1.1100
-Epoch 1/5 | step 150 | batch 150/273 | loss -1.1416
-Epoch 1/5 | step 160 | batch 160/273 | loss -1.1304
-Epoch 1/5 | step 170 | batch 170/273 | loss -1.1469
-Epoch 1/5 | step 180 | batch 180/273 | loss -1.1879
-Epoch 1/5 | step 190 | batch 190/273 | loss -1.1732
-Epoch 1/5 | step 200 | batch 200/273 | loss -1.2120
-Epoch 1/5 | step 210 | batch 210/273 | loss -1.2323
-Epoch 1/5 | step 220 | batch 220/273 | loss -1.2307
-Epoch 1/5 | step 230 | batch 230/273 | loss -1.2274
-Epoch 1/5 | step 240 | batch 240/273 | loss -1.2320
-Epoch 1/5 | step 250 | batch 250/273 | loss -1.2130
-Epoch 1/5 | step 260 | batch 260/273 | loss -1.2776
-Epoch 1/5 | step 270 | batch 270/273 | loss -1.2374
-Epoch 1 done | avg loss: -1.0300 | prior_var_mean: 1.0050
-Epoch 2/5 | step 280 | batch 7/273 | loss -1.2687
-Epoch 2/5 | step 290 | batch 17/273 | loss -1.2571
-Epoch 2/5 | step 300 | batch 27/273 | loss -1.2630
-Epoch 2/5 | step 310 | batch 37/273 | loss -1.2403
-Epoch 2/5 | step 320 | batch 47/273 | loss -1.2828
-Epoch 2/5 | step 330 | batch 57/273 | loss -1.2586
-Epoch 2/5 | step 340 | batch 67/273 | loss -1.2824
-Epoch 2/5 | step 350 | batch 77/273 | loss -1.2825
-Epoch 2/5 | step 360 | batch 87/273 | loss -1.3093
-Epoch 2/5 | step 370 | batch 97/273 | loss -1.2938
-Epoch 2/5 | step 380 | batch 107/273 | loss -1.2959
-Epoch 2/5 | step 390 | batch 117/273 | loss -1.2940
-Epoch 2/5 | step 400 | batch 127/273 | loss -1.3162
-Epoch 2/5 | step 410 | batch 137/273 | loss -1.3235
-Epoch 2/5 | step 420 | batch 147/273 | loss -1.3125
-Epoch 2/5 | step 430 | batch 157/273 | loss -1.2872
-Epoch 2/5 | step 440 | batch 167/273 | loss -1.3246
-Epoch 2/5 | step 450 | batch 177/273 | loss -1.3091
-Epoch 2/5 | step 460 | batch 187/273 | loss -1.3039
-Epoch 2/5 | step 470 | batch 197/273 | loss -1.3148
-Epoch 2/5 | step 480 | batch 207/273 | loss -1.3455
-Epoch 2/5 | step 490 | batch 217/273 | loss -1.3409
-Epoch 2/5 | step 500 | batch 227/273 | loss -1.3627
-Epoch 2/5 | step 510 | batch 237/273 | loss -1.3269
-Epoch 2/5 | step 520 | batch 247/273 | loss -1.3610
-Epoch 2/5 | step 530 | batch 257/273 | loss -1.3271
-Epoch 2/5 | step 540 | batch 267/273 | loss -1.3671
-Epoch 2 done | avg loss: -1.3020 | prior_var_mean: 1.0066
-Epoch 3/5 | step 550 | batch 4/273 | loss -1.3057
-Epoch 3/5 | step 560 | batch 14/273 | loss -1.3483
-Epoch 3/5 | step 570 | batch 24/273 | loss -1.3370
-Epoch 3/5 | step 580 | batch 34/273 | loss -1.2777
-Epoch 3/5 | step 590 | batch 44/273 | loss -1.3079
-Epoch 3/5 | step 600 | batch 54/273 | loss -1.3472
-Epoch 3/5 | step 610 | batch 64/273 | loss -1.3400
-Epoch 3/5 | step 620 | batch 74/273 | loss -1.3834
-Epoch 3/5 | step 630 | batch 84/273 | loss -1.3419
-Epoch 3/5 | step 640 | batch 94/273 | loss -1.3621
-Epoch 3/5 | step 650 | batch 104/273 | loss -1.3773
-Epoch 3/5 | step 660 | batch 114/273 | loss -1.3701
-Epoch 3/5 | step 670 | batch 124/273 | loss -1.3067
-Epoch 3/5 | step 680 | batch 134/273 | loss -1.3530
-Epoch 3/5 | step 690 | batch 144/273 | loss -1.3700
-Epoch 3/5 | step 700 | batch 154/273 | loss -1.3658
-Epoch 3/5 | step 710 | batch 164/273 | loss -1.3878
-Epoch 3/5 | step 720 | batch 174/273 | loss -1.3815
-Epoch 3/5 | step 730 | batch 184/273 | loss -1.3705
-Epoch 3/5 | step 740 | batch 194/273 | loss -1.4117
-Epoch 3/5 | step 750 | batch 204/273 | loss -1.3867
-Epoch 3/5 | step 760 | batch 214/273 | loss -1.3696
-Epoch 3/5 | step 770 | batch 224/273 | loss -1.3843
-Epoch 3/5 | step 780 | batch 234/273 | loss -1.4126
-Epoch 3/5 | step 790 | batch 244/273 | loss -1.3837
-Epoch 3/5 | step 800 | batch 254/273 | loss -1.3926
-Epoch 3/5 | step 810 | batch 264/273 | loss -1.3729
-Epoch 3 done | avg loss: -1.3683 | prior_var_mean: 0.9967
-Capture range started in the application.
-Capture range ended in the application.
-Generating '/tmp/nsys-report-75ff.qdstrm'
-[1/1] [0%                          ] standard_run_849666.nsys-repProcessing events...
-[1/1] [0%                          ] standard_run_849666.nsys-rep[1/1] [7%                          ] standard_run_849666.nsys-rep[1/1] [8%                          ] standard_run_849666.nsys-rep[1/1] [7%                          ] standard_run_849666.nsys-rep[1/1] [6%                          ] standard_run_849666.nsys-rep[1/1] [5%                          ] standard_run_849666.nsys-rep[1/1] [9%                          ] standard_run_849666.nsys-rep[1/1] [8%                          ] standard_run_849666.nsys-rep[1/1] [7%                          ] standard_run_849666.nsys-rep[1/1] [10%                         ] standard_run_849666.nsys-rep[1/1] [11%                         ] standard_run_849666.nsys-rep[1/1] [12%                         ] standard_run_849666.nsys-rep[1/1] [13%                         ] standard_run_849666.nsys-rep[1/1] [14%                         ] standard_run_849666.nsys-rep[1/1] [=16%                        ] standard_run_849666.nsys-rep[1/1] [==18%                       ] standard_run_849666.nsys-rep[1/1] [==20%                       ] standard_run_849666.nsys-rep[1/1] [===22%                      ] standard_run_849666.nsys-rep[1/1] [===24%                      ] standard_run_849666.nsys-rep[1/1] [====25%                     ] standard_run_849666.nsys-rep[1/1] [====26%                     ] standard_run_849666.nsys-rep[1/1] [====27%                     ] standard_run_849666.nsys-rep[1/1] [====28%                     ] standard_run_849666.nsys-rep[1/1] [=====30%                    ] standard_run_849666.nsys-rep[1/1] [=====31%                    ] standard_run_849666.nsys-rep[1/1] [======33%                   ] standard_run_849666.nsys-rep[1/1] [======35%                   ] standard_run_849666.nsys-rep[1/1] [=======37%                  ] standard_run_849666.nsys-rep[1/1] [=======38%                  ] standard_run_849666.nsys-rep[1/1] [========40%                 ] standard_run_849666.nsys-rep[1/1] [========42%                 ] standard_run_849666.nsys-rep[1/1] [=========44%                ] standard_run_849666.nsys-rep[1/1] [=========46%                ] standard_run_849666.nsys-rep[1/1] [==========47%               ] standard_run_849666.nsys-rep[1/1] [==========49%               ] standard_run_849666.nsys-rep[1/1] [===========50%              ] standard_run_849666.nsys-rep[1/1] [===========51%              ] standard_run_849666.nsys-rep[1/1] [===========52%              ] standard_run_849666.nsys-rep[1/1] [============54%             ] standard_run_849666.nsys-rep[1/1] [============56%             ] standard_run_849666.nsys-rep[1/1] [=============58%            ] standard_run_849666.nsys-rep[1/1] [=============60%            ] standard_run_849666.nsys-rep[1/1] [==============62%           ] standard_run_849666.nsys-rep[1/1] [==============64%           ] standard_run_849666.nsys-rep[1/1] [===============67%          ] standard_run_849666.nsys-rep[1/1] [================69%         ] standard_run_849666.nsys-rep[1/1] [================71%         ] standard_run_849666.nsys-rep[1/1] [=================73%        ] standard_run_849666.nsys-rep[1/1] [==================75%       ] standard_run_849666.nsys-rep[1/1] [==================77%       ] standard_run_849666.nsys-rep[1/1] [===================79%      ] standard_run_849666.nsys-rep[1/1] [========================100%] standard_run_849666.nsys-rep[1/1] [========================100%] standard_run_849666.nsys-rep
-Epoch 4/5 | step 820 | batch 1/273 | loss -1.3771
-Epoch 4/5 | step 830 | batch 11/273 | loss -1.4199
-Epoch 4/5 | step 840 | batch 21/273 | loss -1.4232
-Epoch 4/5 | step 850 | batch 31/273 | loss -1.4056
-Epoch 4/5 | step 860 | batch 41/273 | loss -1.3964
-Epoch 4/5 | step 870 | batch 51/273 | loss -1.4402
-Epoch 4/5 | step 880 | batch 61/273 | loss -1.4253
-Epoch 4/5 | step 890 | batch 71/273 | loss -1.4271
-Epoch 4/5 | step 900 | batch 81/273 | loss -1.4318
-Epoch 4/5 | step 910 | batch 91/273 | loss -1.3880
-Epoch 4/5 | step 920 | batch 101/273 | loss -1.4255
-Epoch 4/5 | step 930 | batch 111/273 | loss -1.4211
-Epoch 4/5 | step 940 | batch 121/273 | loss -1.4720
-Epoch 4/5 | step 950 | batch 131/273 | loss -1.4433
-Epoch 4/5 | step 960 | batch 141/273 | loss -1.4136
-Epoch 4/5 | step 970 | batch 151/273 | loss -1.4339
-Epoch 4/5 | step 980 | batch 161/273 | loss -1.4315
-Epoch 4/5 | step 990 | batch 171/273 | loss -1.4520
-Epoch 4/5 | step 1000 | batch 181/273 | loss -1.4402
-Epoch 4/5 | step 1010 | batch 191/273 | loss -1.4128
-Epoch 4/5 | step 1020 | batch 201/273 | loss -1.4257
-Epoch 4/5 | step 1030 | batch 211/273 | loss -1.4675
-Epoch 4/5 | step 1040 | batch 221/273 | loss -1.4189
-Epoch 4/5 | step 1050 | batch 231/273 | loss -1.4885
-Epoch 4/5 | step 1060 | batch 241/273 | loss -1.4822
-Epoch 4/5 | step 1070 | batch 251/273 | loss -1.4980
-Epoch 4/5 | step 1080 | batch 261/273 | loss -1.3450
-Epoch 4/5 | step 1090 | batch 271/273 | loss -1.4533
-Epoch 4 done | avg loss: -1.4259 | prior_var_mean: 0.9989
-Epoch 5/5 | step 1100 | batch 8/273 | loss -1.4855
-Epoch 5/5 | step 1110 | batch 18/273 | loss -1.4466
-Epoch 5/5 | step 1120 | batch 28/273 | loss -1.4674
-Epoch 5/5 | step 1130 | batch 38/273 | loss -1.4955
-Epoch 5/5 | step 1140 | batch 48/273 | loss -1.4716
-Epoch 5/5 | step 1150 | batch 58/273 | loss -1.4193
-Epoch 5/5 | step 1160 | batch 68/273 | loss -1.5283
-Epoch 5/5 | step 1170 | batch 78/273 | loss -1.4735
-Epoch 5/5 | step 1180 | batch 88/273 | loss -1.4960
-Epoch 5/5 | step 1190 | batch 98/273 | loss -1.4919
-Epoch 5/5 | step 1200 | batch 108/273 | loss -1.3191
-Epoch 5/5 | step 1210 | batch 118/273 | loss -1.4353
-Epoch 5/5 | step 1220 | batch 128/273 | loss -1.4736
-Epoch 5/5 | step 1230 | batch 138/273 | loss -1.5019
-Epoch 5/5 | step 1240 | batch 148/273 | loss -1.4458
-Epoch 5/5 | step 1250 | batch 158/273 | loss -1.5137
-Epoch 5/5 | step 1260 | batch 168/273 | loss -1.5274
-Epoch 5/5 | step 1270 | batch 178/273 | loss -1.4610
-Epoch 5/5 | step 1280 | batch 188/273 | loss -1.5053
-Epoch 5/5 | step 1290 | batch 198/273 | loss -1.4942
-Epoch 5/5 | step 1300 | batch 208/273 | loss -1.4930
-Epoch 5/5 | step 1310 | batch 218/273 | loss -1.5251
-Epoch 5/5 | step 1320 | batch 228/273 | loss -1.5380
-Epoch 5/5 | step 1330 | batch 238/273 | loss -1.4604
-Epoch 5/5 | step 1340 | batch 248/273 | loss -1.5493
-Epoch 5/5 | step 1350 | batch 258/273 | loss -1.5388
-Epoch 5/5 | step 1360 | batch 268/273 | loss -1.5163
-Epoch 5 done | avg loss: -1.4895 | prior_var_mean: 1.0013
-
-✅ Training complete!
-Total training time: 246.74 seconds
-Generated:
-    /lustre/fswork/projects/rech/ltc/ufk94qf/hackathon_project/report/standard_run_849666.nsys-rep
