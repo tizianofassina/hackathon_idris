@@ -78,7 +78,7 @@ class Attention_dot_te(torch.nn.Module):
         scale = self.sqrt_scale**2 / temp
         if mask is not None:
             mask = mask.bool()
-        x = self.attention_dot( query_layer = q, key_layer = k, value_layer = v, attention_mask=mask) #, scale=scale)
+        x = self.attention_dot( query = q, key = k, value = v, attention_mask=mask) #, scale=scale)
         x = x.transpose(1, 2).reshape(B, T, C)
         x = self.proj(x)
         return x
