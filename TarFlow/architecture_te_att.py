@@ -47,9 +47,12 @@ class Attention_dot_te(torch.nn.Module):
         self.sample = False
         self.k_cache: dict[str, list[torch.Tensor]] = {"cond": [], "uncond": []}
         self.v_cache: dict[str, list[torch.Tensor]] = {"cond": [], "uncond": []}
-        
-        self.attention_dot = utils.DotProductAttention(num_attention_heads = self.num_heads,
-                                                    kv_channels = head_channels,attention_dropout = 0.)
+        self.attention_dot = self.attention = te.DotProductAttention(
+            num_attention_heads=self.num_heads ,
+            kv_channels=head_channels,
+            attention_dropout=0.1,
+            attn_mask_type="causal",
+        )
     
     def forward_spda(
         self,
@@ -82,7 +85,7 @@ class Attention_dot_te(torch.nn.Module):
         print("k shape : ", k.shape)
         print("v shape : ", v.shape)
         print("mask shape : ", mask.shape)
-        x = self.attention_dot( query = q, key = k, value = v, attention_mask=mask) #, scale=scale)
+        x = self.attention_dot(query = q, key = k, value = v, attention_mask=mask) #, scale=scale)
         x = x.transpose(1, 2).reshape(B, T, C)
         x = self.proj(x)
         return x
