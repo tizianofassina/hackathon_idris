@@ -58,7 +58,7 @@ with te.autocast(enabled=True, recipe=recipe):
 
 
 print("TE TransformerLayer + FP8:")
-time_te_transformer_layer = utils.speedometer(
+utils.speedometer(
     te_transformer_layer,
     x,
     dy,
