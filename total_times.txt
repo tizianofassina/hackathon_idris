@@ -1,23 +1,25 @@
-baseline | batch_size=256 | time=84.57s
-baseline | batch_size=512 | time=79.87s
-baseline | batch_size=1024 | time=79.59s
-baseline | batch_size=2048 | time=83.87s
-profiled | batch_size=256 | time=99.98s
-profiled | batch_size=512 | time=93.12s
-profiled | batch_size=1024 | time=91.00s
-profiled | batch_size=2048 | time=96.81s
-baseline_single_gpu | batch_size=256 | time=155.78s
-baseline_single_gpu | batch_size=512 | time=151.50s
+baseline 2 gpus | batch_size=256 | time=84.57s        # DDP 2 GPUs training, without profiling, for 5 epochs
+baseline 2 gpus | batch_size=512 | time=79.87s        # Different batch size
+baseline 2 gpus| batch_size=1024 | time=79.59s
+baseline 2 gpus| batch_size=2048 | time=83.87s
+profiled 2 gpus| batch_size=256 | time=99.98s
+profiled 2 gpus| batch_size=512 | time=93.12s
+profiled 2 gpus| batch_size=1024 | time=91.00s
+profiled 2 gpus| batch_size=2048 | time=96.81s
+baseline_single_gpu | batch_size=256 | time=155.78s     # Single gpu training, without profiling, for 5 epochs
+baseline_single_gpu | batch_size=512 | time=151.50s     # Different batch size
 baseline_single_gpu | batch_size=1024 | time=147.67s
 baseline_single_gpu | batch_size=2048 | time=154.89s
 profiled fwd sync | batch_size=512 | time=98.48s
 profiled fwd sync | batch_size=256 | time=102.72s
 profiled fwd sync | batch_size=1024 | time=91.34s
 profiled fwd sync | batch_size=2048 | time=94.52s
-baseline te | batch_size=256 | time=62.84s
-te without attention, fp8, fused mlp| batch_size=256 | last_loss=-1.3451727628707886
+
+te without attention, fp8, fused mlp| batch_size=256 | last_loss=-1.3451727628707886 # TE without profiling 
 te without attention, fp8, fused mlp| batch_size=256 | time=60.85
-DDP 2 GPUS | batch_size=256 | last_loss=-1.350548505783081
-DDP 2 GPUS| batch_size=256 | time=52.94s
-te without attention, fp8, fused mlp| batch_size=256 | last_loss=-1.3404128551483154
+
+baseline 2 gpus Container| batch_size=256 | last_loss=-1.350548505783081 # This is the result for the same ddp as the baseline gpu 2 but with                                                                             # the container.
+baseline 2 gpus | batch_size=256 | time=52.94s
+
+te without attention, fp8, fused mlp| batch_size=256 | last_loss=-1.3404128551483154  # TE without profiling + attention from TE.
 te without attention, fp8, fused mlp| batch_size=256 | time=54.06
