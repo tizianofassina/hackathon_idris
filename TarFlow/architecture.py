@@ -1,5 +1,5 @@
 import torch
-import lightning as L
+#import lightning as L
 from torch.utils.data import DataLoader, TensorDataset
 from torch.optim.lr_scheduler import CosineAnnealingLR
 
@@ -391,124 +391,124 @@ class Model(torch.nn.Module):
             return seq
 
 
-class TarFlowModule(L.LightningModule):
-    def __init__(
-        self,
-        model,
-        batch_size=70,
-        lr=1e-4,
-        accum_steps=4,
-        sigma_max=7,
-        rescale_factor=0.09
-    ):
-        super().__init__()
-        self.save_hyperparameters(ignore=["model"])
-        self.model = model
-        self.batch_size = batch_size
-        self.lr = lr
-        self.accum_steps = accum_steps
-        self.sigma_max = sigma_max
-        self.rescale_factor = rescale_factor
+# class TarFlowModule(L.LightningModule):
+#     def __init__(
+#         self,
+#         model,
+#         batch_size=70,
+#         lr=1e-4,
+#         accum_steps=4,
+#         sigma_max=7,
+#         rescale_factor=0.09
+#     ):
+#         super().__init__()
+#         self.save_hyperparameters(ignore=["model"])
+#         self.model = model
+#         self.batch_size = batch_size
+#         self.lr = lr
+#         self.accum_steps = accum_steps
+#         self.sigma_max = sigma_max
+#         self.rescale_factor = rescale_factor
         
 
-    def forward(self, x, y=None):
-        return self.model(x, y)
+#     def forward(self, x, y=None):
+#         return self.model(x, y)
 
-    def compute_loss(self, x, y=None):
-        z, outputs, logdets = self.model(x, y)
-        loss = self.model.get_loss(z, logdets)
-        return loss
+#     def compute_loss(self, x, y=None):
+#         z, outputs, logdets = self.model(x, y)
+#         loss = self.model.get_loss(z, logdets)
+#         return loss
 
-    def training_step(self, batch, batch_idx):
-        try:
-            x, y = batch
-        except ValueError:
-            (x,) = batch
-            y = None
-        x = x * self.rescale_factor
-        z, outputs, logdets = self.model(x, y)
+#     def training_step(self, batch, batch_idx):
+#         try:
+#             x, y = batch
+#         except ValueError:
+#             (x,) = batch
+#             y = None
+#         x = x * self.rescale_factor
+#         z, outputs, logdets = self.model(x, y)
 
-        loss = self.model.get_loss(z, logdets)
-        if self.training:
-            self.model.update_prior(z)
-        self.log("train/loss", loss, on_step=True, on_epoch=True, prog_bar=True)
-        self.log("train/prior_var_mean", self.model.var.mean(), on_epoch=True)
-        return loss
+#         loss = self.model.get_loss(z, logdets)
+#         if self.training:
+#             self.model.update_prior(z)
+#         self.log("train/loss", loss, on_step=True, on_epoch=True, prog_bar=True)
+#         self.log("train/prior_var_mean", self.model.var.mean(), on_epoch=True)
+#         return loss
 
-    def configure_optimizers(self):
-        optimizer = torch.optim.AdamW(
-            self.model.parameters(), lr=self.lr, betas=(0.9, 0.95), weight_decay=1e-4
-        )
-        return optimizer
+#     def configure_optimizers(self):
+#         optimizer = torch.optim.AdamW(
+#             self.model.parameters(), lr=self.lr, betas=(0.9, 0.95), weight_decay=1e-4
+#         )
+#         return optimizer
 
     
-    ### NVTX MARKERS FOR NSYS
-    def on_train_batch_start(self, batch, batch_index):
-        torch.cuda.nvtx.range_push(f"train_batch_{batch_idx}")
+#     ### NVTX MARKERS FOR NSYS
+#     def on_train_batch_start(self, batch, batch_index):
+#         torch.cuda.nvtx.range_push(f"train_batch_{batch_idx}")
 
-    def on_train_batch_end(self, outputs, batch, batch_idx):
-        torch.cuda.nvtx.range_pop()
+#     def on_train_batch_end(self, outputs, batch, batch_idx):
+#         torch.cuda.nvtx.range_pop()
 
-    def training_step(self, batch, batch_idx):
-        torch.cuda.nvtx.range_push("training_step")
-        try:
-            x, y = batch
-            y_hat = self(x)
-            loss = self.loss_fn(y_hat, y)
-            return loss
-        finally:
-            torch.cuda.nvtx.range_pop()
+#     def training_step(self, batch, batch_idx):
+#         torch.cuda.nvtx.range_push("training_step")
+#         try:
+#             x, y = batch
+#             y_hat = self(x)
+#             loss = self.loss_fn(y_hat, y)
+#             return loss
+#         finally:
+#             torch.cuda.nvtx.range_pop()
 
 
-class TarFlowFFHQDataModule(L.LightningDataModule):
-    def __init__(
-        self,
-        data_path: str,
-        batch_size: int = 70,
-        sigma_max: float = 7.0,
-        num_workers: int = 6,
-        size_data: int | None = None,
-    ):
-        super().__init__()
-        self.save_hyperparameters()
+# class TarFlowFFHQDataModule(L.LightningDataModule):
+#     def __init__(
+#         self,
+#         data_path: str,
+#         batch_size: int = 70,
+#         sigma_max: float = 7.0,
+#         num_workers: int = 6,
+#         size_data: int | None = None,
+#     ):
+#         super().__init__()
+#         self.save_hyperparameters()
 
-        self.data_path = data_path
-        self.batch_size = batch_size
-        self.sigma_max = sigma_max
-        self.num_workers = num_workers
-        self.size_data = size_data
-        self.train_dataset = None
+#         self.data_path = data_path
+#         self.batch_size = batch_size
+#         self.sigma_max = sigma_max
+#         self.num_workers = num_workers
+#         self.size_data = size_data
+#         self.train_dataset = None
 
-    def setup(self, stage=None):
-        raw_data = torch.load(self.data_path, weights_only=True)
+#     def setup(self, stage=None):
+#         raw_data = torch.load(self.data_path, weights_only=True)
 
-        if isinstance(raw_data, dict):
-            data_train_x = raw_data.get("x")
-            if data_train_x is None:
-                raise ValueError("Data dictionary does not contain the key 'x'.")
-        else:
-            data_train_x = raw_data
+#         if isinstance(raw_data, dict):
+#             data_train_x = raw_data.get("x")
+#             if data_train_x is None:
+#                 raise ValueError("Data dictionary does not contain the key 'x'.")
+#         else:
+#             data_train_x = raw_data
 
-        if self.size_data is not None:
-            data_train_x = data_train_x[: self.size_data]
+#         if self.size_data is not None:
+#             data_train_x = data_train_x[: self.size_data]
 
-        data_train_x = data_train_x + self.sigma_max * torch.randn_like(data_train_x)
+#         data_train_x = data_train_x + self.sigma_max * torch.randn_like(data_train_x)
 
-        self.train_dataset = TensorDataset(data_train_x)
+#         self.train_dataset = TensorDataset(data_train_x)
 
-    def train_dataloader(self):
-        if self.train_dataset is None:
-            raise RuntimeError(
-                "The setup function must be called before train_dataloader."
-            )
+#     def train_dataloader(self):
+#         if self.train_dataset is None:
+#             raise RuntimeError(
+#                 "The setup function must be called before train_dataloader."
+#             )
 
-        loader = DataLoader(
-            self.train_dataset,
-            batch_size=self.batch_size,
-            shuffle=True,
-            num_workers=self.num_workers,
-            pin_memory=True,
-            drop_last=True,
-            prefetch_factor=2,
-        )
-        return loader
+#         loader = DataLoader(
+#             self.train_dataset,
+#             batch_size=self.batch_size,
+#             shuffle=True,
+#             num_workers=self.num_workers,
+#             pin_memory=True,
+#             drop_last=True,
+#             prefetch_factor=2,
+#         )
+#         return loader

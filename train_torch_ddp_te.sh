@@ -43,3 +43,4 @@ srun nsys profile -t cuda,nvtx,osrt,cudnn,cublas \
     -o report/report_2gpus_te${BS} torchrun \
     --standalone \
     --nproc_per_node=$NUM_GPUS train_torch_ddp_te.py --batch_size $BS
+

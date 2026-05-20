@@ -135,10 +135,13 @@ class MLP(torch.nn.Module):
 
 
 class AttentionBlock(torch.nn.Module):
-    def __init__(self, channels: int, head_channels: int, expansion: int = 4):
+    def __init__(self, channels: int, head_dim: int, expansion: int = 4):
         super().__init__()
-        
-        self.attention = Attention(channels, head_channels)
+        self.attention = te.DotProductAttention(
+            num_attention_heads=channels//head_dim, # To be checkeed if channels is in_channel required by DotProductAttention
+            kv_channels=head_dim, # To be checkeed if head_dim is head_dim required by DotProductAttention
+            attn_mask_type="causal",
+        )
         self.mlp = MLP(channels, expansion)
 
     def forward(
@@ -148,7 +151,8 @@ class AttentionBlock(torch.nn.Module):
         attn_temp: float = 1.0,
         which_cache: str = "cond",
     ) -> torch.Tensor:
-        x = x + self.attention(x, attn_mask, attn_temp, which_cache)
+        x = x + self.attention(x, attention_mask = attn_mask, attn_temp, which_cache)
+        
         x = x + self.mlp(x)
         return x
 
