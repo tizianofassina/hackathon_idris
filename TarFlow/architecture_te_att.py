@@ -49,11 +49,11 @@ class Attention_dot_te(torch.nn.Module):
         self.k_cache: dict[str, list[torch.Tensor]] = {"cond": [], "uncond": []}
         self.v_cache: dict[str, list[torch.Tensor]] = {"cond": [], "uncond": []}
         self.attention_dot = te.DotProductAttention(
-            num_attention_heads=self.num_heads,   
-            kv_channels=self.head_dim,            
+            num_attention_heads=self.num_heads,
+            kv_channels=head_channels,
             attention_dropout=0.1,
             attn_mask_type="causal",
-            qkv_format="bshd",                   
+            qkv_format="bshd",
         )
     
     def forward_spda(
@@ -65,30 +65,38 @@ class Attention_dot_te(torch.nn.Module):
     ) -> torch.Tensor:
         B, T, C = x.size() 
         x = self.norm(x.float()).type(x.dtype)
-        q, k, v = (
-            self.qkv(x)
-            .reshape(B, T, 3 * self.num_heads, -1)
-            .transpose(1, 2)
-            .chunk(3, dim=1)
-        )  # (b, h, t, d)
+        # q, k, v = (
+        #     self.qkv(x)
+        #     .reshape(B, T, 3 * self.num_heads, -1)
+        #     .transpose(1, 2)
+        #     .chunk(3, dim=1)
+        # )  # (b, h, t, d)
+        qkv = self.qkv(x).reshape(B, T, 3, self.num_heads, -1)
+        q, k, v = qkv.unbind(dim=2)
 
         if self.sample:
             self.k_cache[which_cache].append(k)
             self.v_cache[which_cache].append(v)
-            k = torch.cat(
-                self.k_cache[which_cache], dim=2
-            )  # note that sequence dimension is now 2
-            v = torch.cat(self.v_cache[which_cache], dim=2)
+            # k = torch.cat(
+            #     self.k_cache[which_cache], dim=2
+            # )  # note that sequence dimension is now 2
+            # v = torch.cat(self.v_cache[which_cache], dim=2)
+            k = torch.cat(self.k_cache[which_cache], dim=1)  # seq dim is 1 in bshd
+            v = torch.cat(self.v_cache[which_cache], dim=1)
 
-        scale = self.sqrt_scale**2 / temp
-        if mask is not None:
-            mask = mask.bool()
-        print("q shape : ", q.shape)
-        print("k shape : ", k.shape)
-        print("v shape : ", v.shape)
-        print("mask shape : ", mask.shape)
-        x = self.attention_dot(q, k, v, mask) #, scale=scale)
-        x = x.transpose(1, 2).reshape(B, T, C)
+
+        # scale = self.sqrt_scale**2 / temp
+        # if mask is not None:
+        #     mask = mask.bool()
+        # print("q shape : ", q.shape)
+        # print("k shape : ", k.shape)
+        # print("v shape : ", v.shape)
+        # print("mask shape : ", mask.shape)
+        # x = self.attention_dot(q, k, v, mask) #, scale=scale)
+        # x = x.transpose(1, 2).reshape(B, T, C)
+        # x = self.proj(x)
+        # return x
+        x = self.attention_dot(q, k, v)  # causal mask is built-in
         x = self.proj(x)
         return x
 
