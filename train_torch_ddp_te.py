@@ -4,7 +4,7 @@ import torch
 from torch.cuda import nvtx
 from torch.utils.data import DataLoader, TensorDataset
 from torch.utils.tensorboard import SummaryWriter
-from TarFlow.architecture import Model
+from TarFlow.architecture_te import Model
 from TarFlow.utils import set_random_seed
 
 import torch.distributed as dist  # DDP communication
