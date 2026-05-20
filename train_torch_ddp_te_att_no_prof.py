@@ -3,7 +3,7 @@ from datetime import datetime
 import torch
 from torch.utils.data import DataLoader, TensorDataset
 from torch.utils.tensorboard import SummaryWriter
-from TarFlow.architecture_te import Model
+from TarFlow.architecture_te_att import Model
 
 import random 
 import numpy as np
