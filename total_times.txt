@@ -14,3 +14,10 @@ profiled fwd sync | batch_size=512 | time=98.48s
 profiled fwd sync | batch_size=256 | time=102.72s
 profiled fwd sync | batch_size=1024 | time=91.34s
 profiled fwd sync | batch_size=2048 | time=94.52s
+baseline te | batch_size=256 | time=62.84s
+te without attention, fp8, fused mlp| batch_size=256 | last_loss=-1.3451727628707886
+te without attention, fp8, fused mlp| batch_size=256 | time=60.85
+DDP 2 GPUS | batch_size=256 | last_loss=-1.350548505783081
+DDP 2 GPUS| batch_size=256 | time=52.94s
+te without attention, fp8, fused mlp| batch_size=256 | last_loss=-1.3404128551483154
+te without attention, fp8, fused mlp| batch_size=256 | time=54.06
