@@ -43,6 +43,7 @@ class Attention_dot_te(torch.nn.Module):
         self.qkv = te.Linear(in_channels, in_channels * 3)
         self.proj = te.Linear(in_channels, in_channels)
         self.num_heads = in_channels // head_channels
+        self.head_dim = head_channels 
         self.sqrt_scale = head_channels ** (-0.25)
         self.sample = False
         self.k_cache: dict[str, list[torch.Tensor]] = {"cond": [], "uncond": []}
