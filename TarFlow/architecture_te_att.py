@@ -48,8 +48,8 @@ class Attention_dot_te(torch.nn.Module):
         self.k_cache: dict[str, list[torch.Tensor]] = {"cond": [], "uncond": []}
         self.v_cache: dict[str, list[torch.Tensor]] = {"cond": [], "uncond": []}
         self.attention_dot = self.attention = te.DotProductAttention(
-            num_attention_heads=self.num_heads ,
-            kv_channels=head_channels,
+            num_attention_heads= head_channels ,
+            kv_channels= self.num_heads,
             attention_dropout=0.1,
             attn_mask_type="causal",
         )
