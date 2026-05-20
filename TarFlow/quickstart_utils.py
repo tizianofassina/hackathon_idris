@@ -67,7 +67,7 @@ class DotProductAttention(torch.nn.Module):
         self,
         num_attention_heads: int,
         kv_channels: int,
-        attention_dropout: float,
+        attention_dropout: float
     ) -> None:
         super().__init__()
         self.projection_size = kv_channels * num_attention_heads

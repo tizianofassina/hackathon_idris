@@ -4,6 +4,8 @@ from torch.utils.data import DataLoader, TensorDataset
 from torch.optim.lr_scheduler import CosineAnnealingLR
 import transformer_engine.pytorch as te
 from transformer_engine.common.recipe import Format, DelayedScaling
+import TarFlow.quickstart_utils as utils
+
 
 class Permutation(torch.nn.Module):
 
@@ -29,9 +31,9 @@ class PermutationFlip(Permutation):
         self, x: torch.Tensor, dim: int = 1, inverse: bool = False
     ) -> torch.Tensor:
         return x.flip(dims=[dim])
-
-
-class Attention(torch.nn.Module):
+    
+    
+class Attention_dot_te(torch.nn.Module):
     USE_SPDA: bool = True
 
     def __init__(self, in_channels: int, head_channels: int):
@@ -45,7 +47,10 @@ class Attention(torch.nn.Module):
         self.sample = False
         self.k_cache: dict[str, list[torch.Tensor]] = {"cond": [], "uncond": []}
         self.v_cache: dict[str, list[torch.Tensor]] = {"cond": [], "uncond": []}
-
+        
+        self.attention_dot = utils.DotProductAttention(num_attention_heads = self.num_heads,
+                                                    kv_channels = head_channels,attention_dropout = 0.)
+    
     def forward_spda(
         self,
         x: torch.Tensor,
@@ -73,9 +78,7 @@ class Attention(torch.nn.Module):
         scale = self.sqrt_scale**2 / temp
         if mask is not None:
             mask = mask.bool()
-        x = torch.nn.functional.scaled_dot_product_attention(
-            q, k, v, attn_mask=mask, scale=scale
-        )
+        x = self.attention_dot( query_layer = q, key_layer = k, value_layer = v, attention_mask=mask) #, scale=scale)
         x = x.transpose(1, 2).reshape(B, T, C)
         x = self.proj(x)
         return x
@@ -135,13 +138,10 @@ class MLP(torch.nn.Module):
 
 
 class AttentionBlock(torch.nn.Module):
-    def __init__(self, channels: int, head_dim: int, expansion: int = 4):
+    def __init__(self, channels: int, head_channels: int, expansion: int = 4):
         super().__init__()
-        self.attention = te.DotProductAttention(
-            num_attention_heads=channels//head_dim, # To be checkeed if channels is in_channel required by DotProductAttention
-            kv_channels=head_dim, # To be checkeed if head_dim is head_dim required by DotProductAttention
-            attn_mask_type="causal",
-        )
+        
+        self.attention = Attention_dot_te(channels, head_channels)
         self.mlp = MLP(channels, expansion)
 
     def forward(
@@ -151,8 +151,7 @@ class AttentionBlock(torch.nn.Module):
         attn_temp: float = 1.0,
         which_cache: str = "cond",
     ) -> torch.Tensor:
-        x = x + self.attention(x, attention_mask = attn_mask, attn_temp, which_cache)
-        
+        x = x + self.attention(x, attn_mask, attn_temp, which_cache)
         x = x + self.mlp(x)
         return x
 
@@ -259,7 +258,7 @@ class MetaBlock(torch.nn.Module):
 
     def set_sample_mode(self, flag: bool = True):
         for m in self.modules():
-            if isinstance(m, Attention):
+            if isinstance(m, Attention_dot_te):
                 m.sample = flag
                 m.k_cache = {"cond": [], "uncond": []}
                 m.v_cache = {"cond": [], "uncond": []}
