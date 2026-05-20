@@ -4,8 +4,8 @@ import torch
 from torch.utils.data import DataLoader, TensorDataset
 from torch.utils.tensorboard import SummaryWriter
 from TarFlow.architecture_te import Model
-from TarFlow.utils import set_random_seed
-
+import random
+import numpy as np
 import torch.distributed as dist  # DDP communication
 from torch.nn.parallel import DistributedDataParallel as DDP
 from torch.utils.data.distributed import DistributedSampler
@@ -18,6 +18,18 @@ import time
 # ============================================================
 torch.set_float32_matmul_precision("high")
 RANDOM_SEED = 200
+
+
+def set_random_seed(seed: int) -> None:
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+
+
+
+
 set_random_seed(RANDOM_SEED)
 
 # ============================================================
