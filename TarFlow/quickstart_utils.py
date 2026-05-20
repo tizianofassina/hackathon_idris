@@ -101,12 +101,16 @@ class DotProductAttention(torch.nn.Module):
         bmm1 = (
             torch.bmm(query.transpose(0, 1), key.transpose(0, 1).transpose(1, 2)) / self.norm_factor
         )
+        print("bmm1 done")
 
         # change view to [b, np, sq, sk]
         attention_scores = bmm1.reshape(b, np, sq, sk)
+        print("attention_scores done")
+        print("attention_scores size", attention_scores.shape)
+        print("attention_mask size", attention_mask.shape)
 
         attention_probs = self.masked_softmax(attention_scores, attention_mask)
-
+        print("We shouldnt arrive to this line")
         attention_probs = self.dropout(attention_probs)
 
         # change view [sk, b * np, hn]
