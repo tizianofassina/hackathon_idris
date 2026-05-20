@@ -170,14 +170,6 @@ def get_data(
     return data, get_num_classes(dataset)
 
 
-def set_random_seed(seed: int) -> None:
-    random.seed(seed)
-    np.random.seed(seed)
-    torch.manual_seed(seed)
-    torch.cuda.manual_seed(seed)
-    torch.cuda.manual_seed_all(seed)
-
-
 def from_255_to_one_minus_one(data_path):
     """
     Args:
