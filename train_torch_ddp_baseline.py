@@ -4,19 +4,30 @@ import torch
 from torch.utils.data import DataLoader, TensorDataset
 from torch.utils.tensorboard import SummaryWriter
 from TarFlow.architecture import Model
-from TarFlow.utils import set_random_seed
 
 import torch.distributed as dist  # DDP communication
 from torch.nn.parallel import DistributedDataParallel as DDP
 from torch.utils.data.distributed import DistributedSampler
 import argparse
 import time
+import random
+import numpy as np
 
 # ============================================================
 ## ⚙️ Initial Configuration and Hardware
 # ============================================================
 torch.set_float32_matmul_precision("high")
 RANDOM_SEED = 200
+
+def set_random_seed(seed: int) -> None:
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+
+
+
 set_random_seed(RANDOM_SEED)
 
 # ============================================================
@@ -284,6 +295,9 @@ def main(local_rank, batch_size):
             },
             CKPT_FILE,
         )
+        if dist.get_rank() == 0:
+            with open("total_times.txt", "a") as f:
+                f.write(f"DDP 2 GPUS | batch_size={BATCH_SIZE} | last_loss={avg_loss}\n")
 
     if is_main:
         writer.close()
