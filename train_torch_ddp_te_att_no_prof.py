@@ -10,6 +10,9 @@ import numpy as np
 import torch.distributed as dist  # DDP communication
 from torch.nn.parallel import DistributedDataParallel as DDP
 from torch.utils.data.distributed import DistributedSampler
+from transformer_engine.common.recipe import Format, DelayedScaling
+import transformer_engine.pytorch as te
+
 import argparse
 import time
 
@@ -148,6 +151,16 @@ def main(local_rank, batch_size):
 
     model = DDP(model, device_ids=[local_rank]) # CONCERNS MULTI GPU
 
+    
+    
+    recipe = DelayedScaling(
+        fp8_format=Format.HYBRID,
+        amax_history_len=16,
+        amax_compute_algo="max"
+    )
+
+    
+
     optimizer = torch.optim.AdamW(
         model.parameters(),
         lr=LEARNING_RATE,
@@ -225,8 +238,7 @@ def main(local_rank, batch_size):
             x = x.to(DEVICE, non_blocking=True)
             x = x * RESCALE_FACTOR
 
-            with torch.amp.autocast(device_type='cuda', dtype=amp_dtype, enabled=True):
-                
+            with te.autocast(enabled=True, recipe=recipe):
                 z, outputs, logdets = model(x, y)
                 loss = model.module.get_loss(z, logdets)
                 
@@ -299,7 +311,7 @@ def main(local_rank, batch_size):
         print("\n✅ Training complete!")
     if dist.get_rank() == 0:
         with open("total_times.txt", "a") as f:
-            f.write(f"te without attention, fp8, fused mlp| batch_size={BATCH_SIZE} | last_loss={avg_loss}\n")
+            f.write(f"te attention, fp8, without fused mlp| batch_size={BATCH_SIZE} | last_loss={avg_loss}\n")
 
         
 
@@ -315,6 +327,6 @@ if __name__ == "__main__":
         if dist.get_rank() == 0:
             print(f"Total training time: {elapsed_time:.2f} seconds")
             with open("total_times.txt", "a") as f:
-                f.write(f"te without attention, fp8, fused mlp| batch_size={args.batch_size} | time={elapsed_time:.2f}\n")
+                f.write(f"te attention, fp8, without fused mlp| batch_size={args.batch_size} | time={elapsed_time:.2f}\n")
     finally:
         cleanup_ddp()
