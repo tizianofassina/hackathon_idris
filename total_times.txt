@@ -23,3 +23,9 @@ baseline 2 gpus | batch_size=256 | time=52.94s
 
 te without attention, fp8, fused mlp| batch_size=256 | last_loss=-1.3404128551483154  # TE without profiling + attention from TE.
 te without attention, fp8, fused mlp| batch_size=256 | time=54.06
+te without attention, fp8, fused mlp| batch_size=256 | last_loss=-1.3453800678253174
+te without attention, fp8, fused mlp| batch_size=256 | time=74.67
+te without attention, fp8, fused mlp| batch_size=256 | last_loss=-2.327923536300659
+te without attention, fp8, fused mlp| batch_size=256 | time=196.27
+te with attention real arch, without fp8, fused mlp| batch_size=256 | last_loss=-2.327923536300659
+te with attention real arch, without fp8, fused mlp| batch_size=256 | time=152.41
