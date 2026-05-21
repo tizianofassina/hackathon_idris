@@ -158,7 +158,7 @@ def main(local_rank, batch_size):
         amax_history_len=16,
         amax_compute_algo="max"
     )
-
+    print("Using fp8")
     
 
     optimizer = torch.optim.AdamW(
