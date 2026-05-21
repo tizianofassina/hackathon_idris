@@ -320,7 +320,7 @@ def main(local_rank, batch_size):
         print("\n✅ Training complete!")
     if dist.get_rank() == 0:
         with open("total_times.txt", "a") as f:
-            f.write(f"te without attention, fp8, fused mlp| batch_size={BATCH_SIZE} | last_loss={avg_loss}\n")
+            f.write(f"te with attention real arch prof, fp8, fused mlp| batch_size={BATCH_SIZE} | last_loss={avg_loss}\n")
 
         
 
@@ -336,6 +336,6 @@ if __name__ == "__main__":
         if dist.get_rank() == 0:
             print(f"Total training time: {elapsed_time:.2f} seconds")
             with open("total_times.txt", "a") as f:
-                f.write(f"te without attention, fp8, fused mlp| batch_size={args.batch_size} | time={elapsed_time:.2f}\n")
+                f.write(f"te with attention real arch prof, fp8, fused mlp| batch_size={args.batch_size} | time={elapsed_time:.2f}\n")
     finally:
         cleanup_ddp()

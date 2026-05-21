@@ -36,3 +36,8 @@ mkdir -p "$SLURM_SUBMIT_DIR/report"
 torchrun \
     --standalone \
     --nproc_per_node=$NUM_GPUS train_torch_ddp_te_no_prof.py --batch_size $BS
+
+
+torchrun \
+    --standalone \
+    --nproc_per_node=2 train_torch_ddp_te_att_no_prof_real_arch.py --batch_size 256
