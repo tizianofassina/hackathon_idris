@@ -170,7 +170,7 @@ class AttentionBlock(torch.nn.Module):
         which_cache: str = "cond",
     ) -> torch.Tensor:
         x = x + self.attention(x, attn_mask, attn_temp, which_cache)
-        x = x + self.mlp(x)
+        x = x + self.ln_mlp(x)
         return x
 
 
